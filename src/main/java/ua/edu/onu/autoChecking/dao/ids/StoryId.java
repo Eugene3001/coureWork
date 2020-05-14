@@ -1,10 +1,13 @@
 package ua.edu.onu.autoChecking.dao.ids;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.MapsId;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -19,7 +22,7 @@ public class StoryId implements Serializable {
     @Column(name = "driver_id")
     private Long driverId;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "start_date")
     private Date startDate;
 }

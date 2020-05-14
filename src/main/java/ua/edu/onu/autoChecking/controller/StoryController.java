@@ -14,7 +14,9 @@ public class StoryController {
     private final StoryRepository storyRepository;
 
     @Autowired
-    public StoryController(StoryRepository storyRepository) { this.storyRepository = storyRepository; }
+    public StoryController(StoryRepository storyRepository) {
+        this.storyRepository = storyRepository;
+    }
 
     @GetMapping("/stories")
     public Iterable<Story> list() {

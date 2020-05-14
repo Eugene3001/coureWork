@@ -23,4 +23,6 @@ public class AutomobileDto {
     private Long color;
 
     private String engineNumber;
+
+    private String registrationNumber;
 }

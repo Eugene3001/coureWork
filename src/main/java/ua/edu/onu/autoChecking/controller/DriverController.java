@@ -14,7 +14,9 @@ public class DriverController {
     private final DriverRepository driverRepository;
 
     @Autowired
-    public DriverController(DriverRepository driverRepository) { this.driverRepository = driverRepository; }
+    public DriverController(DriverRepository driverRepository) {
+        this.driverRepository = driverRepository;
+    }
 
     @GetMapping("/drivers")
     public Iterable<Driver> list() {

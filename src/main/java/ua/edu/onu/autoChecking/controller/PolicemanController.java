@@ -14,7 +14,9 @@ public class PolicemanController {
     private final PolicemanRepository policemanRepository;
 
     @Autowired
-    public PolicemanController(PolicemanRepository policemanRepository) { this.policemanRepository = policemanRepository; }
+    public PolicemanController(PolicemanRepository policemanRepository) {
+        this.policemanRepository = policemanRepository;
+    }
 
     @GetMapping("/policemen")
     public Iterable<Policeman> list() {

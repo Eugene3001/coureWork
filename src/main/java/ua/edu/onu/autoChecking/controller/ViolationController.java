@@ -14,7 +14,9 @@ public class ViolationController {
     private final ViolationRepository violationRepository;
 
     @Autowired
-    public ViolationController(ViolationRepository violationRepository) { this.violationRepository = violationRepository; }
+    public ViolationController(ViolationRepository violationRepository) {
+        this.violationRepository = violationRepository;
+    }
 
     @GetMapping("/violations")
     public Iterable<Violation> list() {

@@ -4,6 +4,7 @@ spring:
     username: postgres
     password: 123
   jpa:
+    open-in-view: true
     generate-ddl: false
     show-sql: false
     hibernate.ddl-auto: update

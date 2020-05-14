@@ -14,7 +14,9 @@ public class ModelController {
     private final ModelRepository modelRepository;
 
     @Autowired
-    public ModelController(ModelRepository modelRepository) { this.modelRepository = modelRepository; }
+    public ModelController(ModelRepository modelRepository) {
+        this.modelRepository = modelRepository;
+    }
 
     @GetMapping("/models")
     public Iterable<Model> list() {

@@ -14,7 +14,9 @@ public class ProtocolController {
     private final ProtocolRepository protocolRepository;
 
     @Autowired
-    public ProtocolController(ProtocolRepository protocolRepository) { this.protocolRepository = protocolRepository; }
+    public ProtocolController(ProtocolRepository protocolRepository) {
+        this.protocolRepository = protocolRepository;
+    }
 
     @GetMapping("/protocol")
     public Iterable<Protocol> list() {

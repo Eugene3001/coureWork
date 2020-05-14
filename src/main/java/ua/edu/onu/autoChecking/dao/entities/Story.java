@@ -7,7 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ua.edu.onu.autoChecking.dao.ids.StoryId;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
+
 import java.util.Date;
 
 @Entity
@@ -23,19 +32,21 @@ public class Story {
     @Column(name = "user_passport")
     private String userPassport;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "finish_date")
     private Date finishDate;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "driver_id",
-            referencedColumnName = "driver_id")
-    private Driver driver;
+    @OneToMany(
+            mappedBy = "story",
+            cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    private List<Driver> drivers;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "auto_id",
-            referencedColumnName = "auto_id")
-    private Automobile automobile;
+    @OneToMany(
+            mappedBy = "story",
+            cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    private List<Automobile> automobiles;
 }

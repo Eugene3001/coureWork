@@ -14,7 +14,9 @@ public class AutomobileController {
     private final AutomobileRepository automobileRepository;
 
     @Autowired
-    public AutomobileController(AutomobileRepository automobileRepository) { this.automobileRepository = automobileRepository; }
+    public AutomobileController(AutomobileRepository automobileRepository) {
+        this.automobileRepository = automobileRepository;
+    }
 
     @GetMapping("/autos")
     public Iterable<Automobile> list() {

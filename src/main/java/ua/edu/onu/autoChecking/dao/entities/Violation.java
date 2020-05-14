@@ -30,7 +30,7 @@ public class Violation {
     private Boolean court;
 
     @OneToMany(
-            mappedBy = "violations"
+            mappedBy = "violation"
     )
     private List<Protocol> protocols;
 }

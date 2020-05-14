@@ -28,7 +28,7 @@ public class Driver {
     @Column(name = "license_number", nullable = false)
     private String licenseNumber;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
@@ -58,8 +58,12 @@ public class Driver {
     )
     private List<Protocol> protocols;
 
-    @OneToMany(
-            mappedBy = "driver"
-    )
-    private List<Story> stories;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumns({
+            @JoinColumn(name = "driver_id", referencedColumnName = "driver_id", insertable = false, updatable = false),
+            @JoinColumn(name = "auto_id", referencedColumnName = "auto_id", insertable = false, updatable = false),
+            @JoinColumn(name = "start_date", referencedColumnName = "start_date", insertable = false, updatable = false)
+    })
+
+    private Story story;
 }

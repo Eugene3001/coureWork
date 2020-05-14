@@ -23,9 +23,11 @@ public class Color {
     private String colorName;
 
     @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
+            cascade = CascadeType.REFRESH
+    )
     @JoinColumn(name = "color_id",
-            referencedColumnName = "color")
+            referencedColumnName = "color",
+            insertable = false, updatable = false)
     private Automobile automobile;
 
 }

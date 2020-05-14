@@ -1,6 +1,7 @@
 package ua.edu.onu.autoChecking.dao.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Automobile")
@@ -54,8 +56,11 @@ public class Automobile {
     )
     private List<Protocol> protocols;
 
-    @OneToMany(
-            mappedBy = "automobile"
-    )
-    private List<Story> stories;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumns({
+            @JoinColumn(name = "driver_id", referencedColumnName = "driver_id", insertable = false, updatable = false),
+            @JoinColumn(name = "auto_id", referencedColumnName = "auto_id", insertable = false, updatable = false),
+            @JoinColumn(name = "start_date", referencedColumnName = "start_date", insertable = false, updatable = false)
+    })
+    private Story story;
 }

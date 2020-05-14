@@ -24,7 +24,7 @@ public class Protocol {
     @Column(name = "auto_id")
     private Long autoId;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "prep_date")
     private Date prepDate;
 
@@ -46,25 +46,28 @@ public class Protocol {
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)
     @JoinColumn(name = "token_number",
-            referencedColumnName = "token_number")
+            referencedColumnName = "token_number",
+            insertable = false, updatable = false)
     private Policeman policeman;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)
     @JoinColumn(name = "violation_number",
-            referencedColumnName = "violation_number")
-
+            referencedColumnName = "violation_number",
+            insertable = false, updatable = false)
     private Violation violation;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)
     @JoinColumn(name = "auto_id",
-            referencedColumnName = "auto_id")
+            referencedColumnName = "auto_id",
+            insertable = false, updatable = false)
     private Automobile automobile;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)
     @JoinColumn(name = "driver_id",
-            referencedColumnName = "driver_id")
+            referencedColumnName = "driver_id",
+            insertable = false, updatable = false)
     private Driver driver;
 }

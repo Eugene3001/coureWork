@@ -19,16 +19,24 @@ public class BrandService {
         this.brandRepository = brandRepository;
     }
 
-    private final Function<Brand, BrandDto> brandToDto = entity -> {
-        return BrandDto.builder()
-                .brandName(entity.getBrandName())
-                .id(entity.getBrandId())
-                .build();
-    };
+    private final Function<Brand, BrandDto> brandToDto = entity -> BrandDto.builder()
+            .brandName(entity.getBrandName())
+            .id(entity.getBrandId())
+            .build();
+
+    private final Function<BrandDto, Brand> dtoToBrand = dto -> Brand.builder()
+            .brandName(dto.getBrandName())
+            .brandId(dto.getId())
+            .build();
 
     public List<BrandDto> list() {
         List<BrandDto> response = new LinkedList<>();
         brandRepository.findAll().forEach(brand -> response.add(brandToDto.apply(brand)));
+        return response;
+    }
+
+    public BrandDto create(BrandDto brandDto) {
+        BrandDto response = brandToDto.apply(brandRepository.save(dtoToBrand.apply(brandDto)));
         return response;
     }
 }
