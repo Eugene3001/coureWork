@@ -20,6 +20,8 @@ public class ProtocolDto {
 
     private Boolean status;
 
+    private Long violationNumber;
+
     private Long dueDate;
 
     private Long driverId;

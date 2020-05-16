@@ -6,21 +6,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.entities.Driver;
 import ua.edu.onu.autoChecking.dao.repositories.DriverRepository;
+import ua.edu.onu.autoChecking.dto.DriverDto;
+import ua.edu.onu.autoChecking.service.DriverService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
 @RequestMapping("/api")
 public class DriverController {
-    private final DriverRepository driverRepository;
+    private final DriverService driverService;
 
     @Autowired
-    public DriverController(DriverRepository driverRepository) {
-        this.driverRepository = driverRepository;
+    public DriverController(DriverService driverService) {
+        this.driverService = driverService;
     }
 
     @GetMapping("/drivers")
-    public Iterable<Driver> list() {
-        Iterable<Driver> list = driverRepository.findAll();
+    public List<DriverDto> list() {
+        List<DriverDto> list = driverService.list();
         log.info("GET all drivers: {}", list);
         return list;
     }
@@ -28,9 +32,8 @@ public class DriverController {
     @PostMapping("/drivers")
     @ResponseStatus(code = HttpStatus.CREATED)
     @ResponseBody
-    public Driver create(@RequestBody Driver request) {
-        log.info(request.getLicenseNumber());
-        Driver response = driverRepository.save(request);
+    public DriverDto create(@RequestBody DriverDto request) {
+        DriverDto response = driverService.create(request);
         log.info("CREATE one driver: {}", response);
         return response;
     }

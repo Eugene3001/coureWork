@@ -46,10 +46,12 @@ public class Automobile {
     )
     private List<Color> colors;
 
-    @OneToMany(
-            mappedBy = "automobile"
-    )
-    private List<Model> models;
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "model_id",
+            referencedColumnName = "model_id",
+            insertable = false, updatable = false)
+    private Model model;
 
     @OneToMany(
             mappedBy = "automobile"

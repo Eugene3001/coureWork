@@ -6,21 +6,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.entities.Model;
 import ua.edu.onu.autoChecking.dao.repositories.ModelRepository;
+import ua.edu.onu.autoChecking.dto.ModelDto;
+import ua.edu.onu.autoChecking.service.ModelService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
 @RequestMapping("/api")
 public class ModelController {
-    private final ModelRepository modelRepository;
+    private final ModelService modelService;
 
     @Autowired
-    public ModelController(ModelRepository modelRepository) {
-        this.modelRepository = modelRepository;
+    public ModelController(ModelService modelService) {
+        this.modelService = modelService;
     }
 
     @GetMapping("/models")
-    public Iterable<Model> list() {
-        Iterable<Model> list = modelRepository.findAll();
+    public List<ModelDto> list() {
+        List<ModelDto> list = modelService.list();
         log.info("GET all models: {}", list);
         return list;
     }
@@ -28,8 +32,8 @@ public class ModelController {
     @PostMapping("/models")
     @ResponseStatus(code = HttpStatus.CREATED)
     @ResponseBody
-    public Model create(@RequestBody Model request) {
-        Model response = modelRepository.save(request);
+    public ModelDto create(@RequestBody ModelDto request) {
+        ModelDto response = modelService.create(request);
         log.info("CREATE one model: {}", response);
         return response;
     }

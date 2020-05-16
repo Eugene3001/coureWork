@@ -2,14 +2,17 @@ package ua.edu.onu.autoChecking.dao.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,12 +37,10 @@ public class Model {
     @Column(name = "manuf_year", nullable = false)
     private Date manufYear;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "model_id",
-            referencedColumnName = "model_id",
-            insertable = false, updatable = false)
-    private Automobile automobile;
+    @OneToMany(
+        mappedBy = "model"
+    )
+    private List<Automobile> automobiles;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)

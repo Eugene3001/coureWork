@@ -6,21 +6,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.entities.Protocol;
 import ua.edu.onu.autoChecking.dao.repositories.ProtocolRepository;
+import ua.edu.onu.autoChecking.dto.ProtocolDto;
+import ua.edu.onu.autoChecking.service.ProtocolService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
 @RequestMapping("/api")
 public class ProtocolController {
-    private final ProtocolRepository protocolRepository;
+    private final ProtocolService protocolService;
 
     @Autowired
-    public ProtocolController(ProtocolRepository protocolRepository) {
-        this.protocolRepository = protocolRepository;
+    public ProtocolController(ProtocolService protocolService) {
+        this.protocolService = protocolService;
     }
 
     @GetMapping("/protocol")
-    public Iterable<Protocol> list() {
-        Iterable<Protocol> list = protocolRepository.findAll();
+    public List<ProtocolDto> list() {
+        List<ProtocolDto> list = protocolService.list();
         log.info("GET all protocols: {}", list);
         return list;
     }
@@ -28,8 +32,8 @@ public class ProtocolController {
     @PostMapping("/protocol")
     @ResponseStatus(code = HttpStatus.CREATED)
     @ResponseBody
-    public Protocol create(@RequestBody Protocol request) {
-        Protocol response = protocolRepository.save(request);
+    public ProtocolDto create(@RequestBody ProtocolDto request) {
+        ProtocolDto response = protocolService.create(request);
         log.info("CREATE one protocol: {}", response);
         return response;
     }

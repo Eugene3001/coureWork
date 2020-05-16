@@ -1,6 +1,7 @@
 package ua.edu.onu.autoChecking.dao.ids;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Getter
 @Setter
 @EqualsAndHashCode
+@AllArgsConstructor
 public class StoryId implements Serializable {
     @Column(name = "auto_id")
     private Long autoId;
