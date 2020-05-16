@@ -41,4 +41,11 @@ public class ModelController {
         log.info("CREATE one model: {}", response);
         return response;
     }
+
+    @GetMapping("/models/byMYear")
+    public List<ModelDto> manufactureYearSortedList() {
+        List<ModelDto> response = modelService.manufactureYearSortedList();
+        log.info("GET all models asc (manufacture year): {}", response);
+        return response;
+    }
 }

@@ -41,4 +41,11 @@ public class DriverController {
         log.info("CREATE one driver: {}", response);
         return response;
     }
+
+    @GetMapping("/drivers/byBirthDate")
+    public List<DriverDto> birthDateSortedList() {
+        List<DriverDto> list = driverService.birthDateSortedList();
+        log.info("GET all drivers asc (birth date): {}", list);
+        return list;
+    }
 }

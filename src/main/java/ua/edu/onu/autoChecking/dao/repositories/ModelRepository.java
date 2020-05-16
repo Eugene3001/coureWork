@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ModelRepository extends CrudRepository<Model, Long> {
     //Sorting
-    @Query("select m from Model m order by m.manuf_year asc")
-    List<Model> getManufYearSortedList();
+    @Query("select m from Model m order by m.manufYear asc")
+    List<Model> getManufactureYearSortedList();
 
     //Selection
 }

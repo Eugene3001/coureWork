@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DriverRepository extends CrudRepository<Driver, Long> {
     //Sorting
-    @Query("select d from Driver d order by d.birth_date asc")
+    @Query("select d from Driver d order by d.birthDate asc")
     List<Driver> getBirthDateSortedList();
 
     //Selection

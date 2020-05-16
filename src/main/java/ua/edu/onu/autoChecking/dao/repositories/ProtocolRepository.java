@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ProtocolRepository extends CrudRepository<Protocol, Long> {
     //Sorting
-    @Query("select p from Protocol p order by p.prep_date asc")
+    @Query("select p from Protocol p order by p.prepDate asc")
     List<Protocol> getPrepDateSortedList();
 
     //Selection

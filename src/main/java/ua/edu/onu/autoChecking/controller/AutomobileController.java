@@ -10,23 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ua.edu.onu.autoChecking.dao.entities.Automobile;
-import ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository;
+import ua.edu.onu.autoChecking.dto.AutomobileDto;
+import ua.edu.onu.autoChecking.service.AutomobileService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
 @RequestMapping("/api")
 public class AutomobileController {
-    private final AutomobileRepository automobileRepository;
+    private final AutomobileService automobileService;
 
     @Autowired
-    public AutomobileController(AutomobileRepository automobileRepository) {
-        this.automobileRepository = automobileRepository;
+    public AutomobileController(AutomobileService automobileService) {
+        this.automobileService = automobileService;
     }
 
     @GetMapping("/autos")
-    public Iterable<Automobile> list() {
-        Iterable<Automobile> list = automobileRepository.findAll();
+    public List<AutomobileDto> list() {
+        List<AutomobileDto> list = automobileService.list();
         log.info("GET all cars: {}", list);
         return list;
     }
@@ -34,9 +36,16 @@ public class AutomobileController {
     @PostMapping("/autos")
     @ResponseStatus(code = HttpStatus.CREATED)
     @ResponseBody
-    public Automobile create(@RequestBody Automobile request) {
-        Automobile response = automobileRepository.save(request);
+    public AutomobileDto create(@RequestBody AutomobileDto request) {
+        AutomobileDto response = automobileService.create(request);
         log.info("CREATE one car: {}", response);
         return response;
+    }
+
+    @GetMapping("/autos/byDate")
+    public List<AutomobileDto> registrationDateSortedList() {
+        List<AutomobileDto> list = automobileService.registrationDateSortedList();
+        log.info("GET all cars asc (registration date): {}", list);
+        return list;
     }
 }

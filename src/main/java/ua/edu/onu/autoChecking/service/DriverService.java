@@ -54,4 +54,10 @@ public class DriverService {
     public DriverDto create(DriverDto driverDto) {
         return driverToDto.apply(driverRepository.save(dtoToDriver.apply(driverDto)));
     }
+
+    public List<DriverDto> birthDateSortedList() {
+        List<DriverDto> response = new LinkedList<>();
+        driverRepository.getBirthDateSortedList().forEach(driver -> response.add(driverToDto.apply(driver)));
+        return response;
+    }
 }

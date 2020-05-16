@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface StoryRepository extends CrudRepository<Story, StoryId> {
     //Sorting
-    @Query("select s from Story s order by s.start_date asc")
+    @Query("select s from Story s order by s.id.startDate asc")
     List<Story> getStartDateSortedList();
 
-    @Query("select s from Story s order by s.finish_date desc")
+    @Query("select s from Story s order by s.finishDate desc")
     List<Story> getFinishDateSortedList();
 
     //Selection

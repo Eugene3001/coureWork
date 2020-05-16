@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AutomobileRepository extends CrudRepository<Automobile, Long> {
     //Sorting
-    @Query("select a from Automobile a order by a.registration_date asc")
+    @Query("select a from Automobile a order by a.registrationDate asc")
     List<Automobile> getDateSortedListAsc();
 
     //Selection

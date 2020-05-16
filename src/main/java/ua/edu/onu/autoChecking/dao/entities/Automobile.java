@@ -1,5 +1,6 @@
 package ua.edu.onu.autoChecking.dao.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,6 +38,7 @@ public class Automobile {
     @Column(name = "vehicle_id_number", nullable = false, unique = true)
     private String vehicleIdNumber;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "registration_date", nullable = false)
     private Date registrationDate;
 

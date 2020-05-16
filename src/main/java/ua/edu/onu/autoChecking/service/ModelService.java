@@ -44,4 +44,10 @@ public class ModelService {
     public ModelDto create(ModelDto modelDto) {
         return modelToDto.apply(modelRepository.save(dtoToModel.apply(modelDto)));
     }
+
+    public List<ModelDto> manufactureYearSortedList() {
+        List<ModelDto> response = new LinkedList<>();
+        modelRepository.getManufactureYearSortedList().forEach(model -> response.add(modelToDto.apply(model)));
+        return response;
+    }
 }
