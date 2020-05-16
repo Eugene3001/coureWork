@@ -34,7 +34,6 @@ public class ColorService {
     }
 
     public ColorDto create(ColorDto colorDto) {
-        ColorDto response = colorToDto.apply(colorRepository.save(dtoToColor.apply(colorDto)));
-        return response;
+        return colorToDto.apply(colorRepository.save(dtoToColor.apply(colorDto)));
     }
 }

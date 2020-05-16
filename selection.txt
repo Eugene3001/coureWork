@@ -1,0 +1,11 @@
+Automobile: color->Color(color_id)->color_name, registrtion_date (between some values)
+Brand: -
+Color: -
+Driver: birth_date, city, street, house, flat, name, surname, patronymic
+Model: body_type, manuf_year (betweem some values)
+Policeman: rank, name, surname, patronymic
+Protocol: violation_number->Violation(violation_number)->violation_name, status, due_date, token_number
+Story: user_passport, someDate.start_date < this.start_date && someDate.finish_date > this.finish_date
+Violation: money_penalty (between some values), court
+
+

@@ -6,7 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Builder
@@ -24,12 +31,8 @@ public class Color {
     @Column(name = "color_name", nullable = false, unique = true)
     private String colorName;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH
+    @OneToMany(
+            mappedBy = "colorId"
     )
-    @JoinColumn(name = "color_id",
-            referencedColumnName = "color",
-            insertable = false, updatable = false)
-    private Automobile automobile;
-
+    private List<Automobile> automobiles;
 }

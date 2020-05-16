@@ -41,7 +41,6 @@ public class StoryService {
     }
 
     public StoryDto create(StoryDto storyDto) {
-        StoryDto response = storyToDto.apply(storyRepository.save(dtoToStory.apply(storyDto)));
-        return response;
+        return storyToDto.apply(storyRepository.save(dtoToStory.apply(storyDto)));
     }
 }

@@ -42,7 +42,6 @@ public class ModelService {
     }
 
     public ModelDto create(ModelDto modelDto) {
-        ModelDto response = modelToDto.apply(modelRepository.save(dtoToModel.apply(modelDto)));
-        return response;
+        return modelToDto.apply(modelRepository.save(dtoToModel.apply(modelDto)));
     }
 }

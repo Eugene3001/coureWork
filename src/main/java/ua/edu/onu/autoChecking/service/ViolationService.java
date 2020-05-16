@@ -40,7 +40,6 @@ public class ViolationService {
     }
 
     public ViolationDto create(ViolationDto violationDto) {
-        ViolationDto response = violationToDto.apply(violationRepository.save(dtoToViolation.apply(violationDto)));
-        return response;
+        return violationToDto.apply(violationRepository.save(dtoToViolation.apply(violationDto)));
     }
 }

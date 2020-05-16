@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Automobile;
 import ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
-import ua.edu.onu.autoChecking.dto.BrandDto;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,5 +47,11 @@ public class AutomobileService {
 
     public AutomobileDto create(AutomobileDto automobileDto) {
         return automobileToDto.apply(automobileRepository.save(dtoToAutomobile.apply(automobileDto)));
+    }
+
+    public List<AutomobileDto> registrationDateSortedList() {
+        List<AutomobileDto> response = new LinkedList<>();
+        automobileRepository.getDateSortedListAsc().forEach(automobile -> response.add(automobileToDto.apply(automobile)));
+        return response;
     }
 }

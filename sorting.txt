@@ -1,0 +1,9 @@
+Automobile: registration_date
+Brand: -
+Color: -
+Driver: birth_date
+Model: manuf_year
+Policeman: -
+Protocol: prep_date
+Story: start_date, finish_date
+Violations: - 

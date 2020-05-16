@@ -42,7 +42,6 @@ public class PolicemanService {
     }
 
     public PolicemanDto create(PolicemanDto policemanDto) {
-        PolicemanDto response = policemanToDto.apply(policemanRepository.save(dtoToPoliceman.apply(policemanDto)));
-        return response;
+        return policemanToDto.apply(policemanRepository.save(dtoToPoliceman.apply(policemanDto)));
     }
 }

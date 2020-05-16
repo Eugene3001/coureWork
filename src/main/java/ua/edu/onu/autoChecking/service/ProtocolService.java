@@ -48,7 +48,6 @@ public class ProtocolService {
     }
 
     public ProtocolDto create(ProtocolDto protocolDto) {
-        ProtocolDto response = protocolToDto.apply(protocolRepository.save(dtoToProtocol.apply(protocolDto)));
-        return response;
+        return protocolToDto.apply(protocolRepository.save(dtoToProtocol.apply(protocolDto)));
     }
 }

@@ -36,7 +36,6 @@ public class BrandService {
     }
 
     public BrandDto create(BrandDto brandDto) {
-        BrandDto response = brandToDto.apply(brandRepository.save(dtoToBrand.apply(brandDto)));
-        return response;
+        return brandToDto.apply(brandRepository.save(dtoToBrand.apply(brandDto)));
     }
 }

@@ -52,7 +52,6 @@ public class DriverService {
     }
 
     public DriverDto create(DriverDto driverDto) {
-        DriverDto response = driverToDto.apply(driverRepository.save(dtoToDriver.apply(driverDto)));
-        return response;
+        return driverToDto.apply(driverRepository.save(dtoToDriver.apply(driverDto)));
     }
 }
