@@ -43,4 +43,16 @@ public class StoryService {
     public StoryDto create(StoryDto storyDto) {
         return storyToDto.apply(storyRepository.save(dtoToStory.apply(storyDto)));
     }
+
+    public List<StoryDto> startDateSortedList() {
+        List<StoryDto> response = new LinkedList<>();
+        storyRepository.getStartDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
+        return response;
+    }
+
+    public List<StoryDto> finishDateSortedList() {
+        List<StoryDto> response = new LinkedList<>();
+        storyRepository.getFinishDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
+        return response;
+    }
 }

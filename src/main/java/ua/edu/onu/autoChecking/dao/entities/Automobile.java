@@ -42,14 +42,8 @@ public class Automobile {
     @Column(name = "registration_date", nullable = false)
     private Date registrationDate;
 
-    @Column(name = "model_id", nullable = false)
-    private Long modelId;
-
     @Column(name = "registration_number", nullable = false)
     private String registrationNumber;
-
-    @Column(name = "color", nullable = false)
-    private Long color;
 
     @Column(name = "engine_number", nullable = false, unique = true)
     private String engineNumber;
@@ -60,7 +54,7 @@ public class Automobile {
     @JoinColumn(name = "color",
             referencedColumnName = "color_id",
             insertable = false, updatable = false)
-    private Color colorId;
+    private Color color;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)

@@ -50,4 +50,10 @@ public class ProtocolService {
     public ProtocolDto create(ProtocolDto protocolDto) {
         return protocolToDto.apply(protocolRepository.save(dtoToProtocol.apply(protocolDto)));
     }
+
+    public List<ProtocolDto> prepDateSortedList() {
+        List<ProtocolDto> response = new LinkedList<>();
+        protocolRepository.getPrepDateSortedList().forEach(protocol -> response.add(protocolToDto.apply(protocol)));
+        return response;
+    }
 }

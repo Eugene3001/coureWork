@@ -41,4 +41,11 @@ public class ProtocolController {
         log.info("CREATE one protocol: {}", response);
         return response;
     }
+
+    @GetMapping("/protocol/byPrepDate")
+    public List<ProtocolDto> prepDateSortedList() {
+        List<ProtocolDto> list = protocolService.prepDateSortedList();
+        log.info("GET all protocols asc (preparation date): {}", list);
+        return list;
+    }
 }

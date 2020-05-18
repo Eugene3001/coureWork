@@ -12,3 +12,5 @@ hibernate:
   show_sql: true
 log4j.logger.org.hibernate.SQL: DEBUG
 log4j.logger.org.hibernate.type: TRACE
+logging.level.org.hibernate.SQL: DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE

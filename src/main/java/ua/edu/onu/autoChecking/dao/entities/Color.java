@@ -32,7 +32,7 @@ public class Color {
     private String colorName;
 
     @OneToMany(
-            mappedBy = "colorId"
+            mappedBy = "color"
     )
     private List<Automobile> automobiles;
 }
