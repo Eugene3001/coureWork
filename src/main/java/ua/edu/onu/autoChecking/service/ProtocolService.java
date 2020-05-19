@@ -12,6 +12,7 @@ import ua.edu.onu.autoChecking.dao.repositories.DriverRepository;
 import ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ProtocolRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ViolationRepository;
+import ua.edu.onu.autoChecking.dao.repositories.spec.ProtocolSpec;
 import ua.edu.onu.autoChecking.dto.ProtocolDto;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
@@ -50,22 +51,18 @@ public class ProtocolService {
             .build();
 
     private final Function<ProtocolDto, Protocol> dtoToProtocol = dto -> Protocol.builder()
-            .automobile(automobileRepository.findById(dto.getAutoId()).orElseThrow(
-                    () -> NotFoundException.returnNotFoundEntity(dto, Automobile.class.getName()))
-            )
-            .driver(driverRepository.findById(dto.getDriverId()).orElseThrow(
-                    () -> NotFoundException.returnNotFoundEntity(dto, Driver.class.getName()))
-            )
+            .automobile(automobileRepository.findById(dto.getAutoId())
+                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Automobile.class.getName())))
+            .driver(driverRepository.findById(dto.getDriverId())
+                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Driver.class.getName())))
             .dueDate(dto.getDueDate())
             .id(dto.getId())
             .prepDate(dto.getPrepDate())
             .status(dto.getStatus())
-            .policeman(policemanRepository.findById(dto.getTokenNumber()).orElseThrow(
-                    () -> NotFoundException.returnNotFoundEntity(dto, Policeman.class.getName()))
-            )
-            .violation(violationRepository.findById(dto.getViolationNumber()).orElseThrow(
-                    () -> NotFoundException.returnNotFoundEntity(dto, Violation.class.getName()))
-            )
+            .policeman(policemanRepository.findById(dto.getTokenNumber())
+                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Policeman.class.getName())))
+            .violation(violationRepository.findById(dto.getViolationNumber())
+                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Violation.class.getName())))
             .build();
 
     public List<ProtocolDto> list() {
@@ -81,6 +78,17 @@ public class ProtocolService {
     public List<ProtocolDto> prepDateSortedList() {
         List<ProtocolDto> response = new LinkedList<>();
         protocolRepository.getPrepDateSortedList().forEach(protocol -> response.add(protocolToDto.apply(protocol)));
+        return response;
+    }
+
+    public List<ProtocolDto> findByCriteria(String violationName, Boolean status, Long dueDate, String name) {
+        List<ProtocolDto> response = new LinkedList<>();
+        Violation violation = violationRepository.findByViolation(violationName).orElse(null);
+        Policeman policeman = policemanRepository.findByName(name).orElse(null);
+
+        protocolRepository.findAll(ProtocolSpec.buildSearchSpec(violation, status, dueDate, policeman))
+                .forEach(protocol -> response.add(protocolToDto.apply(protocol)));
+
         return response;
     }
 }

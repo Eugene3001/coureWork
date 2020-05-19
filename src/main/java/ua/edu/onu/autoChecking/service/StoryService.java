@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Story;
 import ua.edu.onu.autoChecking.dao.ids.StoryId;
 import ua.edu.onu.autoChecking.dao.repositories.StoryRepository;
+import ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec;
 import ua.edu.onu.autoChecking.dto.StoryDto;
 
 import java.util.LinkedList;
@@ -53,6 +54,12 @@ public class StoryService {
     public List<StoryDto> finishDateSortedList() {
         List<StoryDto> response = new LinkedList<>();
         storyRepository.getFinishDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
+        return response;
+    }
+
+    public List<StoryDto> findByCriteria(String userPassport, String isOwner, String isNotOwner) {
+        List<StoryDto> response = new LinkedList<>();
+        storyRepository.findAll(StorySpec.buildSearchSpec(userPassport, isOwner, isNotOwner)).forEach(story -> response.add(storyToDto.apply(story)));
         return response;
     }
 }

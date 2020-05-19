@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
 import ua.edu.onu.autoChecking.service.PolicemanService;
 
@@ -39,6 +41,19 @@ public class PolicemanController {
     public PolicemanDto create(@RequestBody PolicemanDto request) {
         PolicemanDto response = policemanService.create(request);
         log.info("CREATE one policeman: {}", response);
+        return response;
+    }
+
+    public List<PolicemanDto> findByCriteria(@RequestParam(required = false)
+                                                     String rank,
+                                             @RequestParam(required = false)
+                                                     String name,
+                                             @RequestParam(required = false)
+                                                     String surname,
+                                             @RequestParam(required = false)
+                                                     String patronymic) {
+        List<PolicemanDto> response = policemanService.findByCriteria(rank, name, surname, patronymic);
+        log.info("GET all policemen by criteria: {}", response);
         return response;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,5 +48,20 @@ public class ProtocolController {
         List<ProtocolDto> list = protocolService.prepDateSortedList();
         log.info("GET all protocols asc (preparation date): {}", list);
         return list;
+    }
+
+    @GetMapping("/protocol/find")
+    public List<ProtocolDto> findByCriteria(@RequestParam(required = false)
+                                                    String violationName,
+                                            @RequestParam(required = false)
+                                                    Boolean status,
+                                            @RequestParam(required = false)
+                                                    Long dueDate,
+                                            @RequestParam(required = false)
+                                                    String name
+                                            ) {
+        List<ProtocolDto> response = protocolService.findByCriteria(violationName, status, dueDate, name);
+        log.info("GET all protocols by criteria: {}", response);
+        return response;
     }
 }
