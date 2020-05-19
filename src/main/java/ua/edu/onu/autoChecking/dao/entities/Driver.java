@@ -13,9 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
@@ -66,15 +63,18 @@ public class Driver {
     private String patronymic;
 
     @OneToMany(
-            mappedBy = "driver"
+            mappedBy = "driver",
+            cascade = {
+                    CascadeType.REFRESH
+            }
     )
     private List<Protocol> protocols;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumns({
-            @JoinColumn(name = "driver_id", referencedColumnName = "driver_id", insertable = false, updatable = false),
-            @JoinColumn(name = "auto_id", referencedColumnName = "auto_id", insertable = false, updatable = false),
-            @JoinColumn(name = "start_date", referencedColumnName = "start_date", insertable = false, updatable = false)
-    })
-    private Story story;
+    @OneToMany(
+            mappedBy = "driver",
+            cascade = {
+                    CascadeType.REFRESH
+            }
+    )
+    private List<Story> stories;
 }

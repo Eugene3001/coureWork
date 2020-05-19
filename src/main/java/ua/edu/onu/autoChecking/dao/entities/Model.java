@@ -37,9 +37,6 @@ public class Model {
     @Column(name = "model_name", unique = true, nullable = false)
     private String modelName;
 
-    @Column(name = "brand_id", nullable = false)
-    private Long brandId;
-
     @Column(name = "body_type", nullable = false)
     private String bodyType;
 

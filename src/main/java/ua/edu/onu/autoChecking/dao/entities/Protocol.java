@@ -32,27 +32,15 @@ public class Protocol {
     @Column(name = "protocol_number")
     private Long id;
 
-    @Column(name = "auto_id")
-    private Long autoId;
-
     @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "prep_date")
     private Date prepDate;
-
-    @Column(name = "violation_number", nullable = false)
-    private Long violationNumber;
 
     @Column(name = "status")
     private Boolean status;
 
     @Column(name = "due_date")
     private Long dueDate;
-
-    @Column(name = "driver_id")
-    private Long driverId;
-
-    @Column(name = "token_number")
-    private Long tokenNumber;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.REFRESH)

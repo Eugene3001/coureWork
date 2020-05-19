@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Driver;
 import ua.edu.onu.autoChecking.dao.repositories.DriverRepository;
+import ua.edu.onu.autoChecking.dao.repositories.spec.DriverSpec;
 import ua.edu.onu.autoChecking.dto.DriverDto;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.function.Function;
 import java.util.List;
@@ -58,6 +60,21 @@ public class DriverService {
     public List<DriverDto> birthDateSortedList() {
         List<DriverDto> response = new LinkedList<>();
         driverRepository.getBirthDateSortedList().forEach(driver -> response.add(driverToDto.apply(driver)));
+        return response;
+    }
+
+    public List<DriverDto> findByCriteria(Date begin, Date end, String city,
+                                          String street, String house, Long flat,
+                                          String name, String surname, String patronymic) {
+        List<DriverDto> response = new LinkedList<>();
+
+        driverRepository.findAll(DriverSpec.buildSearchSpec(begin, end, city,
+                                 street, house, flat,
+                                 name, surname, patronymic))
+                .forEach(driver ->
+                        response.add(driverToDto.apply(driver))
+                );
+
         return response;
     }
 }

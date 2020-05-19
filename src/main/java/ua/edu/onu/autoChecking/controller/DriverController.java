@@ -2,17 +2,20 @@ package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ua.edu.onu.autoChecking.dto.DriverDto;
 import ua.edu.onu.autoChecking.service.DriverService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,5 +50,33 @@ public class DriverController {
         List<DriverDto> list = driverService.birthDateSortedList();
         log.info("GET all drivers asc (birth date): {}", list);
         return list;
+    }
+
+    @GetMapping("/drivers/find")
+    public List<DriverDto> findByCriteria(@RequestParam(required = false)
+                                          @DateTimeFormat(pattern = "dd-MM-yyyy")
+                                                  Date begin,
+                                          @RequestParam(required = false)
+                                          @DateTimeFormat(pattern = "dd-MM-yyyy")
+                                                  Date end,
+                                          @RequestParam(required = false)
+                                                  String city,
+                                          @RequestParam(required = false)
+                                                  String street,
+                                          @RequestParam(required = false)
+                                                  String house,
+                                          @RequestParam(required = false)
+                                                  Long flat,
+                                          @RequestParam(required = false)
+                                                  String name,
+                                          @RequestParam(required = false)
+                                                  String surname,
+                                          @RequestParam(required = false)
+                                                  String patronymic) {
+        List<DriverDto> response = driverService.findByCriteria(begin, end, city,
+                                                                street, house, flat,
+                                                                name, surname, patronymic);
+        log.info("GET all cars by criteria: {}", response);
+        return response;
     }
 }

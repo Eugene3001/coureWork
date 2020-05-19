@@ -16,7 +16,6 @@ import ua.edu.onu.autoChecking.exception.NotFoundException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 @Slf4j
@@ -65,24 +64,20 @@ public class AutomobileService {
 
     public List<AutomobileDto> registrationDateSortedList() {
         List<AutomobileDto> response = new LinkedList<>();
-        automobileRepository.getDateSortedListAsc().forEach(automobile -> response.add(automobileToDto.apply(automobile)));
+        automobileRepository.getDateSortedListAsc()
+                .forEach(automobile -> response.add(automobileToDto.apply(automobile)));
         return response;
     }
 
     public List<AutomobileDto> findByCriteria(String colorName, Date begin, Date end) {
         List<AutomobileDto> response = new LinkedList<>();
-//        Color color = colorRepository.findByColorName(colorName).orElseThrow(NotFoundException::new);
-        Optional<Color> color = colorRepository.findByColorName(colorName);
+        Color color = colorRepository.findByColorName(colorName).orElse(null);
 
-        // TODO: красиво обработать
-        Color c;
-        if (color.isEmpty()) {
-            c = null;
-        } else {
-            c = color.get();
-        }
+        automobileRepository.findAll(AutomobileSpec.buildSearchSpec(color, begin, end))
+                .forEach(automobile ->
+                        response.add(automobileToDto.apply(automobile))
+                );
 
-        automobileRepository.findAll(AutomobileSpec.buildSearchSpec(c, begin, end)).forEach(automobile -> response.add(automobileToDto.apply(automobile)));
         return response;
     }
 }

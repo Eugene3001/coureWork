@@ -13,9 +13,9 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.List;
 
 import java.util.Date;
 
@@ -37,17 +37,22 @@ public class Story {
     @Column(name = "finish_date")
     private Date finishDate;
 
-    @OneToMany(
-            mappedBy = "story",
+    @ManyToOne(
             cascade = {CascadeType.REFRESH},
             fetch = FetchType.LAZY
     )
-    private List<Driver> drivers;
+    @JoinColumn(name = "driver_id",
+                referencedColumnName = "driver_id",
+                insertable = false, updatable = false
+    )
+    private Driver driver;
 
-    @OneToMany(
-            mappedBy = "story",
-            cascade = {CascadeType.REFRESH},
-            fetch = FetchType.LAZY
+    @ManyToOne(
+            cascade = {CascadeType.REFRESH}
     )
-    private List<Automobile> automobiles;
+    @JoinColumn(name = "auto_id",
+                referencedColumnName = "auto_id",
+                insertable = false, updatable = false
+    )
+    private Automobile automobile;
 }
