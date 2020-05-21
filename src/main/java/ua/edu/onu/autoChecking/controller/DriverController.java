@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,11 +39,17 @@ public class DriverController {
 
     @PostMapping("/drivers")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public DriverDto create(@RequestBody DriverDto request) {
         DriverDto response = driverService.create(request);
         log.info("CREATE one driver: {}", response);
         return response;
+    }
+
+    @DeleteMapping("/drivers")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void delete(@RequestBody DriverDto request) {
+        driverService.delete(request);
+        log.info("DELETE one driver");
     }
 
     @GetMapping("/drivers/byBirthDate")

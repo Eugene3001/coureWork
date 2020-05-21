@@ -3,6 +3,7 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,15 +38,20 @@ public class StoryController {
 
     @PostMapping("/stories")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public StoryDto create(@RequestBody StoryDto request) {
         StoryDto response = storyService.create(request);
         log.info("CREATE one story: {}", response);
         return response;
     }
 
+    @DeleteMapping("/stories")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void delete(@RequestBody StoryDto request) {
+        storyService.delete(request);
+        log.info("DELETE one story");
+    }
+
     @GetMapping("/stories/byDate")
-    @ResponseBody
     public List<StoryDto> datesSortedList(@RequestParam String dateType) {
         List<StoryDto> response = new LinkedList<>();
 

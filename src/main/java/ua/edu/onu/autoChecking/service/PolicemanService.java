@@ -6,6 +6,7 @@ import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository;
 import ua.edu.onu.autoChecking.dao.repositories.spec.PolicemanSpec;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
+import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -44,6 +45,11 @@ public class PolicemanService {
 
     public PolicemanDto create(PolicemanDto policemanDto) {
         return policemanToDto.apply(policemanRepository.save(dtoToPoliceman.apply(policemanDto)));
+    }
+
+    public void delete(PolicemanDto policemanDto) {
+        policemanRepository.findById(policemanDto.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Policeman.class));
+        policemanRepository.deleteById(policemanDto.getId());
     }
 
     public List<PolicemanDto> findByCriteria(String rank, String name, String surname, String patronymic) {

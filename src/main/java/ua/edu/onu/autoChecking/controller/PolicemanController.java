@@ -3,6 +3,7 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,13 +38,20 @@ public class PolicemanController {
 
     @PostMapping("/policemen")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public PolicemanDto create(@RequestBody PolicemanDto request) {
         PolicemanDto response = policemanService.create(request);
         log.info("CREATE one policeman: {}", response);
         return response;
     }
 
+    @DeleteMapping("/policemen")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void delete(PolicemanDto request) {
+        policemanService.delete(request);
+        log.info("DELETE one policeman");
+    }
+
+    @GetMapping("/policemen/find")
     public List<PolicemanDto> findByCriteria(@RequestParam(required = false)
                                                      String rank,
                                              @RequestParam(required = false)

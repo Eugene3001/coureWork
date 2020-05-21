@@ -1,6 +1,7 @@
 package ua.edu.onu.autoChecking.dao.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -49,10 +50,10 @@ public class Model {
     )
     private List<Automobile> automobiles;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "brand_id",
-            referencedColumnName = "brand_id",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.ALL},
+            optional = false
+    )
+    @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 }

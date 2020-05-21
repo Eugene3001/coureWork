@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,11 +39,17 @@ public class ModelController {
 
     @PostMapping("/models")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public ModelDto create(@RequestBody ModelDto request) {
         ModelDto response = modelService.create(request);
         log.info("CREATE one model: {}", response);
         return response;
+    }
+
+    @DeleteMapping("/models")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void delete(@RequestBody ModelDto request) {
+        modelService.delete(request);
+        log.info("DELETE one model");
     }
 
     @GetMapping("/models/byMYear")

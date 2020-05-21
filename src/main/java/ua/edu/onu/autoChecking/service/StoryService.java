@@ -7,6 +7,7 @@ import ua.edu.onu.autoChecking.dao.ids.StoryId;
 import ua.edu.onu.autoChecking.dao.repositories.StoryRepository;
 import ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec;
 import ua.edu.onu.autoChecking.dto.StoryDto;
+import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -43,6 +44,12 @@ public class StoryService {
 
     public StoryDto create(StoryDto storyDto) {
         return storyToDto.apply(storyRepository.save(dtoToStory.apply(storyDto)));
+    }
+
+    public void delete(StoryDto storyDto) {
+        Story story = dtoToStory.apply(storyDto);
+        storyRepository.findById(story.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Story.class));
+        storyRepository.deleteById(story.getId());
     }
 
     public List<StoryDto> startDateSortedList() {

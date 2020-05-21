@@ -62,6 +62,28 @@ public class AutomobileService {
         return automobileToDto.apply(automobileRepository.save(dtoToAutomobile.apply(automobileDto)));
     }
 
+    public void update(AutomobileDto automobileDto) {
+        Automobile automobile = automobileRepository.findById(automobileDto.getAutoId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Automobile.class));
+
+        automobile.setAutoId(automobileDto.getAutoId());
+        automobile.setColor(colorRepository.findById(automobileDto.getColor())
+                .orElseThrow(() -> NotFoundException.returnNotFoundEntity(automobileDto, Color.class.getName())));
+        automobile.setEngineNumber(automobileDto.getEngineNumber());
+        automobile.setModel(modelRepository.findById(automobileDto.getModelId())
+                .orElseThrow(() -> NotFoundException.returnNotFoundEntity(automobileDto, Model.class.getName())));
+        automobile.setRegistrationDate(automobileDto.getRegistrationDate());
+        automobile.setRegistrationNumber(automobileDto.getRegistrationNumber());
+        automobile.setVehicleIdNumber(automobileDto.getVehicleIdNumber());
+
+        automobileRepository.save(automobile);
+    }
+
+    public void delete(AutomobileDto automobileDto) {
+        automobileRepository.findById(automobileDto.getAutoId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Automobile.class));
+        automobileRepository.deleteById(automobileDto.getAutoId());
+    }
+
     public List<AutomobileDto> registrationDateSortedList() {
         List<AutomobileDto> response = new LinkedList<>();
         automobileRepository.getDateSortedListAsc()

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Violation;
 import ua.edu.onu.autoChecking.dao.repositories.ViolationRepository;
+import ua.edu.onu.autoChecking.dao.repositories.spec.ViolationSpec;
 import ua.edu.onu.autoChecking.dto.ViolationDto;
+import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -41,5 +43,19 @@ public class ViolationService {
 
     public ViolationDto create(ViolationDto violationDto) {
         return violationToDto.apply(violationRepository.save(dtoToViolation.apply(violationDto)));
+    }
+
+    public void delete(ViolationDto violationDto) {
+        violationRepository.findById(violationDto.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Violation.class));
+        violationRepository.deleteById(violationDto.getId());
+    }
+
+    public List<ViolationDto> findByCriteria(Float first, Float second, String isCourt, String isNotCourt) {
+        List<ViolationDto> response = new LinkedList<>();
+
+        violationRepository.findAll(ViolationSpec.buildSearchSpec(first, second, isCourt, isNotCourt))
+                .forEach(violation -> response.add(violationToDto.apply(violation)));
+
+        return response;
     }
 }

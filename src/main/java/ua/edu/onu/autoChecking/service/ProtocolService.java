@@ -81,12 +81,12 @@ public class ProtocolService {
         return response;
     }
 
-    public List<ProtocolDto> findByCriteria(String violationName, Boolean status, Long dueDate, String name) {
+    public List<ProtocolDto> findByCriteria(String violationName, String isActive, String isNotActive, Long dueDate, String name) {
         List<ProtocolDto> response = new LinkedList<>();
         Violation violation = violationRepository.findByViolation(violationName).orElse(null);
         Policeman policeman = policemanRepository.findByName(name).orElse(null);
 
-        protocolRepository.findAll(ProtocolSpec.buildSearchSpec(violation, status, dueDate, policeman))
+        protocolRepository.findAll(ProtocolSpec.buildSearchSpec(violation, isActive, isNotActive, dueDate, policeman))
                 .forEach(protocol -> response.add(protocolToDto.apply(protocol)));
 
         return response;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Color;
 import ua.edu.onu.autoChecking.dao.repositories.ColorRepository;
 import ua.edu.onu.autoChecking.dto.ColorDto;
+import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,10 +21,12 @@ public class ColorService {
     }
 
     private final Function<Color, ColorDto> colorToDto = entity -> ColorDto.builder()
+            .colorId(entity.getColorId())
             .colorName(entity.getColorName())
             .build();
 
     private final Function<ColorDto, Color> dtoToColor = dto -> Color.builder()
+            .colorId(dto.getColorId())
             .colorName(dto.getColorName())
             .build();
 
@@ -35,5 +38,10 @@ public class ColorService {
 
     public ColorDto create(ColorDto colorDto) {
         return colorToDto.apply(colorRepository.save(dtoToColor.apply(colorDto)));
+    }
+
+    public void delete(ColorDto colorDto) {
+        colorRepository.findById(colorDto.getColorId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Color.class));
+        colorRepository.deleteById(colorDto.getColorId());
     }
 }

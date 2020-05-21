@@ -3,10 +3,12 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,10 +37,30 @@ public class ViolationController {
 
     @PostMapping("/violations")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public ViolationDto create(@RequestBody ViolationDto request) {
         ViolationDto response = violationService.create(request);
         log.info("CREATE one brand: {}", response);
+        return response;
+    }
+
+    @DeleteMapping("/violations")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void delete(@RequestParam ViolationDto request) {
+        violationService.delete(request);
+        log.info("DELETE one violation");
+    }
+
+    @GetMapping("/violations/find")
+    public List<ViolationDto> findByCriteria(@RequestParam(required = false)
+                                                     Float first,
+                                             @RequestParam(required = false)
+                                                     Float second,
+                                             @RequestParam(required = false)
+                                                     String isCourt,
+                                             @RequestParam(required = false)
+                                                     String isNotCourt) {
+        List<ViolationDto> response = violationService.findByCriteria(first, second, isCourt, isNotCourt);
+        log.info("GET all violations by criteria: {}", response);
         return response;
     }
 }

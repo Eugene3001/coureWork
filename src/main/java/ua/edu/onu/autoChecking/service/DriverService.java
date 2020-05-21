@@ -6,6 +6,7 @@ import ua.edu.onu.autoChecking.dao.entities.Driver;
 import ua.edu.onu.autoChecking.dao.repositories.DriverRepository;
 import ua.edu.onu.autoChecking.dao.repositories.spec.DriverSpec;
 import ua.edu.onu.autoChecking.dto.DriverDto;
+import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -22,6 +23,7 @@ public class DriverService {
     }
 
     private final Function<Driver, DriverDto> driverToDto = entity -> DriverDto.builder()
+            .driverId(entity.getDriverId())
             .birthDate(entity.getBirthDate())
             .city(entity.getCity())
             .flat(entity.getFlat())
@@ -35,6 +37,7 @@ public class DriverService {
             .build();
 
     private final Function<DriverDto, Driver> dtoToDriver = dto -> Driver.builder()
+            .driverId(dto.getDriverId())
             .birthDate(dto.getBirthDate())
             .city(dto.getCity())
             .flat(dto.getFlat())
@@ -55,6 +58,11 @@ public class DriverService {
 
     public DriverDto create(DriverDto driverDto) {
         return driverToDto.apply(driverRepository.save(dtoToDriver.apply(driverDto)));
+    }
+
+    public void delete(DriverDto driverDto) {
+        driverRepository.findById(driverDto.getDriverId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Driver.class));
+        driverRepository.deleteById(driverDto.getDriverId());
     }
 
     public List<DriverDto> birthDateSortedList() {

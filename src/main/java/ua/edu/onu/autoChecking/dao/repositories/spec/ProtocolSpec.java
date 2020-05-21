@@ -16,10 +16,20 @@ public class ProtocolSpec {
         };
     }
 
-    public static Specification<Protocol> withStatusEqual(Boolean status) {
+    public static Specification<Protocol> withIsActiveFlag(String isActive) {
         return (root, criteriaQuery, criteriaBuilder) -> {
-            if (status != null) {
-                return criteriaBuilder.equal(root.get("status"), status);
+            if (isActive != null) {
+                return criteriaBuilder.isTrue(root.get("status"));
+            }
+
+            return null;
+        };
+    }
+
+    public static Specification<Protocol> withIsNotActiveFlag(String isNotActive) {
+        return (root, criteriaQuery, criteriaBuilder) -> {
+            if (isNotActive != null) {
+                return criteriaBuilder.isFalse(root.get("status"));
             }
 
             return null;
@@ -46,10 +56,11 @@ public class ProtocolSpec {
         };
     }
 
-    public static Specification<Protocol> buildSearchSpec(Violation violation, Boolean status, Long dueDate, Policeman policeman) {
+    public static Specification<Protocol> buildSearchSpec(Violation violation, String isActive, String isNotActive, Long dueDate, Policeman policeman) {
         return Specification
                 .where(withViolationEqual(violation))
-                .and(withStatusEqual(status))
+                .and(withIsActiveFlag(isActive))
+                .and(withIsNotActiveFlag(isNotActive))
                 .and(withDueDateEqual(dueDate))
                 .and(withPolicemanEqual(policeman));
     }

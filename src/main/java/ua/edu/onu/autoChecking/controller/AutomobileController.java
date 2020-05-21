@@ -4,12 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
@@ -38,11 +39,24 @@ public class AutomobileController {
 
     @PostMapping("/autos")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public AutomobileDto create(@RequestBody AutomobileDto request) {
         AutomobileDto response = automobileService.create(request);
         log.info("CREATE one car: {}", response);
         return response;
+    }
+
+    @PutMapping("/autos")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void update(@RequestBody AutomobileDto request) {
+        automobileService.update(request);
+        log.info("UPDATE one car");
+    }
+
+    @DeleteMapping("/autos")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void delete(@RequestBody AutomobileDto request) {
+        automobileService.delete(request);
+        log.info("DELETE one car");
     }
 
     @GetMapping("/autos/sortByDate")

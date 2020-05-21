@@ -36,7 +36,6 @@ public class ProtocolController {
 
     @PostMapping("/protocol")
     @ResponseStatus(code = HttpStatus.CREATED)
-    @ResponseBody
     public ProtocolDto create(@RequestBody ProtocolDto request) {
         ProtocolDto response = protocolService.create(request);
         log.info("CREATE one protocol: {}", response);
@@ -54,13 +53,14 @@ public class ProtocolController {
     public List<ProtocolDto> findByCriteria(@RequestParam(required = false)
                                                     String violationName,
                                             @RequestParam(required = false)
-                                                    Boolean status,
+                                                    String isActive,
+                                            @RequestParam(required = false)
+                                                    String isNotActive,
                                             @RequestParam(required = false)
                                                     Long dueDate,
                                             @RequestParam(required = false)
-                                                    String name
-                                            ) {
-        List<ProtocolDto> response = protocolService.findByCriteria(violationName, status, dueDate, name);
+                                                    String name) {
+        List<ProtocolDto> response = protocolService.findByCriteria(violationName, isActive, isNotActive, dueDate, name);
         log.info("GET all protocols by criteria: {}", response);
         return response;
     }

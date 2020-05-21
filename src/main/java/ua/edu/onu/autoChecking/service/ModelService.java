@@ -51,7 +51,13 @@ public class ModelService {
     }
 
     public ModelDto create(ModelDto modelDto) {
-        return modelToDto.apply(modelRepository.save(dtoToModel.apply(modelDto)));
+        Model model = modelRepository.save(dtoToModel.apply(modelDto));
+        return modelToDto.apply(model);
+    }
+
+    public void delete(ModelDto modelDto) {
+        modelRepository.findById(modelDto.getModelId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Model.class));
+        modelRepository.deleteById(modelDto.getModelId());
     }
 
     public List<ModelDto> manufactureYearSortedList() {

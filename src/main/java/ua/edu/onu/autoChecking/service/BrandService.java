@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Brand;
 import ua.edu.onu.autoChecking.dao.repositories.BrandRepository;
 import ua.edu.onu.autoChecking.dto.BrandDto;
+import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,5 +38,10 @@ public class BrandService {
 
     public BrandDto create(BrandDto brandDto) {
         return brandToDto.apply(brandRepository.save(dtoToBrand.apply(brandDto)));
+    }
+
+    public void delete(BrandDto brandDto) {
+        brandRepository.findById(brandDto.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Brand.class));
+        brandRepository.deleteById(brandDto.getId());
     }
 }

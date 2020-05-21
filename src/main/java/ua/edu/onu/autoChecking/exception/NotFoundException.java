@@ -19,4 +19,14 @@ public class NotFoundException extends RuntimeException {
         log.error("NOT_FOUND entity: {}, by dto {}", field, entity.toString());
         return new NotFoundException("NOT_FOUND entity");
     }
+
+    public static <T> NotFoundException notFoundWhenDelete(T entity) {
+        log.error("NOT_FOUND entity when delete: {}", entity.toString());
+        return new NotFoundException("NOT_FOUND entity when delete");
+    }
+
+    public static <T> NotFoundException notFoundWhenUpdate(T entity) {
+        log.error("NOT_FOUND entity when update: {}", entity.toString());
+        return new NotFoundException("NOT_FOUND entity when update");
+    }
 }
