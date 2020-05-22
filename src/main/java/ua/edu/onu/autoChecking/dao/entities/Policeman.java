@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,8 +41,6 @@ public class Policeman {
     @Column(name = "patronymic")
     private String patronymic;
 
-    @OneToMany(
-            mappedBy = "policeman"
-    )
-    private List<Protocol> protocols;
+    @OneToMany(mappedBy = "policeman")
+    private List<Protocol> protocols = new ArrayList<>();
 }

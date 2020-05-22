@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,8 +32,6 @@ public class Color {
     @Column(name = "color_name", nullable = false, unique = true)
     private String colorName;
 
-    @OneToMany(
-            mappedBy = "color"
-    )
-    private List<Automobile> automobiles;
+    @OneToMany(mappedBy = "color")
+    private List<Automobile> automobiles = new ArrayList<>();
 }

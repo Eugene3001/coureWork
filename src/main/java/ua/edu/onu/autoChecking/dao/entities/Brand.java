@@ -36,10 +36,6 @@ public class Brand {
     @Column(name = "brand_name", unique = true, nullable = false)
     private String brandName;
 
-    @OneToMany(
-            mappedBy = "brand",
-            cascade = {CascadeType.PERSIST},
-            fetch= FetchType.EAGER
-    )
+    @OneToMany(mappedBy = "brand")
     private List<Model> models = new ArrayList<>();
 }

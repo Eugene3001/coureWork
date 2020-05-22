@@ -37,22 +37,11 @@ public class Story {
     @Column(name = "finish_date")
     private Date finishDate;
 
-    @ManyToOne(
-            cascade = {CascadeType.REFRESH},
-            fetch = FetchType.LAZY
-    )
-    @JoinColumn(name = "driver_id",
-                referencedColumnName = "driver_id",
-                insertable = false, updatable = false
-    )
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "driver_id", referencedColumnName = "driver_id", nullable = false, insertable = false, updatable = false)
     private Driver driver;
 
-    @ManyToOne(
-            cascade = {CascadeType.REFRESH}
-    )
-    @JoinColumn(name = "auto_id",
-                referencedColumnName = "auto_id",
-                insertable = false, updatable = false
-    )
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "auto_id", referencedColumnName = "auto_id", nullable = false, insertable = false, updatable = false)
     private Automobile automobile;
 }

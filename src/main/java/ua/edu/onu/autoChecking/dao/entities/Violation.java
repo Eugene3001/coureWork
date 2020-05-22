@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -37,8 +38,6 @@ public class Violation {
     @Column(name = "court")
     private Boolean court;
 
-    @OneToMany(
-            mappedBy = "violation"
-    )
-    private List<Protocol> protocols;
+    @OneToMany(mappedBy = "violation")
+    private List<Protocol> protocols = new ArrayList<>();
 }

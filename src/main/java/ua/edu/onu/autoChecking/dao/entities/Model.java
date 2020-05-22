@@ -50,10 +50,7 @@ public class Model {
     )
     private List<Automobile> automobiles;
 
-    @ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.ALL},
-            optional = false
-    )
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 }

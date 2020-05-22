@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,31 +48,17 @@ public class Automobile {
     @Column(name = "engine_number", nullable = false, unique = true)
     private String engineNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH
-    )
-    @JoinColumn(name = "color",
-            referencedColumnName = "color_id",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "color", referencedColumnName = "color_id")
     private Color color;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "model_id",
-            referencedColumnName = "model_id",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "model_id", referencedColumnName = "model_id")
     private Model model;
 
-    @OneToMany(
-            mappedBy = "automobile"
-    )
-    private List<Protocol> protocols;
+    @OneToMany(mappedBy = "automobile")
+    private List<Protocol> protocols = new ArrayList<>();
 
-    @OneToMany(
-            mappedBy = "automobile",
-            cascade = {
-                    CascadeType.REFRESH
-            }
-    )
-    private List<Story> stories;
+    @OneToMany(mappedBy = "automobile")
+    private List<Story> stories = new ArrayList<>();
 }

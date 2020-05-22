@@ -42,31 +42,19 @@ public class Protocol {
     @Column(name = "due_date")
     private Long dueDate;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "token_number",
-            referencedColumnName = "token_number",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "token_number", referencedColumnName = "token_number")
     private Policeman policeman;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "violation_number",
-            referencedColumnName = "violation_number",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "violation_number", referencedColumnName = "violation_number")
     private Violation violation;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "auto_id",
-            referencedColumnName = "auto_id",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "auto_id", referencedColumnName = "auto_id")
     private Automobile automobile;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "driver_id",
-            referencedColumnName = "driver_id",
-            insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "driver_id", referencedColumnName = "driver_id")
     private Driver driver;
 }

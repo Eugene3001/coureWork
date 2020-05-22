@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,19 +63,9 @@ public class Driver {
     @Column(name = "patronymic")
     private String patronymic;
 
-    @OneToMany(
-            mappedBy = "driver",
-            cascade = {
-                    CascadeType.REFRESH
-            }
-    )
-    private List<Protocol> protocols;
+    @OneToMany(mappedBy = "driver")
+    private List<Protocol> protocols = new ArrayList<>();
 
-    @OneToMany(
-            mappedBy = "driver",
-            cascade = {
-                    CascadeType.REFRESH
-            }
-    )
-    private List<Story> stories;
+    @OneToMany(mappedBy = "driver")
+    private List<Story> stories = new ArrayList<>();
 }
