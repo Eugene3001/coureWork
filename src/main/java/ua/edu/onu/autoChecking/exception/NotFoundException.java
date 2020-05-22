@@ -22,11 +22,11 @@ public class NotFoundException extends RuntimeException {
 
     public static <T> NotFoundException notFoundWhenDelete(T entity) {
         log.error("NOT_FOUND entity when delete: {}", entity.toString());
-        return new NotFoundException("NOT_FOUND entity when delete");
+        return new NotFoundException("NOT_FOUND entity '" + entity.toString() + "' when delete");
     }
 
     public static <T> NotFoundException notFoundWhenUpdate(T entity) {
         log.error("NOT_FOUND entity when update: {}", entity.toString());
-        return new NotFoundException("NOT_FOUND entity when update");
+        return new NotFoundException("NOT_FOUND entity '" + entity.toString() + "' when update");
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 public class DriverService {
-    private final DriverRepository driverRepository;
+    private DriverRepository driverRepository;
 
     @Autowired
     public DriverService(DriverRepository driverRepository) {
@@ -23,7 +23,6 @@ public class DriverService {
     }
 
     private final Function<Driver, DriverDto> driverToDto = entity -> DriverDto.builder()
-            .driverId(entity.getDriverId())
             .birthDate(entity.getBirthDate())
             .city(entity.getCity())
             .flat(entity.getFlat())
@@ -37,7 +36,7 @@ public class DriverService {
             .build();
 
     private final Function<DriverDto, Driver> dtoToDriver = dto -> Driver.builder()
-            .driverId(dto.getDriverId())
+            .driverId(driverRepository.getDriverIdByPassport(dto.getPassport()))
             .birthDate(dto.getBirthDate())
             .city(dto.getCity())
             .flat(dto.getFlat())
@@ -60,9 +59,28 @@ public class DriverService {
         return driverToDto.apply(driverRepository.save(dtoToDriver.apply(driverDto)));
     }
 
+    public void update(DriverDto driverDto) {
+        Driver driver = driverRepository.findByPassport(driverDto.getPassport())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Driver.class));
+
+        driver.setBirthDate(driverDto.getBirthDate());
+        driver.setCity(driverDto.getCity());
+        driver.setFlat(driverDto.getFlat());
+        driver.setHouse(driverDto.getHouse());
+        driver.setLicenseNumber(driverDto.getLicenseNumber());
+        driver.setName(driverDto.getName());
+        driver.setSurname(driverDto.getSurname());
+        driver.setPatronymic(driverDto.getPatronymic());
+        driver.setStreet(driverDto.getStreet());
+
+        driverRepository.save(driver);
+    }
+
     public void delete(DriverDto driverDto) {
-        driverRepository.findById(driverDto.getDriverId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Driver.class));
-        driverRepository.deleteById(driverDto.getDriverId());
+        Driver driver = driverRepository.findByPassport(driverDto.getPassport())
+                .orElseThrow(() -> NotFoundException.notFoundWhenDelete(Driver.class));
+
+        driverRepository.deleteById(driver.getDriverId());
     }
 
     public List<DriverDto> birthDateSortedList() {

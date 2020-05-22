@@ -4,15 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.DriverDto;
 import ua.edu.onu.autoChecking.service.DriverService;
 
@@ -43,6 +35,12 @@ public class DriverController {
         DriverDto response = driverService.create(request);
         log.info("CREATE one driver: {}", response);
         return response;
+    }
+
+    @PutMapping("/drivers")
+    public void update(@RequestBody DriverDto request) {
+        driverService.update(request);
+        log.info("UPDATE one driver");
     }
 
     @DeleteMapping("/drivers")

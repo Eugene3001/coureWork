@@ -3,8 +3,11 @@ package ua.edu.onu.autoChecking.dao.repositories;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import ua.edu.onu.autoChecking.dao.entities.Automobile;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public interface AutomobileRepository extends CrudRepository<Automobile, Long>, JpaSpecificationExecutor<Automobile> {
     //Sorting
@@ -12,5 +15,12 @@ public interface AutomobileRepository extends CrudRepository<Automobile, Long>, 
     List<Automobile> getDateSortedListAsc();
 
     //Selection
+    @Query("select a.autoId from Automobile a where a.vehicleIdNumber = :vehicleIdNumber")
+    Long getAutoIdByVehicleIdNumber(@Param("vehicleIdNumber") String vehicleIdNumber);
+
+    @Query("select a.vehicleIdNumber from Automobile a where a.autoId = :autoId")
+    String getVehicleIdNumberByAutoId(@Param("autoId")Long autoId);
+
+    Optional<Automobile> findByVehicleIdNumber(String vehicleIdNumber);
 }
 

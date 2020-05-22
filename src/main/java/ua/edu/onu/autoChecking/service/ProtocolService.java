@@ -22,7 +22,7 @@ import java.util.function.Function;
 
 @Service
 public class ProtocolService {
-    private final ProtocolRepository protocolRepository;
+    private ProtocolRepository protocolRepository;
     private DriverRepository driverRepository;
     private PolicemanRepository policemanRepository;
     private ViolationRepository violationRepository;
@@ -40,29 +40,26 @@ public class ProtocolService {
     }
 
     private final Function<Protocol, ProtocolDto> protocolToDto = entity -> ProtocolDto.builder()
-            .autoId(entity.getAutomobile().getAutoId())
-            .driverId(entity.getDriver().getDriverId())
+            .vehicleIdNumber(automobileRepository.getVehicleIdNumberByAutoId(entity.getId()))
+            .driverPassport(driverRepository.getPassportByDriverId(entity.getId()))
             .dueDate(entity.getDueDate())
             .id(entity.getId())
             .prepDate(entity.getPrepDate())
             .status(entity.getStatus())
             .tokenNumber(entity.getPoliceman().getId())
-            .violationNumber(entity.getViolation().getId())
+            .violationName(violationRepository.getViolationByViolationNumber(entity.getViolation().getId()))
             .build();
 
     private final Function<ProtocolDto, Protocol> dtoToProtocol = dto -> Protocol.builder()
-            .automobile(automobileRepository.findById(dto.getAutoId())
-                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Automobile.class.getName())))
-            .driver(driverRepository.findById(dto.getDriverId())
-                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Driver.class.getName())))
+            .automobile(automobileRepository.findByVehicleIdNumber(dto.getVehicleIdNumber()).orElseThrow(NotFoundException::new))
+            .driver(driverRepository.findByPassport(dto.getDriverPassport()).orElseThrow(NotFoundException::new))
             .dueDate(dto.getDueDate())
             .id(dto.getId())
             .prepDate(dto.getPrepDate())
             .status(dto.getStatus())
             .policeman(policemanRepository.findById(dto.getTokenNumber())
                     .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Policeman.class.getName())))
-            .violation(violationRepository.findById(dto.getViolationNumber())
-                    .orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Violation.class.getName())))
+            .violation(violationRepository.findByViolation(dto.getViolationName()).orElseThrow(NotFoundException::new))
             .build();
 
     public List<ProtocolDto> list() {
@@ -73,6 +70,36 @@ public class ProtocolService {
 
     public ProtocolDto create(ProtocolDto protocolDto) {
         return protocolToDto.apply(protocolRepository.save(dtoToProtocol.apply(protocolDto)));
+    }
+
+    public void delete(ProtocolDto protocolDto) {
+        Protocol protocol = protocolRepository.findById(protocolDto.getId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenDelete(Protocol.class));
+
+        protocolRepository.delete(protocol);
+    }
+
+    public void update(ProtocolDto protocolDto) {
+        Protocol protocol = protocolRepository.findById(protocolDto.getId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Protocol.class));
+
+        protocol.setAutomobile(automobileRepository.findByVehicleIdNumber(protocolDto.getVehicleIdNumber())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Protocol.class)));
+
+        protocol.setDriver(driverRepository.findByPassport(protocolDto.getDriverPassport())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Protocol.class)));
+
+        protocol.setDueDate(protocolDto.getDueDate());
+        protocol.setId(protocolDto.getId());
+        protocol.setPoliceman(policemanRepository.findById(protocolDto.getTokenNumber())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Protocol.class)));
+
+        protocol.setPrepDate(protocolDto.getPrepDate());
+        protocol.setStatus(protocolDto.getStatus());
+        protocol.setViolation(violationRepository.findByViolation(protocolDto.getViolationName())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Protocol.class)));
+
+        protocolRepository.save(protocol);
     }
 
     public List<ProtocolDto> prepDateSortedList() {

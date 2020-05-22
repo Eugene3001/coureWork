@@ -1,5 +1,6 @@
 package ua.edu.onu.autoChecking.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +13,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DriverDto {
-    private Long driverId;
-
     private String passport;
 
     private String licenseNumber;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthDate;
 
     private String city;

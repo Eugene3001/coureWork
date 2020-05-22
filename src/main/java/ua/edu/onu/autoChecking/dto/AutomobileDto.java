@@ -13,16 +13,14 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AutomobileDto {
-    private Long autoId;
-
     private String vehicleIdNumber;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date registrationDate;
 
-    private Long modelId;
+    private String modelName;
 
-    private Long color;
+    private String color;
 
     private String engineNumber;
 

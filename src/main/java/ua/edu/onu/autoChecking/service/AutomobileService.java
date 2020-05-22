@@ -21,7 +21,7 @@ import java.util.function.Function;
 @Slf4j
 @Service
 public class AutomobileService {
-    private final AutomobileRepository automobileRepository;
+    private AutomobileRepository automobileRepository;
     private ColorRepository colorRepository;
     private ModelRepository modelRepository;
 
@@ -33,20 +33,19 @@ public class AutomobileService {
     }
 
     private final Function<Automobile, AutomobileDto> automobileToDto = entity -> AutomobileDto.builder()
-            .autoId(entity.getAutoId())
-            .color(entity.getColor().getColorId())
+            .color(entity.getColor().getColorName())
             .engineNumber(entity.getEngineNumber())
-            .modelId(entity.getModel().getModelId())
             .registrationDate(entity.getRegistrationDate())
             .vehicleIdNumber(entity.getVehicleIdNumber())
             .registrationNumber(entity.getRegistrationNumber())
+            .modelName(entity.getModel().getModelName())
             .build();
 
     private final Function<AutomobileDto, Automobile> dtoToAutomobile = dto -> Automobile.builder()
-            .autoId(dto.getAutoId())
-            .color(colorRepository.findById(dto.getColor()).orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Color.class.getName())))
+            .autoId(automobileRepository.getAutoIdByVehicleIdNumber(dto.getVehicleIdNumber()))
+            .color(colorRepository.findByColorName(dto.getColor()).orElseThrow(NotFoundException::new))
             .engineNumber(dto.getEngineNumber())
-            .model(modelRepository.findById(dto.getModelId()).orElseThrow(() -> NotFoundException.returnNotFoundEntity(dto, Model.class.getName())))
+            .model(modelRepository.findByModelName(dto.getModelName()).orElseThrow(NotFoundException::new))
             .registrationDate(dto.getRegistrationDate())
             .registrationNumber(dto.getRegistrationNumber())
             .vehicleIdNumber(dto.getVehicleIdNumber())
@@ -59,29 +58,32 @@ public class AutomobileService {
     }
 
     public AutomobileDto create(AutomobileDto automobileDto) {
-        return automobileToDto.apply(automobileRepository.save(dtoToAutomobile.apply(automobileDto)));
+        Automobile automobile = dtoToAutomobile.apply(automobileDto);
+        automobileRepository.save(automobile);
+        return automobileToDto.apply(automobile);
     }
 
     public void update(AutomobileDto automobileDto) {
-        Automobile automobile = automobileRepository.findById(automobileDto.getAutoId())
+        Automobile automobile = automobileRepository.findByVehicleIdNumber(automobileDto.getVehicleIdNumber())
                 .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Automobile.class));
 
-        automobile.setAutoId(automobileDto.getAutoId());
-        automobile.setColor(colorRepository.findById(automobileDto.getColor())
-                .orElseThrow(() -> NotFoundException.returnNotFoundEntity(automobileDto, Color.class.getName())));
+        automobile.setColor(colorRepository.findByColorName(automobileDto.getColor())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Automobile.class)));
+
         automobile.setEngineNumber(automobileDto.getEngineNumber());
-        automobile.setModel(modelRepository.findById(automobileDto.getModelId())
-                .orElseThrow(() -> NotFoundException.returnNotFoundEntity(automobileDto, Model.class.getName())));
+        automobile.setModel(modelRepository.findByModelName(automobileDto.getModelName())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Automobile.class)));
+
         automobile.setRegistrationDate(automobileDto.getRegistrationDate());
         automobile.setRegistrationNumber(automobileDto.getRegistrationNumber());
-        automobile.setVehicleIdNumber(automobileDto.getVehicleIdNumber());
-
         automobileRepository.save(automobile);
     }
 
     public void delete(AutomobileDto automobileDto) {
-        automobileRepository.findById(automobileDto.getAutoId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Automobile.class));
-        automobileRepository.deleteById(automobileDto.getAutoId());
+        Automobile automobile = automobileRepository.findByVehicleIdNumber(automobileDto.getVehicleIdNumber())
+                .orElseThrow(() -> NotFoundException.notFoundWhenDelete(Automobile.class));
+
+        automobileRepository.deleteById(automobile.getAutoId());
     }
 
     public List<AutomobileDto> registrationDateSortedList() {

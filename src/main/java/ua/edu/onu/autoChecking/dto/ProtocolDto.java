@@ -14,17 +14,17 @@ import java.util.Date;
 public class ProtocolDto {
     private Long id;
 
-    private Long autoId;
+    private String vehicleIdNumber;
 
     private Date prepDate;
 
     private Boolean status;
 
-    private Long violationNumber;
+    private String violationName;
 
     private Long dueDate;
 
-    private Long driverId;
+    private String driverPassport;
 
     private Long tokenNumber;
 }

@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import ua.edu.onu.autoChecking.dao.entities.Model;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ModelRepository extends CrudRepository<Model, Long>, JpaSpecificationExecutor<Model> {
     //Sorting
@@ -13,4 +14,5 @@ public interface ModelRepository extends CrudRepository<Model, Long>, JpaSpecifi
     List<Model> getManufactureYearSortedList();
 
     //Selection
+    Optional<Model> findByModelName(String modelName);
 }
