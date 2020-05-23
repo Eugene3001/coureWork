@@ -40,6 +40,15 @@ public class ColorService {
         return colorToDto.apply(colorRepository.save(dtoToColor.apply(colorDto)));
     }
 
+    public void update(ColorDto colorDto) {
+        Color color = colorRepository.findById(colorDto.getColorId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Color.class));
+
+        color.setColorName(colorDto.getColorName());
+
+        colorRepository.save(color);
+    }
+
     public void delete(ColorDto colorDto) {
         colorRepository.findById(colorDto.getColorId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Color.class));
         colorRepository.deleteById(colorDto.getColorId());

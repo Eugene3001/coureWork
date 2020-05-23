@@ -12,9 +12,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoryDto {
-    private Long autoId;
+    private String vehicleIdNumber;
 
-    private Long driverId;
+    private String driverPassport;
 
     private Date startDate;
 

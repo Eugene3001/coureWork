@@ -13,11 +13,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModelDto {
-    private Long modelId;
-
     private String modelName;
 
-    private Long brandId;
+    private String brandName;
 
     private String bodyType;
 

@@ -76,6 +76,7 @@ public class AutomobileService {
 
         automobile.setRegistrationDate(automobileDto.getRegistrationDate());
         automobile.setRegistrationNumber(automobileDto.getRegistrationNumber());
+
         automobileRepository.save(automobile);
     }
 
@@ -88,8 +89,10 @@ public class AutomobileService {
 
     public List<AutomobileDto> registrationDateSortedList() {
         List<AutomobileDto> response = new LinkedList<>();
+
         automobileRepository.getDateSortedListAsc()
                 .forEach(automobile -> response.add(automobileToDto.apply(automobile)));
+
         return response;
     }
 

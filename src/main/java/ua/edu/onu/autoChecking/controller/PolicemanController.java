@@ -3,15 +3,7 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
 import ua.edu.onu.autoChecking.service.PolicemanService;
@@ -42,6 +34,13 @@ public class PolicemanController {
         PolicemanDto response = policemanService.create(request);
         log.info("CREATE one policeman: {}", response);
         return response;
+    }
+
+    @PutMapping("/policemen")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void update(@RequestBody PolicemanDto request) {
+        policemanService.update(request);
+        log.info("UPDATE one policeman");
     }
 
     @DeleteMapping("/policemen")

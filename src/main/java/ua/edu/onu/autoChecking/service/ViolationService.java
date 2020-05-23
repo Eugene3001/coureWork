@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 @Service
 public class ViolationService {
-    private final ViolationRepository violationRepository;
+    private ViolationRepository violationRepository;
 
     @Autowired
     public ViolationService(ViolationRepository violationRepository) {
@@ -23,14 +23,13 @@ public class ViolationService {
 
     private final Function<Violation, ViolationDto> violationToDto = entity -> ViolationDto.builder()
             .court(entity.getCourt())
-            .id(entity.getId())
             .moneyPenalty(entity.getMoneyPenalty())
             .violation(entity.getViolation())
             .build();
 
     private final Function<ViolationDto, Violation> dtoToViolation = dto -> Violation.builder()
+            .id(violationRepository.getViolationNumberByViolation(dto.getViolation()))
             .court(dto.getCourt())
-            .id(dto.getId())
             .moneyPenalty(dto.getMoneyPenalty())
             .violation(dto.getViolation())
             .build();
@@ -45,9 +44,21 @@ public class ViolationService {
         return violationToDto.apply(violationRepository.save(dtoToViolation.apply(violationDto)));
     }
 
+    public void update(ViolationDto violationDto) {
+        Violation violation = violationRepository.findByViolation(violationDto.getViolation())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Violation.class));
+
+        violation.setCourt(violationDto.getCourt());
+        violation.setMoneyPenalty(violationDto.getMoneyPenalty());
+
+        violationRepository.save(violation);
+    }
+
     public void delete(ViolationDto violationDto) {
-        violationRepository.findById(violationDto.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Violation.class));
-        violationRepository.deleteById(violationDto.getId());
+        Violation violation = violationRepository.findByViolation(violationDto.getViolation())
+                .orElseThrow(() -> NotFoundException.notFoundWhenDelete(Violation.class));
+
+        violationRepository.delete(violation);
     }
 
     public List<ViolationDto> findByCriteria(Float first, Float second, String isCourt, String isNotCourt) {

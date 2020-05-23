@@ -38,6 +38,7 @@ public class DriverController {
     }
 
     @PutMapping("/drivers")
+    @ResponseStatus(code = HttpStatus.OK)
     public void update(@RequestBody DriverDto request) {
         driverService.update(request);
         log.info("UPDATE one driver");

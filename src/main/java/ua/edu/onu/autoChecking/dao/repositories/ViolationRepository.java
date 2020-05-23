@@ -14,4 +14,7 @@ public interface ViolationRepository extends CrudRepository<Violation, Long>, Jp
 
     @Query("select v.violation from Violation v where v.id = :violationNumber")
     String getViolationByViolationNumber(@Param("violationNumber")Long violationNumber);
+
+    @Query("select v.id from Violation v where v.violation = :violation")
+    Long getViolationNumberByViolation(@Param("violation")String violation);
 }

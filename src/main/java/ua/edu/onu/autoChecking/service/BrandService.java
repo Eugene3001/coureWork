@@ -40,6 +40,15 @@ public class BrandService {
         return brandToDto.apply(brandRepository.save(dtoToBrand.apply(brandDto)));
     }
 
+    public void update(BrandDto brandDto) {
+        Brand brand = brandRepository.findById(brandDto.getId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Brand.class));
+
+        brand.setBrandName(brandDto.getBrandName());
+
+        brandRepository.save(brand);
+    }
+
     public void delete(BrandDto brandDto) {
         brandRepository.findById(brandDto.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Brand.class));
         brandRepository.deleteById(brandDto.getId());

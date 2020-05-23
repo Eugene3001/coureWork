@@ -47,9 +47,23 @@ public class PolicemanService {
         return policemanToDto.apply(policemanRepository.save(dtoToPoliceman.apply(policemanDto)));
     }
 
+    public void update(PolicemanDto policemanDto) {
+        Policeman policeman = policemanRepository.findById(policemanDto.getId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Policeman.class));
+
+        policeman.setName(policemanDto.getName());
+        policeman.setPatronymic(policemanDto.getPatronymic());
+        policeman.setRank(policemanDto.getRank());
+        policeman.setSurname(policemanDto.getSurname());
+
+        policemanRepository.save(policeman);
+    }
+
     public void delete(PolicemanDto policemanDto) {
-        policemanRepository.findById(policemanDto.getId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Policeman.class));
-        policemanRepository.deleteById(policemanDto.getId());
+        Policeman policeman = policemanRepository.findById(policemanDto.getId())
+                .orElseThrow(() -> NotFoundException.notFoundWhenDelete(Policeman.class));
+
+        policemanRepository.delete(policeman);
     }
 
     public List<PolicemanDto> findByCriteria(String rank, String name, String surname, String patronymic) {

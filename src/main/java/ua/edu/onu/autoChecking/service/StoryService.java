@@ -2,8 +2,12 @@ package ua.edu.onu.autoChecking.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.edu.onu.autoChecking.dao.entities.Automobile;
+import ua.edu.onu.autoChecking.dao.entities.Driver;
 import ua.edu.onu.autoChecking.dao.entities.Story;
 import ua.edu.onu.autoChecking.dao.ids.StoryId;
+import ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository;
+import ua.edu.onu.autoChecking.dao.repositories.DriverRepository;
 import ua.edu.onu.autoChecking.dao.repositories.StoryRepository;
 import ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec;
 import ua.edu.onu.autoChecking.dto.StoryDto;
@@ -15,26 +19,41 @@ import java.util.function.Function;
 
 @Service
 public class StoryService {
-    private final StoryRepository storyRepository;
+    private StoryRepository storyRepository;
+    private AutomobileRepository automobileRepository;
+    private DriverRepository driverRepository;
 
     @Autowired
-    public StoryService(StoryRepository storyRepository) {
+    public StoryService(StoryRepository storyRepository, AutomobileRepository automobileRepository,
+                        DriverRepository driverRepository) {
         this.storyRepository = storyRepository;
+        this.automobileRepository = automobileRepository;
+        this.driverRepository = driverRepository;
     }
 
     private final Function<Story, StoryDto> storyToDto = entity -> StoryDto.builder()
-            .autoId(entity.getId().getAutoId())
-            .driverId(entity.getId().getDriverId())
+            .vehicleIdNumber(automobileRepository.getVehicleIdNumberByAutoId(entity.getAutomobile().getAutoId()))
+            .driverPassport(driverRepository.getPassportByDriverId(entity.getDriver().getDriverId()))
             .finishDate(entity.getFinishDate())
             .startDate(entity.getId().getStartDate())
             .userPassport(entity.getUserPassport())
             .build();
 
-    private final Function<StoryDto, Story> dtoToStory = dto -> Story.builder()
-            .id(new StoryId(dto.getAutoId(), dto.getDriverId(), dto.getStartDate()))
-            .finishDate(dto.getFinishDate())
-            .userPassport(dto.getUserPassport())
-            .build();
+    private final Function<StoryDto, Story> dtoToStory = dto -> {
+        Automobile automobile = automobileRepository.findByVehicleIdNumber(dto.getVehicleIdNumber())
+                .orElseThrow(NotFoundException::new);
+
+        Driver driver = driverRepository.findByPassport(dto.getDriverPassport())
+                .orElseThrow(NotFoundException::new);
+
+        return Story.builder()
+                .id(new StoryId(automobile.getAutoId(), driver.getDriverId(), dto.getStartDate()))
+                .automobile(automobile)
+                .driver(driver)
+                .finishDate(dto.getFinishDate())
+                .userPassport(dto.getUserPassport())
+                .build();
+    };
 
     public List<StoryDto> list() {
         List<StoryDto> response = new LinkedList<>();

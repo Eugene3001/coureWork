@@ -17,7 +17,7 @@ import java.util.function.Function;
 
 @Service
 public class ModelService {
-    private final ModelRepository modelRepository;
+    private ModelRepository modelRepository;
     private BrandRepository brandRepository;
 
     @Autowired
@@ -29,19 +29,17 @@ public class ModelService {
     private final Function<Model, ModelDto> modelToDto = entity -> ModelDto.builder()
             .bodyType(entity.getBodyType())
             .manufYear(entity.getManufYear())
-            .brandId(entity.getBrand().getBrandId())
-            .modelId(entity.getModelId())
             .modelName(entity.getModelName())
+            .brandName(entity.getBrand().getBrandName())
             .build();
 
     private final Function<ModelDto, Model> dtoToModel = dto -> Model.builder()
             .bodyType(dto.getBodyType())
-            .brand(brandRepository.findById(dto.getBrandId()).orElseThrow(
-                    () -> NotFoundException.returnNotFoundEntity(dto, Brand.class.getName()))
-            )
             .manufYear(dto.getManufYear())
-            .modelId(dto.getModelId())
             .modelName(dto.getModelName())
+            .brand(brandRepository.findByBrandName(dto.getBrandName())
+                    .orElseThrow(NotFoundException::new))
+            .modelId(modelRepository.getModelIdByModelName(dto.getModelName()))
             .build();
 
     public List<ModelDto> list() {
@@ -56,8 +54,10 @@ public class ModelService {
     }
 
     public void delete(ModelDto modelDto) {
-        modelRepository.findById(modelDto.getModelId()).orElseThrow(() -> NotFoundException.notFoundWhenDelete(Model.class));
-        modelRepository.deleteById(modelDto.getModelId());
+        Model model = modelRepository.findByModelName(modelDto.getModelName())
+                .orElseThrow(() -> NotFoundException.notFoundWhenDelete(Model.class));
+
+        modelRepository.delete(model);
     }
 
     public List<ModelDto> manufactureYearSortedList() {
