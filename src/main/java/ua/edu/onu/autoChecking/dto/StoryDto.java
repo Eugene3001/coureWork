@@ -1,5 +1,6 @@
 package ua.edu.onu.autoChecking.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +17,11 @@ public class StoryDto {
 
     private String driverPassport;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date startDate;
 
     private String userPassport;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date finishDate;
 }

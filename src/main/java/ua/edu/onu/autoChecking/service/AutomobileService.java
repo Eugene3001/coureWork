@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Automobile;
 import ua.edu.onu.autoChecking.dao.entities.Color;
-import ua.edu.onu.autoChecking.dao.entities.Model;
 import ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ColorRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ModelRepository;

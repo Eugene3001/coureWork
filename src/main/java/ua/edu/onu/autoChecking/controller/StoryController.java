@@ -75,4 +75,15 @@ public class StoryController {
         log.info("GET all stories by criteria {}", response);
         return response;
     }
+
+    @GetMapping("/stories/labQueries")
+    public List<StoryDto> labQuery1(@RequestParam String registrationNumber,
+                                    @RequestParam Long beginYear,
+                                    @RequestParam Long endYear) {
+        List<StoryDto> response = new LinkedList<>();
+        response = storyService.labQuery1(registrationNumber, beginYear, endYear);
+
+        log.info("Lab query 1");
+        return response;
+    }
 }
