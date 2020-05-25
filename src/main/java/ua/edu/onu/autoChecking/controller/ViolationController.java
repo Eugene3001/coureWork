@@ -62,4 +62,11 @@ public class ViolationController {
         log.info("GET all violations by criteria: {}", response);
         return response;
     }
+
+    @GetMapping("/violations/labQueries/1")
+    public List<ViolationDto> selectSeveralMostPopularViolations(@RequestParam Long count) {
+        List<ViolationDto> response = violationService.labQuery3_6(count);
+        log.info("LAB QUERY 3.6");
+        return response;
+    }
 }

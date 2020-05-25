@@ -92,14 +92,11 @@ public class StoryService {
         return response;
     }
 
-    public List<StoryDto> labQuery1(String registrationNumber, Long beginYear, Long endYear) {
+    public List<StoryDto> labQuery3_2(String registrationNumber, Long beginYear, Long endYear) {
         List<StoryDto> response = new LinkedList<>();
-
-        List<Story> stories = storyRepository.selectByPeriodAndRegistrationNumber(registrationNumber, beginYear, endYear);
-
-        for (int i = 0; i < stories.size(); i++) {
-            response.add(storyToDto.apply(stories.get(i)));
-        }
+        
+        storyRepository.selectByPeriodAndRegistrationNumber(registrationNumber, beginYear, endYear)
+                .forEach(story -> response.add(storyToDto.apply(story)));
 
         return response;
     }

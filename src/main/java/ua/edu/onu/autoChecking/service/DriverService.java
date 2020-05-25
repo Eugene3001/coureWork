@@ -6,6 +6,7 @@ import ua.edu.onu.autoChecking.dao.entities.Driver;
 import ua.edu.onu.autoChecking.dao.repositories.DriverRepository;
 import ua.edu.onu.autoChecking.dao.repositories.spec.DriverSpec;
 import ua.edu.onu.autoChecking.dto.DriverDto;
+import ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.Date;
@@ -102,5 +103,35 @@ public class DriverService {
                 );
 
         return response;
+    }
+
+    public List<DriverDto> labQuery3_5() {
+        List<DriverDto> response = new LinkedList<>();
+        driverRepository.selectByPastDuePaymentDate().forEach(driver -> response.add(driverToDto.apply(driver)));
+        return response;
+    }
+
+    public List<DriverDtoSpec> labQuery4_2() {
+        List<String> data = driverRepository.firstView();
+        List<DriverDtoSpec> objects = new LinkedList<>();
+
+        data.forEach(item -> {
+            String[] elements = item.split(",");
+            objects.add(new DriverDtoSpec(
+                    elements[0],
+                    elements[1],
+                    elements[2],
+                    elements[3],
+                    elements[4],
+                    elements[5],
+                    elements[6],
+                    elements[7],
+                    elements[8],
+                    elements[9],
+                    elements[10]
+            ));
+        });
+
+        return objects;
     }
 }

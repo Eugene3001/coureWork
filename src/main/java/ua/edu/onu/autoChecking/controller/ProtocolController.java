@@ -20,14 +20,14 @@ public class ProtocolController {
         this.protocolService = protocolService;
     }
 
-    @GetMapping("/protocol")
+    @GetMapping("/protocols")
     public List<ProtocolDto> list() {
         List<ProtocolDto> list = protocolService.list();
         log.info("GET all protocols: {}", list);
         return list;
     }
 
-    @PostMapping("/protocol")
+    @PostMapping("/protocols")
     @ResponseStatus(code = HttpStatus.CREATED)
     public ProtocolDto create(@RequestBody ProtocolDto request) {
         ProtocolDto response = protocolService.create(request);
@@ -35,28 +35,28 @@ public class ProtocolController {
         return response;
     }
 
-    @DeleteMapping("/protocol")
+    @DeleteMapping("/protocols")
     @ResponseStatus(code = HttpStatus.OK)
     public void delete(@RequestBody ProtocolDto request) {
         protocolService.delete(request);
         log.info("DELETE one protocol");
     }
 
-    @PutMapping("/protocol")
+    @PutMapping("/protocols")
     @ResponseStatus(code = HttpStatus.OK)
     public void update(@RequestBody ProtocolDto request) {
         protocolService.update(request);
         log.info("UPDATE one protocol");
     }
 
-    @GetMapping("/protocol/byPrepDate")
+    @GetMapping("/protocols/byPrepDate")
     public List<ProtocolDto> prepDateSortedList() {
         List<ProtocolDto> list = protocolService.prepDateSortedList();
         log.info("GET all protocols asc (preparation date): {}", list);
         return list;
     }
 
-    @GetMapping("/protocol/find")
+    @GetMapping("/protocols/find")
     public List<ProtocolDto> findByCriteria(@RequestParam(required = false)
                                                     String violationName,
                                             @RequestParam(required = false)
@@ -69,6 +69,13 @@ public class ProtocolController {
                                                     String name) {
         List<ProtocolDto> response = protocolService.findByCriteria(violationName, isActive, isNotActive, dueDate, name);
         log.info("GET all protocols by criteria: {}", response);
+        return response;
+    }
+
+    @GetMapping("/protocols/labQueries/1")
+    public List<ProtocolDto> selectByCurrentDayAndNamesakePoliceman(@RequestParam String surname) {
+        List<ProtocolDto> response = protocolService.labQuery3_7(surname.toLowerCase());
+        log.info("LAB QUERY 3.7");
         return response;
     }
 }

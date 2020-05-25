@@ -106,4 +106,9 @@ public class AutomobileService {
 
         return response;
     }
+
+    public Long labQuery3_3(String brandName, String bodyType, Long yearBegin, Long yearEnd) {
+        Long count = automobileRepository.countByBrandAndBodyTypeAndPeriod(brandName, bodyType, yearBegin, yearEnd);
+        return count;
+    }
 }

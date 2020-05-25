@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.DriverDto;
+import ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec;
 import ua.edu.onu.autoChecking.service.DriverService;
 
 import java.util.Date;
@@ -83,6 +84,20 @@ public class DriverController {
                                                                 street, house, flat,
                                                                 name, surname, patronymic);
         log.info("GET all cars by criteria: {}", response);
+        return response;
+    }
+
+    @GetMapping("/drivers/labQueries/1")
+    public List<DriverDto> selectByPastDuePaymentDate() {
+        List<DriverDto> response = driverService.labQuery3_5();
+        log.info("LAB QUERY 3.5");
+        return response;
+    }
+
+    @GetMapping("/drivers/labQueries/2")
+    public List<DriverDtoSpec> firstView() {
+        List<DriverDtoSpec> response = driverService.labQuery4_2();
+        log.info("LAB QUERY 4.2");
         return response;
     }
 }

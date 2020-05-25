@@ -118,4 +118,13 @@ public class ProtocolService {
 
         return response;
     }
+
+    public List<ProtocolDto> labQuery3_7(String surname) {
+        List<ProtocolDto> response = new LinkedList<>();
+
+        protocolRepository.selectByCurrentDayAndNamesakePoliceman(surname)
+                .forEach(protocol -> response.add(protocolToDto.apply(protocol)));
+
+        return response;
+    }
 }

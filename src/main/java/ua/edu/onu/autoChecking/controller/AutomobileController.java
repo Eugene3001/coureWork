@@ -79,4 +79,18 @@ public class AutomobileController {
         log.info("GET all cars by criteria: {}", response);
         return response;
     }
+
+    @GetMapping("/autos/labQueries/1")
+    public Long countByBrandAndBodyTypeAndPeriod(@RequestParam
+                                                         String brandName,
+                                                 @RequestParam
+                                                         String bodyType,
+                                                 @RequestParam
+                                                         Long yearBegin,
+                                                 @RequestParam
+                                                         Long yearEnd) {
+        Long count = automobileService.labQuery3_3(brandName, bodyType, yearBegin, yearEnd);
+        log.info("COUNT is {}", count);
+        return count;
+    }
 }

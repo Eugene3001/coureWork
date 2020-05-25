@@ -69,4 +69,13 @@ public class ViolationService {
 
         return response;
     }
+
+    public List<ViolationDto> labQuery3_6(Long count) {
+        List<ViolationDto> response = new LinkedList<>();
+
+        violationRepository.selectSeveralMostPopularViolations(count)
+                .forEach(violation -> response.add(violationToDto.apply(violation)));
+
+        return response;
+    }
 }
