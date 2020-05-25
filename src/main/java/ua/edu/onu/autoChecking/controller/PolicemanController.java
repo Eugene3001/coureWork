@@ -1,11 +1,13 @@
 package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
+import ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec;
 import ua.edu.onu.autoChecking.service.PolicemanService;
 
 import java.util.List;
@@ -61,6 +63,15 @@ public class PolicemanController {
                                                      String patronymic) {
         List<PolicemanDto> response = policemanService.findByCriteria(rank, name, surname, patronymic);
         log.info("GET all policemen by criteria: {}", response);
+        return response;
+    }
+
+    @GetMapping("/policemen/labQueries/1")
+    public List<PolicemanDtoSpec> labQuery4_1(@RequestParam Long beginDriverYear,
+                                              @RequestParam Long endDriverYear,
+                                              @RequestParam Long autoYear) {
+        List<PolicemanDtoSpec> response = policemanService.labQuery4_1(beginDriverYear, endDriverYear, autoYear);
+        log.info("LAB QUERY 4.1");
         return response;
     }
 }

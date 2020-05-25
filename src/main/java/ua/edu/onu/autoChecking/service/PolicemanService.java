@@ -6,6 +6,7 @@ import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository;
 import ua.edu.onu.autoChecking.dao.repositories.spec.PolicemanSpec;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
+import ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.util.LinkedList;
@@ -71,6 +72,27 @@ public class PolicemanService {
 
         policemanRepository.findAll(PolicemanSpec.buildSearchSpec(rank, name, surname, patronymic))
                 .forEach(policeman -> response.add(policemanToDto.apply(policeman)));
+
+        return response;
+    }
+
+    public List<PolicemanDtoSpec> labQuery4_1(Long beginDriverYear, Long endDriverYear, Long autoYear) {
+        List<String> data = policemanRepository
+                .getRanksByProtocolCountAndDriversAgeBetweenAndAutosAgeMore(beginDriverYear, endDriverYear, autoYear);
+
+        List<PolicemanDtoSpec> response = new LinkedList<>();
+        data.forEach(item -> {
+            String[] elements = item.split(",");
+            response.add(new PolicemanDtoSpec(
+                    elements[0],
+                    elements[1],
+                    elements[2],
+                    elements[3],
+                    elements[4],
+                    elements[5],
+                    elements[6]
+            ));
+        });
 
         return response;
     }

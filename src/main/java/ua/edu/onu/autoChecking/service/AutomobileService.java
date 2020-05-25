@@ -12,6 +12,9 @@ import ua.edu.onu.autoChecking.dao.repositories.spec.AutomobileSpec;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -110,5 +113,29 @@ public class AutomobileService {
     public Long labQuery3_3(String brandName, String bodyType, Long yearBegin, Long yearEnd) {
         Long count = automobileRepository.countByBrandAndBodyTypeAndPeriod(brandName, bodyType, yearBegin, yearEnd);
         return count;
+    }
+
+    public List<AutomobileDto> labQuery4_3() {
+        List<String> data = automobileRepository.selectByProtocolFlagEqualNull();
+        List<AutomobileDto> response = new LinkedList<>();
+
+        data.forEach(item -> {
+            String[] elements = item.split(",");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                response.add(new AutomobileDto(
+                        elements[0],
+                        dateFormat.parse(elements[1]),
+                        elements[2],
+                        elements[3],
+                        elements[4],
+                        elements[5]
+                ));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        });
+
+        return response;
     }
 }

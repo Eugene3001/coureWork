@@ -81,16 +81,19 @@ public class AutomobileController {
     }
 
     @GetMapping("/autos/labQueries/1")
-    public Long countByBrandAndBodyTypeAndPeriod(@RequestParam
-                                                         String brandName,
-                                                 @RequestParam
-                                                         String bodyType,
-                                                 @RequestParam
-                                                         Long yearBegin,
-                                                 @RequestParam
-                                                         Long yearEnd) {
+    public Long countByBrandAndBodyTypeAndPeriod(@RequestParam String brandName,
+                                                 @RequestParam String bodyType,
+                                                 @RequestParam Long yearBegin,
+                                                 @RequestParam Long yearEnd) {
         Long count = automobileService.labQuery3_3(brandName, bodyType, yearBegin, yearEnd);
         log.info("COUNT is {}", count);
         return count;
+    }
+
+    @GetMapping("/autos/labQueries/2")
+    public List<AutomobileDto> labQuery4_3() {
+        List<AutomobileDto> response = automobileService.labQuery4_3();
+        log.info("LAB QUERY 4.3");
+        return response;
     }
 }

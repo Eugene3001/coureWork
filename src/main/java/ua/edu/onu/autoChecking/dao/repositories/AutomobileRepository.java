@@ -24,15 +24,27 @@ public interface AutomobileRepository extends CrudRepository<Automobile, Long>, 
     Optional<Automobile> findByVehicleIdNumber(String vehicleIdNumber);
 
     @Query(
-        value =
-            "select count(*) from Automobile\n" +
-            "join Model using(model_id)\n" +
-            "join Brand on Brand.brand_id = Model.brand_id\n" +
-            "where extract (year from Model.manuf_year) >= ?3 and\n" +
-            "\t  extract (year from Model.manuf_year) <= ?4 and \n" +
-            "\t  Model.body_type = ?2 and Brand.brand_name = ?1",
-        nativeQuery = true
+            value =
+                    "select count(*) from Automobile\n" +
+                    "join Model using(model_id)\n" +
+                    "join Brand on Brand.brand_id = Model.brand_id\n" +
+                    "where extract (year from Model.manuf_year) >= ?3 and\n" +
+                    "\t  extract (year from Model.manuf_year) <= ?4 and \n" +
+                    "\t  Model.body_type = ?2 and Brand.brand_name = ?1",
+            nativeQuery = true
     )
     Long countByBrandAndBodyTypeAndPeriod(String brandName, String bodyType, Long yearBegin, Long yearEnd);
+
+    @Query(
+            value = "select vehicle_id_number, registration_date,\n" +
+                    "Model.model_name, Color.color_name, engine_number, registration_number\n" +
+                    "from Automobile\n" +
+                    "join Color on Color.color_id = color\n" +
+                    "join Model using(model_id)\n" +
+                    "join Brand on Brand.brand_id = Model.brand_id\n" +
+                    "where auto_id != all(select auto_id from Protocol)",
+            nativeQuery = true
+    )
+    List<String> selectByProtocolFlagEqualNull();
 }
 
