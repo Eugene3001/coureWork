@@ -4,22 +4,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
 import ua.edu.onu.autoChecking.service.AutomobileService;
 
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/api")
 public class AutomobileController {
@@ -30,19 +24,26 @@ public class AutomobileController {
         this.automobileService = automobileService;
     }
 
-    @GetMapping("/autos")
-    public List<AutomobileDto> list() {
+    @GetMapping("/autos/main")
+    public String list(Model model) {
         List<AutomobileDto> list = automobileService.list();
         log.info("GET all cars: {}", list);
-        return list;
+
+        model.addAttribute("list", list);
+
+        return "autos";
     }
 
-    @PostMapping("/autos")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public AutomobileDto create(@RequestBody AutomobileDto request) {
+    @GetMapping("/autos/create")
+    public String createPage(Model model) {
+        return "autos-create";
+    }
+
+    @PostMapping("/autos/create")
+    public String create(@ModelAttribute AutomobileDto request, Model model) {
         AutomobileDto response = automobileService.create(request);
         log.info("CREATE one car: {}", response);
-        return response;
+        return "redirect:/api/autos/main";
     }
 
     @PutMapping("/autos")

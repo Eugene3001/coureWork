@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Automobiles creating</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <H1 align="center"> Car creating </H1>
+        <form method="post" action="/api/autos/create">
+            <fieldset>
+                <input name = "vehicleIdNumber" placeholder="vehicle number" class="form-control"/><br>
+                <input type="date" name = "registrationDate" placeholder="registration date" class="form-control"/><br>
+                <input name = "modelName" placeholder="model" class="form-control"/><br>
+                <input name = "color" placeholder="color" class="form-control"/><br>
+                <input name = "engineNumber" placeholder="engine number" class="form-control"/><br>
+                <input name = "registrationNumber" placeholder="registration number" class="form-control"/><br>
+                <button type="submit" class="btn btn-success">Create!</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

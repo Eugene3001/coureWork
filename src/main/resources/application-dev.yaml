@@ -16,3 +16,6 @@ logging.level.org.hibernate.SQL: DEBUG
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 server:
   port: 8080
+org:
+  springframework:
+    boot:spring-boot-starter-thymeleaf
