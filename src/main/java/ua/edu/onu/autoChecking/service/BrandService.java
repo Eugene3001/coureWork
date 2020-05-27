@@ -36,6 +36,11 @@ public class BrandService {
         return response;
     }
 
+    public BrandDto findOne(Long id) {
+        Brand brand = brandRepository.findById(id).orElseThrow(NotFoundException::new);
+        return brandToDto.apply(brand);
+    }
+
     public BrandDto create(BrandDto brandDto) {
         return brandToDto.apply(brandRepository.save(dtoToBrand.apply(brandDto)));
     }

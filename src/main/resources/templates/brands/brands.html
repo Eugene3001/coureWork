@@ -19,8 +19,10 @@
             </thead>
             <tbody>
             <tr th:each="el : ${list}">
-                <td th:text="${el.id}"/>
-                <td th:text="${el.brandName}"/>
+                <td>
+                    <a th:href="@{/api/brands/edit/__${el.id}__}" th:text="${el.id}" href="/api/brands/edit"></a>
+                </td>
+                <td th:text="${el.brandName}"></td>
             </tr>
             </tbody>
         </table>

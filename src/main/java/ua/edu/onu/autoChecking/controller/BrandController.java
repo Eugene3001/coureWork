@@ -50,10 +50,18 @@ public class BrandController {
         log.info("DELETE one brand");
     }
 
-    @PutMapping("/brands")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody BrandDto request) {
+    @GetMapping("/brands/edit/{id}")
+    public String editPage(Model model, @PathVariable("id") Long id) {
+        BrandDto brand = brandService.findOne(id);
+
+        model.addAttribute("brand", brand);
+        return "/brands/brands-edit";
+    }
+
+    @PostMapping("/brands/edit")
+    public String update(@ModelAttribute BrandDto request, Model model) {
         brandService.update(request);
         log.info("UPDATE one brand");
+        return "redirect:/api/brands/main";
     }
 }
