@@ -3,13 +3,15 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.ProtocolDto;
 import ua.edu.onu.autoChecking.service.ProtocolService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/api")
 public class ProtocolController {
@@ -20,19 +22,25 @@ public class ProtocolController {
         this.protocolService = protocolService;
     }
 
-    @GetMapping("/protocols")
-    public List<ProtocolDto> list() {
+    @GetMapping("/protocols/main")
+    public String list(Model model) {
         List<ProtocolDto> list = protocolService.list();
         log.info("GET all protocols: {}", list);
-        return list;
+
+        model.addAttribute("list", list);
+        return "protocols/protocols";
     }
 
-    @PostMapping("/protocols")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public ProtocolDto create(@RequestBody ProtocolDto request) {
+    @GetMapping("/protocols/create")
+    public String createPage(Model model) {
+        return "protocols/protocols-create";
+    }
+
+    @PostMapping("/protocols/create")
+    public String create(@ModelAttribute ProtocolDto request, Model model) {
         ProtocolDto response = protocolService.create(request);
         log.info("CREATE one protocol: {}", response);
-        return response;
+        return "redirect:/api/protocols/main";
     }
 
     @DeleteMapping("/protocols")

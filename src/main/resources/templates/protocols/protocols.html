@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Protocols</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<h1 align="center">Protocols</h1>
+<div class="container mt-5">
+    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>Protocol ID</th>
+                <th>Vehicle number</th>
+                <th>Preparing date</th>
+                <th>Status</th>
+                <th>Violation</th>
+                <th>Due date (m)</th>
+                <th>Driver passport</th>
+                <th>Token number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="el : ${list}">
+                <td th:text="${el.id}"></td>
+                <td th:text="${el.vehicleIdNumber}"></td>
+                <td th:text="${el.prepDate}"></td>
+                <td th:text="${el.status}"></td>
+                <td th:text="${el.violationName}"></td>
+                <td th:text="${el.dueDate}"></td>
+                <td th:text="${el.driverPassport}"></td>
+                <td th:text="${el.tokenNumber}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" href="/api/protocols/create">Create protocol</a>
+</div>
+</body>
+</html>

@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.DriverDto;
 import ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec;
@@ -12,7 +14,7 @@ import ua.edu.onu.autoChecking.service.DriverService;
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/api")
 public class DriverController {
@@ -23,19 +25,26 @@ public class DriverController {
         this.driverService = driverService;
     }
 
-    @GetMapping("/drivers")
-    public List<DriverDto> list() {
+    @GetMapping("/drivers/main")
+    public String list(Model model) {
         List<DriverDto> list = driverService.list();
         log.info("GET all drivers: {}", list);
-        return list;
+
+        model.addAttribute("list", list);
+
+        return "drivers/drivers";
     }
 
-    @PostMapping("/drivers")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public DriverDto create(@RequestBody DriverDto request) {
+    @GetMapping("/drivers/create")
+    public String createPage(Model model) {
+        return "drivers/drivers-create";
+    }
+
+    @PostMapping("/drivers/create")
+    public String create(@ModelAttribute DriverDto request, Model model) {
         DriverDto response = driverService.create(request);
         log.info("CREATE one driver: {}", response);
-        return response;
+        return "redirect:/api/drivers/main";
     }
 
     @PutMapping("/drivers")

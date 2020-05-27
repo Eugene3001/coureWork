@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.edu.onu.autoChecking.dto.AutomobileDto;
 import ua.edu.onu.autoChecking.dto.BrandDto;
 import ua.edu.onu.autoChecking.service.BrandService;
 
@@ -29,12 +28,12 @@ public class BrandController {
         log.info("GET all brands: {}", list);
 
         model.addAttribute("list", list);
-        return "brands";
+        return "brands/brands";
     }
 
     @GetMapping("/brands/create")
     public String createPage(Model model) {
-        return "brands-create";
+        return "brands/brands-create";
     }
 
     @PostMapping("/brands/create")

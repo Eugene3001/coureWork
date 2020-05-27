@@ -38,7 +38,6 @@ public class Automobile {
     @Column(name = "vehicle_id_number", nullable = false, unique = true)
     private String vehicleIdNumber;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "registration_date", nullable = false)
     private Date registrationDate;
 

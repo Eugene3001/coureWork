@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Driver creating</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+<div class="container mt-5 mb-5">
+    <H1 align="center"> Driver creating </H1>
+    <form method="post" action="/api/drivers/create">
+        <fieldset>
+            <input name = "passport" placeholder="passport" class="form-control"/><br>
+            <input name = "licenseNumber" placeholder="license number" class="form-control"/><br>
+            <input type="date" name = "birthDate" placeholder="birth date" class="form-control"/><br>
+            <input name = "city" placeholder="city" class="form-control"/><br>
+            <input name = "street" placeholder="street" class="form-control"/><br>
+            <input name = "house" placeholder="house" class="form-control"/><br>
+            <input name = "flat" placeholder="flat" class="form-control"/><br>
+            <input name = "name" placeholder="name" class="form-control"/><br>
+            <input name = "surname" placeholder="surname" class="form-control"/><br>
+            <input name = "patronymic" placeholder="patronymic" class="form-control"/><br>
+            <button type="submit" class="btn btn-success">Create!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

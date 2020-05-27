@@ -1,32 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Brands</title>
+    <title>Colors</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Brands</h1>
-<p class="lead">List of brands</p>
-<a href="/api">Return</a>
+<h1 align="center">Colors</h1>
 <div class="container mt-5">
+    <a type="button" class="btn btn-warning" href="/api">Return</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
             <tr>
-                <th>Brand ID</th>
-                <th>Brand name</th>
+                <th>Color ID</th>
+                <th>Color name</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="el : ${list}">
-                <td th:text="${el.id}"/>
-                <td th:text="${el.brandName}"/>
+                <td th:text="${el.colorId}"/>
+                <td th:text="${el.colorName}"/>
             </tr>
             </tbody>
         </table>
     </div>
+    <a type="button" class="btn btn-primary" href="/api/colors/create">Create color</a>
 </div>
-<a href="/api/brands/create">Create brand</a>
 </body>
 </html>

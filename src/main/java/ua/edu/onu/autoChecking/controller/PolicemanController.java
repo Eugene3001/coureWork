@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
@@ -12,7 +14,7 @@ import ua.edu.onu.autoChecking.service.PolicemanService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/api")
 public class PolicemanController {
@@ -23,19 +25,25 @@ public class PolicemanController {
         this.policemanService = policemanService;
     }
 
-    @GetMapping("/policemen")
-    public List<PolicemanDto> list() {
+    @GetMapping("/policemen/main")
+    public String list(Model model) {
         List<PolicemanDto> list = policemanService.list();
         log.info("GET all policemen: {}", list);
-        return list;
+
+        model.addAttribute("list", list);
+        return "policemen/policemen";
     }
 
-    @PostMapping("/policemen")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public PolicemanDto create(@RequestBody PolicemanDto request) {
+    @GetMapping("/policemen/create")
+    public String createPage(Model model) {
+        return "policemen/policemen-create";
+    }
+
+    @PostMapping("/policemen/create")
+    public String create(@ModelAttribute PolicemanDto request, Model model) {
         PolicemanDto response = policemanService.create(request);
         log.info("CREATE one policeman: {}", response);
-        return response;
+        return "redirect:/api/policemen/main";
     }
 
     @PutMapping("/policemen")

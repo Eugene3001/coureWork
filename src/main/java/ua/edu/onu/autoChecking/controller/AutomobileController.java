@@ -31,12 +31,12 @@ public class AutomobileController {
 
         model.addAttribute("list", list);
 
-        return "autos";
+        return "autos/autos";
     }
 
     @GetMapping("/autos/create")
     public String createPage(Model model) {
-        return "autos-create";
+        return "autos/autos-create";
     }
 
     @PostMapping("/autos/create")
