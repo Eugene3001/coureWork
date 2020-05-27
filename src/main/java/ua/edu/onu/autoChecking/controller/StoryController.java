@@ -3,21 +3,16 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.StoryDto;
 import ua.edu.onu.autoChecking.service.StoryService;
 
 import java.util.LinkedList;
 import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/api")
 public class StoryController {
@@ -28,19 +23,25 @@ public class StoryController {
         this.storyService = storyService;
     }
 
-    @GetMapping("/stories")
-    public List<StoryDto> list() {
-        List<StoryDto> response = storyService.list();
-        log.info("GET all stories: {}", response);
-        return response;
+    @GetMapping("/stories/main")
+    public String list(Model model) {
+        List<StoryDto> list = storyService.list();
+        log.info("GET all stories: {}", list);
+
+        model.addAttribute("list", list);
+        return "stories/stories";
     }
 
-    @PostMapping("/stories")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public StoryDto create(@RequestBody StoryDto request) {
+    @GetMapping("/stories/create")
+    public String createPage(Model model) {
+        return "stories/stories-create";
+    }
+
+    @PostMapping("/stories/create")
+    public String create(@ModelAttribute StoryDto request, Model model) {
         StoryDto response = storyService.create(request);
         log.info("CREATE one story: {}", response);
-        return response;
+        return "redirect:/api/stories/main";
     }
 
     @DeleteMapping("/stories")

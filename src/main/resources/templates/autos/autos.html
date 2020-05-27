@@ -23,17 +23,17 @@
                 </thead>
                 <tbody>
                     <tr th:each="el : ${list}">
-                        <td th:text="${el.vehicleIdNumber}"/>
-                        <td th:text="${el.registrationDate}"/>
-                        <td th:text="${el.modelName}"/>
-                        <td th:text="${el.color}"/>
-                        <td th:text="${el.engineNumber}"/>
-                        <td th:text="${el.registrationNumber}"/>
+                        <td th:text="${el.vehicleIdNumber}"></td>
+                        <td th:text="${el.registrationDate}"></td>
+                        <td th:text="${el.modelName}"></td>
+                        <td th:text="${el.color}"></td>
+                        <td th:text="${el.engineNumber}"></td>
+                        <td th:text="${el.registrationNumber}"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <a type="button" class="btn btn-primary" href="/api/colors/create">Create car</a>
+        <a type="button" class="btn btn-primary" href="/api/autos/create">Create car</a>
     </div>
 </body>
 </html>

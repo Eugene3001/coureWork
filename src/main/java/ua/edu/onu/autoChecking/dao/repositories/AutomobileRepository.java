@@ -18,8 +18,10 @@ public interface AutomobileRepository extends CrudRepository<Automobile, Long>, 
     @Query("select a.autoId from Automobile a where a.vehicleIdNumber = :vehicleIdNumber")
     Long getAutoIdByVehicleIdNumber(@Param("vehicleIdNumber") String vehicleIdNumber);
 
-    @Query("select a.vehicleIdNumber from Automobile a where a.autoId = :autoId")
-    String getVehicleIdNumberByAutoId(@Param("autoId")Long autoId);
+//    @Query("select a.vehicleIdNumber from Automobile a where a.autoId = :autoId")
+//    String getVehicleIdNumberByAutoId(@Param("autoId")Long autoId);
+
+    Optional<Automobile> findAutomobileByAutoId(Long autoId);
 
     Optional<Automobile> findByVehicleIdNumber(String vehicleIdNumber);
 

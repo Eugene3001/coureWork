@@ -3,13 +3,15 @@ package ua.edu.onu.autoChecking.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dto.ViolationDto;
 import ua.edu.onu.autoChecking.service.ViolationService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequestMapping("/api")
 public class ViolationController {
@@ -20,19 +22,25 @@ public class ViolationController {
         this.violationService = violationService;
     }
 
-    @GetMapping("/violations")
-    public List<ViolationDto> list() {
+    @GetMapping("/violations/main")
+    public String list(Model model) {
         List<ViolationDto> list = violationService.list();
         log.info("GET all violations: {}", list);
-        return list;
+
+        model.addAttribute("list", list);
+        return "violations/violations";
     }
 
-    @PostMapping("/violations")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public ViolationDto create(@RequestBody ViolationDto request) {
+    @GetMapping("/violations/create")
+    public String createPage(Model model) {
+        return "violations/violations-create";
+    }
+
+    @PostMapping("/violations/create")
+    public String create(@ModelAttribute ViolationDto request, Model model) {
         ViolationDto response = violationService.create(request);
         log.info("CREATE one brand: {}", response);
-        return response;
+        return "redirect:/api/violations/main";
     }
 
     @PutMapping("/violations")

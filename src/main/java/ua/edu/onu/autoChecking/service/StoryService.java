@@ -32,7 +32,7 @@ public class StoryService {
     }
 
     private final Function<Story, StoryDto> storyToDto = entity -> StoryDto.builder()
-            .vehicleIdNumber(automobileRepository.getVehicleIdNumberByAutoId(entity.getAutomobile().getAutoId()))
+            .vehicleIdNumber(automobileRepository.findAutomobileByAutoId((entity.getAutomobile().getAutoId())).orElseThrow(NotFoundException::new).getVehicleIdNumber())
             .driverPassport(driverRepository.getPassportByDriverId(entity.getDriver().getDriverId()))
             .finishDate(entity.getFinishDate())
             .startDate(entity.getId().getStartDate())

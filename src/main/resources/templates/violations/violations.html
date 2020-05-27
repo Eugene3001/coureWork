@@ -1,31 +1,33 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Brands</title>
+    <title>Violations</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-<h1 align="center">Brands</h1>
+<h1 align="center">Violations</h1>
 <div class="container mt-5">
     <a type="button" class="btn btn-warning" href="/api">Return</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
             <tr>
-                <th>Brand ID</th>
-                <th>Brand name</th>
+                <th>Violation</th>
+                <th>Money penalty</th>
+                <th>Court</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="el : ${list}">
-                <td th:text="${el.id}"/>
-                <td th:text="${el.brandName}"/>
+                <td th:text="${el.violation}"></td>
+                <td th:text="${el.moneyPenalty}"></td>
+                <td th:text="${el.court}"></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <a type="button" class="btn btn-primary" href="/api/brands/create">Create brand</a>
+    <a type="button" class="btn btn-primary" href="/api/violations/create">Create violation</a>
 </div>
 </body>
 </html>

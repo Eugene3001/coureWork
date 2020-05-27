@@ -40,8 +40,8 @@ public class ProtocolService {
     }
 
     private final Function<Protocol, ProtocolDto> protocolToDto = entity -> ProtocolDto.builder()
-            .vehicleIdNumber(automobileRepository.getVehicleIdNumberByAutoId(entity.getId()))
-            .driverPassport(driverRepository.getPassportByDriverId(entity.getId()))
+            .vehicleIdNumber(automobileRepository.findAutomobileByAutoId(entity.getAutomobile().getAutoId()).orElseThrow(NotFoundException::new).getVehicleIdNumber())
+            .driverPassport(driverRepository.getPassportByDriverId(entity.getDriver().getDriverId()))
             .dueDate(entity.getDueDate())
             .id(entity.getId())
             .prepDate(entity.getPrepDate())
