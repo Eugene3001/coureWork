@@ -64,6 +64,13 @@ public class ViolationService {
     public List<ViolationDto> findByCriteria(Float first, Float second, String isCourt, String isNotCourt) {
         List<ViolationDto> response = new LinkedList<>();
 
+        if (isCourt.equals("")) {
+            isCourt = null;
+        }
+        if (isNotCourt.equals("")) {
+            isNotCourt = null;
+        }
+
         violationRepository.findAll(ViolationSpec.buildSearchSpec(first, second, isCourt, isNotCourt))
                 .forEach(violation -> response.add(violationToDto.apply(violation)));
 

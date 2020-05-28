@@ -28,6 +28,7 @@ public class ViolationController {
         log.info("GET all violations: {}", list);
 
         model.addAttribute("list", list);
+
         return "violations/violations";
     }
 
@@ -58,17 +59,16 @@ public class ViolationController {
     }
 
     @GetMapping("/violations/find")
-    public List<ViolationDto> findByCriteria(@RequestParam(required = false)
-                                                     Float first,
-                                             @RequestParam(required = false)
-                                                     Float second,
-                                             @RequestParam(required = false)
-                                                     String isCourt,
-                                             @RequestParam(required = false)
-                                                     String isNotCourt) {
-        List<ViolationDto> response = violationService.findByCriteria(first, second, isCourt, isNotCourt);
+    public String findByCriteria(@RequestParam Float first,
+                                 @RequestParam Float second,
+                                 @RequestParam String isCourt,
+                                 @RequestParam String isNotCourt,
+                                 Model model) {
+        List<ViolationDto> response = violationService.findByCriteria(Float.valueOf(first), Float.valueOf(second), isCourt, isNotCourt);
         log.info("GET all violations by criteria: {}", response);
-        return response;
+
+        model.addAttribute("list", response);
+        return "violations/violations";
     }
 
     @GetMapping("/violations/labQueries/1")
