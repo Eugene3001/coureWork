@@ -8,13 +8,16 @@
 </head>
 <body>
 <header th:insert="/blocks/header :: header"></header>
-
 <div class="container mt-5 mb-5">
     <H1 align="center"> Color creating </H1>
-    <form method="post" action="/api/models/create">
+    <form method="post" th:object="${model}" action="/api/models/create" id="create-form">
         <fieldset>
             <input name = "modelName" placeholder="model name" class="form-control"/><br>
-            <input name = "brandName" placeholder="brand name" class="form-control"/><br>
+
+            <select class="form-control" th:field="*{brandName}">
+                <option th:each="brand : ${brandList}" th:value="${brand.brandName}" th:text="${brand.brandName}"></option>
+            </select><br>
+
             <input name = "bodyType" placeholder="body type" class="form-control"/><br>
             <input type="date" name = "manufYear" placeholder="manufacture year" class="form-control"/><br>
             <button type="submit" class="btn btn-success">Create!</button>

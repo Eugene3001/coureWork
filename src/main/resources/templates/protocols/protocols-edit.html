@@ -13,13 +13,31 @@
     <form method="post" action="/api/protocols/edit">
         <fieldset>
             <input name = "id" hidden="hidden" th:value="${protocol.id}" placeholder="id"  class="form-control"/><br>
-            <input name = "vehicleIdNumber" th:value="${protocol.vehicleIdNumber}" placeholder="vehicle number"  class="form-control"/><br>
+
+            <select class="form-control" th:field="*{protocol.vehicleIdNumber}">
+                <option th:each="auto : ${automobileList}" th:value="${auto.vehicleIdNumber}" th:text="${auto.vehicleIdNumber}"></option>
+            </select><br>
+
             <input name = "prepDate" th:value="${protocol.prepDate}" placeholder="preparation date" class="form-control"/><br>
-            <input name = "status" th:value="${protocol.status}" placeholder="status" class="form-control"/><br>
-            <input name = "violationName" th:value="${protocol.violationName}" placeholder="violation" class="form-control"/><br>
+
+            <select class="form-control" th:field="*{protocol.status}">
+                <option th:value="true" th:text="true"></option>
+                <option th:value="false" th:text="false"></option>
+            </select><br>
+
+            <select class="form-control" th:field="*{protocol.violationName}">
+                <option th:each="violation : ${violationList}" th:value="${violation.violation}" th:text="${violation.violation}"></option>
+            </select><br>
+
             <input name = "dueDate" th:value="${protocol.dueDate}" placeholder="due date" class="form-control"/><br>
-            <input name = "driverPassport" th:value="${protocol.driverPassport}" placeholder="driver passport" class="form-control"/><br>
-            <input name = "tokenNumber" th:value="${protocol.tokenNumber}" placeholder="token number" class="form-control"/><br>
+
+            <select class="form-control" th:field="*{protocol.driverPassport}">
+                <option th:each="driver : ${driverList}" th:value="${driver.passport}" th:text="${driver.passport}"></option>
+            </select><br>
+
+            <select class="form-control" th:field="*{protocol.tokenNumber}">
+                <option th:each="policeman : ${policemanList}" th:value="${policeman.id}" th:text="${policeman.id}"></option>
+            </select><br>
             <button type="submit" class="btn btn-success">Update!</button>
         </fieldset>
     </form>

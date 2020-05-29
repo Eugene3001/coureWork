@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.edu.onu.autoChecking.dto.ProtocolDto;
-import ua.edu.onu.autoChecking.service.ProtocolService;
+import ua.edu.onu.autoChecking.dto.*;
+import ua.edu.onu.autoChecking.service.*;
 
 import java.util.List;
 
@@ -15,11 +15,21 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/api")
 public class ProtocolController {
-    private final ProtocolService protocolService;
+    private ProtocolService protocolService;
+    private AutomobileService automobileService;
+    private ViolationService violationService;
+    private DriverService driverService;
+    private PolicemanService policemanService;
 
     @Autowired
-    public ProtocolController(ProtocolService protocolService) {
+    public ProtocolController(ProtocolService protocolService, AutomobileService automobileService,
+                              ViolationService violationService, DriverService driverService,
+                              PolicemanService policemanService) {
         this.protocolService = protocolService;
+        this.automobileService = automobileService;
+        this.violationService = violationService;
+        this.driverService = driverService;
+        this.policemanService = policemanService;
     }
 
     @GetMapping("/protocols/main")
@@ -33,6 +43,8 @@ public class ProtocolController {
 
     @GetMapping("/protocols/create")
     public String createPage(Model model) {
+        ProtocolDto protocolDto = new ProtocolDto();
+        getSelectionLists(model, protocolDto);
         return "protocols/protocols-create";
     }
 
@@ -46,9 +58,21 @@ public class ProtocolController {
     @GetMapping("/protocols/edit/{id}")
     public String editPage(@PathVariable("id") Long id, Model model) {
         ProtocolDto protocol = protocolService.findOne(id);
-
-        model.addAttribute("protocol", protocol);
+        getSelectionLists(model, protocol);
         return "/protocols/protocols-edit";
+    }
+
+    private void getSelectionLists(Model model, ProtocolDto protocol) {
+        List<AutomobileDto> automobileDtoList = automobileService.list();
+        List<ViolationDto> violationDtoList = violationService.list();
+        List<DriverDto> driverDtoList = driverService.list();
+        List<PolicemanDto> policemanDtoList = policemanService.list();
+
+        model.addAttribute("automobileList", automobileDtoList);
+        model.addAttribute("violationList", violationDtoList);
+        model.addAttribute("driverList", driverDtoList);
+        model.addAttribute("policemanList", policemanDtoList);
+        model.addAttribute("protocol", protocol);
     }
 
     @PostMapping("/protocols/edit")

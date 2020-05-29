@@ -7,8 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.edu.onu.autoChecking.dao.repositories.ModelRepository;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
+import ua.edu.onu.autoChecking.dto.ColorDto;
+import ua.edu.onu.autoChecking.dto.ModelDto;
 import ua.edu.onu.autoChecking.service.AutomobileService;
+import ua.edu.onu.autoChecking.service.ColorService;
+import ua.edu.onu.autoChecking.service.ModelService;
 
 import java.util.Date;
 import java.util.List;
@@ -17,11 +22,15 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/api")
 public class AutomobileController {
-    private final AutomobileService automobileService;
+    private AutomobileService automobileService;
+    private ModelService modelService;
+    private ColorService colorService;
 
     @Autowired
-    public AutomobileController(AutomobileService automobileService) {
+    public AutomobileController(AutomobileService automobileService, ModelService modelService, ColorService colorService) {
         this.automobileService = automobileService;
+        this.modelService = modelService;
+        this.colorService = colorService;
     }
 
     @GetMapping("/autos/main")
@@ -36,6 +45,13 @@ public class AutomobileController {
 
     @GetMapping("/autos/create")
     public String createPage(Model model) {
+        AutomobileDto automobile = new AutomobileDto();
+        List<ModelDto> modelDtoList = modelService.list();
+        List<ColorDto> colorDtoList = colorService.list();
+
+        model.addAttribute("modelList", modelDtoList);
+        model.addAttribute("colorList", colorDtoList);
+        model.addAttribute("automobile", automobile);
         return "autos/autos-create";
     }
 
@@ -49,7 +65,11 @@ public class AutomobileController {
     @GetMapping("/autos/edit/{autoId}")
     public String editPage(@PathVariable("autoId") Long autoId, Model model) {
         AutomobileDto automobile = automobileService.findOne(autoId);
+        List<ModelDto> modelDtoList = modelService.list();
+        List<ColorDto> colorDtoList = colorService.list();
 
+        model.addAttribute("modelList", modelDtoList);
+        model.addAttribute("colorList", colorDtoList);
         model.addAttribute("automobile", automobile);
         return "/autos/autos-edit";
     }

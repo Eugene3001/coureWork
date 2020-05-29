@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.edu.onu.autoChecking.dto.BrandDto;
 import ua.edu.onu.autoChecking.dto.ModelDto;
+import ua.edu.onu.autoChecking.service.BrandService;
 import ua.edu.onu.autoChecking.service.ModelService;
 
 import java.util.Date;
@@ -17,11 +19,13 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/api")
 public class ModelController {
-    private final ModelService modelService;
+    private ModelService modelService;
+    private BrandService brandService;
 
     @Autowired
-    public ModelController(ModelService modelService) {
+    public ModelController(ModelService modelService, BrandService brandService) {
         this.modelService = modelService;
+        this.brandService = brandService;
     }
 
     @GetMapping("/models/main")
@@ -35,6 +39,11 @@ public class ModelController {
 
     @GetMapping("/models/create")
     public String createPage(Model model) {
+        ModelDto modelDto = new ModelDto();
+        List<BrandDto> brandDtoList = brandService.list();
+
+        model.addAttribute("brandList", brandDtoList);
+        model.addAttribute("model", modelDto);
         return "models/models-create";
     }
 
