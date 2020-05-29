@@ -4,13 +4,17 @@
     <title>Policemen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.0.2/tablesort.min.js"></script>
 </head>
 <body>
+<header th:insert="/blocks/header :: header"></header>
 <h1 align="center">Policemen</h1>
 <div class="container mt-5">
-    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <input class="form-control" type="text" placeholder="Search..." id="search-text" onkeyup="tableSearch()"/><br>
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table id="table-id" class="table table-striped table-sm">
             <thead>
             <tr>
                 <th>Token number</th>
@@ -18,6 +22,7 @@
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Patronymic</th>
+                <th>Editing</th>
             </tr>
             </thead>
             <tbody>
@@ -27,11 +32,41 @@
                 <td th:text="${el.name}"></td>
                 <td th:text="${el.surname}"></td>
                 <td th:text="${el.patronymic}"></td>
+                <td>
+                    <a type="button" class="btn btn-dark" th:href="@{/api/policemen/edit/__${el.id}__}">
+                        <p>&#x270e; Edit</p>
+                    </a>
+                    <a type="button" class="btn btn-dark" th:href="@{/api/policemen/delete/__${el.id}__}">
+                        <p>&#x232b; Delete</p>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
     <a type="button" class="btn btn-primary" href="/api/policemen/create">Create policeman</a>
+    <a type="button" class="btn btn-warning" href="/api">Return</a>
 </div>
+<script>
+    function tableSearch() {
+        var phrase = document.getElementById('search-text');
+        var table = document.getElementById('table-id');
+        var regPhrase = new RegExp(phrase.value, 'i');
+        var flag = false;
+        for (var i = 1; i < table.rows.length; i++) {
+            flag = false;
+            for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+                flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+                if (flag) break;
+            }
+            if (flag) {
+                table.rows[i].style.display = "";
+            } else {
+                table.rows[i].style.display = "none";
+            }
+
+        }
+    }
+</script>
 </body>
 </html>

@@ -41,6 +41,12 @@ public class ViolationService {
         return response;
     }
 
+    public ViolationDto findOne(Long id) {
+        Violation violation = violationRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
+        return violationToDto.apply(violation);
+    }
+
     public ViolationDto create(ViolationDto violationDto) {
         return violationToDto.apply(violationRepository.save(dtoToViolation.apply(violationDto)));
     }

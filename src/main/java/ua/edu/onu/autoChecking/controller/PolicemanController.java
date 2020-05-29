@@ -46,18 +46,27 @@ public class PolicemanController {
         return "redirect:/api/policemen/main";
     }
 
-    @PutMapping("/policemen")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody PolicemanDto request) {
-        policemanService.update(request);
-        log.info("UPDATE one policeman");
+    @GetMapping("/policemen/edit/{id}")
+    public String editPage(@PathVariable("id") Long id, Model model) {
+        PolicemanDto policeman = policemanService.findOne(id);
+
+        model.addAttribute("policeman", policeman);
+        return "/policemen/policemen-edit";
     }
 
-    @DeleteMapping("/policemen")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(PolicemanDto request) {
-        policemanService.delete(request);
+    @PostMapping("/policemen/edit")
+    public String update(@ModelAttribute PolicemanDto request, Model model) {
+        policemanService.update(request);
+        log.info("UPDATE one policeman");
+        return "redirect:/api/policemen/main";
+    }
+
+    @GetMapping("/policemen/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        PolicemanDto policemanDto = policemanService.findOne(id);
+        policemanService.delete(policemanDto);
         log.info("DELETE one policeman");
+        return "redirect:/api/policemen/main";
     }
 
     @GetMapping("/policemen/find")

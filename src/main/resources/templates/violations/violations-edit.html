@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Violation editing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+<header th:insert="/blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <H1 align="center"> Violation editing </H1>
+    <form method="post" action="/api/violations/edit">
+        <fieldset>
+            <input name = "violationNumber" hidden="hidden" th:value="${violation.violationNumber}" placeholder="id"  class="form-control"/><br>
+            <input name = "violation" th:value="${violation.violation}" placeholder="violation"  class="form-control"/><br>
+            <input name = "moneyPenalty" th:value="${violation.moneyPenalty}" placeholder="money penalty"  class="form-control"/><br>
+            <input name = "court" th:value="${violation.court}" placeholder="court" class="form-control"/><br>
+            <button type="submit" class="btn btn-success">Update!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

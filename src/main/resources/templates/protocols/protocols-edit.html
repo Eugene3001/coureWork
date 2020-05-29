@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Protocol editing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+<header th:insert="/blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <H1 align="center"> Protocol editing </H1>
+    <form method="post" action="/api/protocols/edit">
+        <fieldset>
+            <input name = "id" hidden="hidden" th:value="${protocol.id}" placeholder="id"  class="form-control"/><br>
+            <input name = "vehicleIdNumber" th:value="${protocol.vehicleIdNumber}" placeholder="vehicle number"  class="form-control"/><br>
+            <input name = "prepDate" th:value="${protocol.prepDate}" placeholder="preparation date" class="form-control"/><br>
+            <input name = "status" th:value="${protocol.status}" placeholder="status" class="form-control"/><br>
+            <input name = "violationName" th:value="${protocol.violationName}" placeholder="violation" class="form-control"/><br>
+            <input name = "dueDate" th:value="${protocol.dueDate}" placeholder="due date" class="form-control"/><br>
+            <input name = "driverPassport" th:value="${protocol.driverPassport}" placeholder="driver passport" class="form-control"/><br>
+            <input name = "tokenNumber" th:value="${protocol.tokenNumber}" placeholder="token number" class="form-control"/><br>
+            <button type="submit" class="btn btn-success">Update!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

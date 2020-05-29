@@ -43,18 +43,27 @@ public class ProtocolController {
         return "redirect:/api/protocols/main";
     }
 
-    @DeleteMapping("/protocols")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(@RequestBody ProtocolDto request) {
-        protocolService.delete(request);
-        log.info("DELETE one protocol");
+    @GetMapping("/protocols/edit/{id}")
+    public String editPage(@PathVariable("id") Long id, Model model) {
+        ProtocolDto protocol = protocolService.findOne(id);
+
+        model.addAttribute("protocol", protocol);
+        return "/protocols/protocols-edit";
     }
 
-    @PutMapping("/protocols")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody ProtocolDto request) {
+    @PostMapping("/protocols/edit")
+    public String update(@ModelAttribute ProtocolDto request, Model model) {
         protocolService.update(request);
         log.info("UPDATE one protocol");
+        return "redirect:/api/protocols/main";
+    }
+
+    @GetMapping("/protocols/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        ProtocolDto protocolDto = protocolService.findOne(id);
+        protocolService.delete(protocolDto);
+        log.info("DELETE one protocol");
+        return "redirect:/api/protocols/main";
     }
 
     @GetMapping("/protocols/byPrepDate")

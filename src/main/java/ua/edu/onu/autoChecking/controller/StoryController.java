@@ -2,13 +2,16 @@ package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.edu.onu.autoChecking.dao.ids.StoryId;
 import ua.edu.onu.autoChecking.dto.StoryDto;
 import ua.edu.onu.autoChecking.service.StoryService;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -44,11 +47,35 @@ public class StoryController {
         return "redirect:/api/stories/main";
     }
 
-    @DeleteMapping("/stories")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public void delete(@RequestBody StoryDto request) {
-        storyService.delete(request);
+    @GetMapping("/stories/edit/{autoId}{driverId}{startDate}")
+    public String editPage(@PathVariable("autoId")Long autoId,
+                           @PathVariable("driverId") Long driverId,
+                           @PathVariable("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") Date startDate,
+                           Model model) {
+        StoryDto story = storyService.findOne(new StoryId(autoId, driverId, startDate));
+
+        model.addAttribute("story", story);
+        return "/stories/stories-edit";
+    }
+
+    @PostMapping("/stories/edit")
+    public String update(@ModelAttribute StoryDto storyDto, Model model) {
+        storyService.update(storyDto);
+        log.info("UPDATE one story");
+        return "redirect:/api/stories/main";
+    }
+
+    @GetMapping("/stories/delete/{autoId}{driverId}{startDate}")
+    public String delete(@PathVariable("autoId")Long autoId,
+                       @PathVariable("driverId") Long driverId,
+                       @PathVariable("startDate") Date startDate,
+                       Model model) {
+        StoryDto storyDto = storyService.findOne(new StoryId(
+                autoId, driverId, startDate
+        ));
+        storyService.delete(storyDto);
         log.info("DELETE one story");
+        return "redirect:/api/stories/main";
     }
 
     @GetMapping("/stories/byDate")

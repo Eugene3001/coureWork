@@ -37,6 +37,8 @@ public class StoryService {
             .finishDate(entity.getFinishDate())
             .startDate(entity.getId().getStartDate())
             .userPassport(entity.getUserPassport())
+            .autoId(entity.getId().getAutoId())
+            .driverId(entity.getId().getDriverId())
             .build();
 
     private final Function<StoryDto, Story> dtoToStory = dto -> {
@@ -61,8 +63,24 @@ public class StoryService {
         return response;
     }
 
+    public StoryDto findOne(StoryId id) {
+        Story story = storyRepository.findById(id).orElseThrow(NotFoundException::new);
+        return storyToDto.apply(story);
+    }
+
     public StoryDto create(StoryDto storyDto) {
         return storyToDto.apply(storyRepository.save(dtoToStory.apply(storyDto)));
+    }
+
+    public void update(StoryDto storyDto) {
+        Story story = storyRepository
+                .findById(new StoryId(storyDto.getAutoId(), storyDto.getDriverId(), storyDto.getStartDate()))
+                .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Story.class));
+
+        story.setUserPassport(storyDto.getUserPassport());
+        story.setFinishDate(storyDto.getFinishDate());
+
+        storyRepository.save(story);
     }
 
     public void delete(StoryDto storyDto) {

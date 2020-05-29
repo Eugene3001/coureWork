@@ -68,6 +68,11 @@ public class ProtocolService {
         return response;
     }
 
+    public ProtocolDto findOne(Long id) {
+        Protocol protocol = protocolRepository.findById(id).orElseThrow(NotFoundException::new);
+        return protocolToDto.apply(protocol);
+    }
+
     public ProtocolDto create(ProtocolDto protocolDto) {
         return protocolToDto.apply(protocolRepository.save(dtoToProtocol.apply(protocolDto)));
     }

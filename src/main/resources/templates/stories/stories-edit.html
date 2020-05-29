@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Story editing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+<header th:insert="/blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <H1 align="center"> Story editing </H1>
+    <form method="post" action="/api/stories/edit">
+        <fieldset>
+            <input name = "autoId" hidden="hidden" th:value="${story.autoId}" placeholder="id"  class="form-control"/><br>
+            <input name = "driverId" hidden="hidden" th:value="${story.driverId}" placeholder="id"  class="form-control"/><br>
+            <input name = "vehicleIdNumber" hidden="hidden" th:value="${story.vehicleIdNumber}" placeholder="id"  class="form-control"/><br>
+            <input name = "driverPassport" hidden="hidden" th:value="${story.driverPassport}" placeholder="vehicle number"  class="form-control"/><br>
+            <input name = "startDate" hidden="hidden" th:value="${story.startDate}" placeholder="registration date" class="form-control"/><br>
+            <input name = "userPassport" th:value="${story.userPassport}" placeholder="model" class="form-control"/><br>
+            <input name = "finishDate" th:value="${story.finishDate}" placeholder="color" class="form-control"/><br>
+            <button type="submit" class="btn btn-success">Update!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

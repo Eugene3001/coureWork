@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.edu.onu.autoChecking.dto.AutomobileDto;
 import ua.edu.onu.autoChecking.dto.ViolationDto;
 import ua.edu.onu.autoChecking.service.ViolationService;
 
@@ -44,18 +45,27 @@ public class ViolationController {
         return "redirect:/api/violations/main";
     }
 
-    @PutMapping("/violations")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody ViolationDto request) {
-        violationService.update(request);
-        log.info("UPDATE one violation");
+    @GetMapping("/violations/edit/{id}")
+    public String editPage(@PathVariable("id") Long id, Model model) {
+        ViolationDto violation = violationService.findOne(id);
+
+        model.addAttribute("violation", violation);
+        return "/violations/violations-edit";
     }
 
-    @DeleteMapping("/violations")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public void delete(@RequestParam ViolationDto request) {
-        violationService.delete(request);
+    @PostMapping("/violations/edit")
+    public String update(@ModelAttribute ViolationDto request, Model model) {
+        violationService.update(request);
+        log.info("UPDATE one violation");
+        return "redirect:/api/violations/main";
+    }
+
+    @GetMapping("/violations/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        ViolationDto violationDto = violationService.findOne(id);
+        violationService.delete(violationDto);
         log.info("DELETE one violation");
+        return "redirect:/api/violations/main";
     }
 
     @GetMapping("/violations/find")

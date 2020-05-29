@@ -49,6 +49,11 @@ public class ModelService {
         return response;
     }
 
+    public ModelDto findOne(Long id) {
+        Model model = modelRepository.findById(id).orElseThrow(NotFoundException::new);
+        return modelToDto.apply(model);
+    }
+
     public ModelDto create(ModelDto modelDto) {
         Model model = modelRepository.save(dtoToModel.apply(modelDto));
         return modelToDto.apply(model);

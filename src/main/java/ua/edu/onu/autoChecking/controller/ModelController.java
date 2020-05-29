@@ -45,11 +45,12 @@ public class ModelController {
         return "redirect:/api/models/main";
     }
 
-    @DeleteMapping("/models")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(@RequestBody ModelDto request) {
-        modelService.delete(request);
+    @GetMapping("/models/delete/{modelId}")
+    public String delete(@PathVariable("modelId") Long modelId, Model model) {
+        ModelDto modelDto = modelService.findOne(modelId);
+        modelService.delete(modelDto);
         log.info("DELETE one model");
+        return "redirect:/api/models/main";
     }
 
     @GetMapping("/models/byMYear")

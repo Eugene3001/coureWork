@@ -48,6 +48,11 @@ public class PolicemanService {
         return policemanToDto.apply(policemanRepository.save(dtoToPoliceman.apply(policemanDto)));
     }
 
+    public PolicemanDto findOne(Long id) {
+        Policeman policeman = policemanRepository.findById(id).orElseThrow(NotFoundException::new);
+        return policemanToDto.apply(policeman);
+    }
+
     public void update(PolicemanDto policemanDto) {
         Policeman policeman = policemanRepository.findById(policemanDto.getId())
                 .orElseThrow(() -> NotFoundException.notFoundWhenUpdate(Policeman.class));
@@ -56,6 +61,7 @@ public class PolicemanService {
         policeman.setPatronymic(policemanDto.getPatronymic());
         policeman.setRank(policemanDto.getRank());
         policeman.setSurname(policemanDto.getSurname());
+        policeman.setId(policemanDto.getId());
 
         policemanRepository.save(policeman);
     }
