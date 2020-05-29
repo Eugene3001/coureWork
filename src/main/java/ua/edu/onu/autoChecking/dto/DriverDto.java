@@ -14,6 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DriverDto {
+    private Long driverId;
+
     private String passport;
 
     private String licenseNumber;

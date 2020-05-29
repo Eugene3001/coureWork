@@ -36,6 +36,11 @@ public class ColorService {
         return response;
     }
 
+    public ColorDto findOne(Long id) {
+        Color color = colorRepository.findById(id).orElseThrow(NotFoundException::new);
+        return colorToDto.apply(color);
+    }
+
     public ColorDto create(ColorDto colorDto) {
         return colorToDto.apply(colorRepository.save(dtoToColor.apply(colorDto)));
     }

@@ -14,6 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AutomobileDto {
+    private Long autoId;
+
     private String vehicleIdNumber;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

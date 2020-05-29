@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car editing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+<header th:insert="/blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <H1 align="center"> Car editing </H1>
+    <form method="post" action="/api/autos/edit">
+        <fieldset>
+            <input name = "autoId" hidden="hidden" th:value="${automobile.autoId}" placeholder="id"  class="form-control"/><br>
+            <input name = "vehicleIdNumber" th:value="${automobile.vehicleIdNumber}" placeholder="vehicle number"  class="form-control"/><br>
+            <input name = "registrationDate" th:value="${automobile.registrationDate}" placeholder="registration date" class="form-control"/><br>
+            <input name = "modelName" th:value="${automobile.modelName}" placeholder="model" class="form-control"/><br>
+            <input name = "color" th:value="${automobile.color}" placeholder="color" class="form-control"/><br>
+            <input name = "engineNumber" th:value="${automobile.engineNumber}" placeholder="engine number" class="form-control"/><br>
+            <input name = "registrationNumber" th:value="${automobile.registrationNumber}" placeholder="registration number" class="form-control"/><br>
+            <button type="submit" class="btn btn-success">Update!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

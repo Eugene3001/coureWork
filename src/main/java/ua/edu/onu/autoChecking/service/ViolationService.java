@@ -22,6 +22,7 @@ public class ViolationService {
     }
 
     private final Function<Violation, ViolationDto> violationToDto = entity -> ViolationDto.builder()
+            .violationNumber(entity.getId())
             .court(entity.getCourt())
             .moneyPenalty(entity.getMoneyPenalty())
             .violation(entity.getViolation())

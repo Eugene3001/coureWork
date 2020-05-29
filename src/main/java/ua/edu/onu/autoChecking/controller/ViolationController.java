@@ -64,7 +64,7 @@ public class ViolationController {
                                  @RequestParam String isCourt,
                                  @RequestParam String isNotCourt,
                                  Model model) {
-        List<ViolationDto> response = violationService.findByCriteria(Float.valueOf(first), Float.valueOf(second), isCourt, isNotCourt);
+        List<ViolationDto> response = violationService.findByCriteria(first, second, isCourt, isNotCourt);
         log.info("GET all violations by criteria: {}", response);
 
         model.addAttribute("list", response);

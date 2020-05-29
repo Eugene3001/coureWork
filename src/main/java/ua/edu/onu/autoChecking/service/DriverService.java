@@ -34,6 +34,7 @@ public class DriverService {
             .patronymic(entity.getPatronymic())
             .street(entity.getStreet())
             .surname(entity.getSurname())
+            .driverId(entity.getDriverId())
             .build();
 
     private final Function<DriverDto, Driver> dtoToDriver = dto -> Driver.builder()
@@ -54,6 +55,11 @@ public class DriverService {
         List<DriverDto> response = new LinkedList<>();
         driverRepository.findAll().forEach(driver -> response.add(driverToDto.apply(driver)));
         return response;
+    }
+
+    public DriverDto findOne(Long id) {
+        Driver driver = driverRepository.findById(id).orElseThrow(NotFoundException::new);
+        return driverToDto.apply(driver);
     }
 
     public DriverDto create(DriverDto driverDto) {

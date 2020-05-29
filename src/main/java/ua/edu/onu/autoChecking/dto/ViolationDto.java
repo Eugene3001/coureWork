@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ViolationDto {
+    private Long violationNumber;
+
     private String violation;
 
     private Double moneyPenalty;

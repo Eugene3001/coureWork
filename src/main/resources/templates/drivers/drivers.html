@@ -6,9 +6,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+<header th:insert="/blocks/header :: header"></header>
 <h1 align="center">Drivers</h1>
 <div class="container mt-5">
-    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <form method="get" th:action="@{/api/drivers/find}">
+        <fieldset>
+            <input th:name = "begin" placeholder="begin b-date (dd-MM-yyyy)" class="form-control"/><br>
+            <input th:name = "end" placeholder="end b-date (dd-MM-yyyy)" class="form-control"/><br>
+            <input th:name = "city" placeholder="city" class="form-control"/><br>
+            <input th:name = "street" placeholder="street" class="form-control"/><br>
+            <input th:name = "house" placeholder="house" class="form-control"/><br>
+            <input th:name = "flat" placeholder="flat" class="form-control"/><br>
+            <input th:name = "name" placeholder="name" class="form-control"/><br>
+            <input th:name = "surname" placeholder="surname" class="form-control"/><br>
+            <input th:name = "patronymic" placeholder="patronymic" class="form-control"/><br>
+            <button class="btn btn-info" type="submit">Find!</button>
+        </fieldset>
+    </form>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -23,25 +37,35 @@
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Patronymic</th>
+                <th>Editing</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="el : ${list}">
-                <td th:text="${el.passport}"/>
-                <td th:text="${el.licenseNumber}"/>
-                <td th:text="${el.birthDate}"/>
-                <td th:text="${el.city}"/>
-                <td th:text="${el.street}"/>
-                <td th:text="${el.house}"/>
-                <td th:text="${el.flat}"/>
-                <td th:text="${el.name}"/>
-                <td th:text="${el.surname}"/>
-                <td th:text="${el.patronymic}"/>
+                <td th:text="${el.passport}"></td>
+                <td th:text="${el.licenseNumber}"></td>
+                <td th:text="${el.birthDate}"></td>
+                <td th:text="${el.city}"></td>
+                <td th:text="${el.street}"></td>
+                <td th:text="${el.house}"></td>
+                <td th:text="${el.flat}"></td>
+                <td th:text="${el.name}"></td>
+                <td th:text="${el.surname}"></td>
+                <td th:text="${el.patronymic}"></td>
+                <td>
+                    <a type="button" class="btn btn-dark" th:href="@{/api/drivers/edit/__${el.driverId}__}">
+                        <p>&#x270e; Edit</p>
+                    </a>
+                    <a type="button" class="btn btn-dark" th:href="@{/api/drivers/delete/__${el.driverId}__}">
+                        <p>&#x232b; Delete</p>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
     <a type="button" class="btn btn-primary" href="/api/drivers/create">Create driver</a>
+    <a type="button" class="btn btn-warning" href="/api">Return</a>
 </div>
 </body>
 </html>

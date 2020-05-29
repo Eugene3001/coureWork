@@ -46,18 +46,27 @@ public class AutomobileController {
         return "redirect:/api/autos/main";
     }
 
-    @PutMapping("/autos")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody AutomobileDto request) {
-        automobileService.update(request);
-        log.info("UPDATE one car");
+    @GetMapping("/autos/edit/{autoId}")
+    public String editPage(@PathVariable("autoId") Long autoId, Model model) {
+        AutomobileDto automobile = automobileService.findOne(autoId);
+
+        model.addAttribute("automobile", automobile);
+        return "/autos/autos-edit";
     }
 
-    @DeleteMapping("/autos")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(@RequestBody AutomobileDto request) {
-        automobileService.delete(request);
+    @PostMapping("/autos/edit")
+    public String update(@ModelAttribute AutomobileDto request, Model model) {
+        automobileService.update(request);
+        log.info("UPDATE one car");
+        return "redirect:/api/autos/main";
+    }
+
+    @GetMapping("/autos/delete/{autoId}")
+    public String delete(@PathVariable("autoId") Long autoId, Model model) {
+        AutomobileDto automobileDto = automobileService.findOne(autoId);
+        automobileService.delete(automobileDto);
         log.info("DELETE one car");
+        return "redirect:/api/autos/main";
     }
 
     @GetMapping("/autos/sortByDate")
@@ -68,17 +77,15 @@ public class AutomobileController {
     }
 
     @GetMapping("/autos/find")
-    public List<AutomobileDto> findByCriteria(@RequestParam(required = false)
-                                                      String color,
-                                              @RequestParam(required = false)
-                                              @DateTimeFormat(pattern = "dd-MM-yyyy")
-                                                      Date begin,
-                                              @RequestParam(required = false)
-                                              @DateTimeFormat(pattern = "dd-MM-yyyy")
-                                                      Date end) {
+    public String findByCriteria(@RequestParam String color,
+                                 @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date begin,
+                                 @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date end,
+                                 Model model) {
         List<AutomobileDto> response = automobileService.findByCriteria(color, begin, end);
         log.info("GET all cars by criteria: {}", response);
-        return response;
+
+        model.addAttribute("list", response);
+        return "autos/autos";
     }
 
     @GetMapping("/autos/labQueries/1")

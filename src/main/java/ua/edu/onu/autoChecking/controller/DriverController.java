@@ -47,18 +47,27 @@ public class DriverController {
         return "redirect:/api/drivers/main";
     }
 
-    @PutMapping("/drivers")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody DriverDto request) {
-        driverService.update(request);
-        log.info("UPDATE one driver");
+    @GetMapping("/drivers/edit/{driverId}")
+    public String editPage(Model model, @PathVariable("driverId") Long driverId) {
+        DriverDto driver = driverService.findOne(driverId);
+
+        model.addAttribute("driver", driver);
+        return "/drivers/drivers-edit";
     }
 
-    @DeleteMapping("/drivers")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(@RequestBody DriverDto request) {
-        driverService.delete(request);
+    @PostMapping("/drivers/edit")
+    public String update(@ModelAttribute DriverDto request, Model model) {
+        driverService.update(request);
+        log.info("UPDATE one driver");
+        return "redirect:/api/drivers/main";
+    }
+
+    @GetMapping("/drivers/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        DriverDto driverDto = driverService.findOne(id);
+        driverService.delete(driverDto);
         log.info("DELETE one driver");
+        return "redirect:/api/drivers/main";
     }
 
     @GetMapping("/drivers/byBirthDate")
@@ -69,31 +78,23 @@ public class DriverController {
     }
 
     @GetMapping("/drivers/find")
-    public List<DriverDto> findByCriteria(@RequestParam(required = false)
-                                          @DateTimeFormat(pattern = "dd-MM-yyyy")
-                                                  Date begin,
-                                          @RequestParam(required = false)
-                                          @DateTimeFormat(pattern = "dd-MM-yyyy")
-                                                  Date end,
-                                          @RequestParam(required = false)
-                                                  String city,
-                                          @RequestParam(required = false)
-                                                  String street,
-                                          @RequestParam(required = false)
-                                                  String house,
-                                          @RequestParam(required = false)
-                                                  Long flat,
-                                          @RequestParam(required = false)
-                                                  String name,
-                                          @RequestParam(required = false)
-                                                  String surname,
-                                          @RequestParam(required = false)
-                                                  String patronymic) {
+    public String findByCriteria(@RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date begin,
+                                 @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date end,
+                                 @RequestParam String city,
+                                 @RequestParam String street,
+                                 @RequestParam String house,
+                                 @RequestParam Long flat,
+                                 @RequestParam String name,
+                                 @RequestParam String surname,
+                                 @RequestParam String patronymic,
+                                 Model model) {
         List<DriverDto> response = driverService.findByCriteria(begin, end, city,
                                                                 street, house, flat,
                                                                 name, surname, patronymic);
         log.info("GET all cars by criteria: {}", response);
-        return response;
+
+        model.addAttribute("list", response);
+        return "drivers/drivers";
     }
 
     @GetMapping("/drivers/labQueries/1")

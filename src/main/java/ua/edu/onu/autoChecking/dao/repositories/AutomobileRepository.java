@@ -38,7 +38,7 @@ public interface AutomobileRepository extends CrudRepository<Automobile, Long>, 
     Long countByBrandAndBodyTypeAndPeriod(String brandName, String bodyType, Long yearBegin, Long yearEnd);
 
     @Query(
-            value = "select vehicle_id_number, registration_date,\n" +
+            value = "select auto_id, vehicle_id_number, registration_date,\n" +
                     "Model.model_name, Color.color_name, engine_number, registration_number\n" +
                     "from Automobile\n" +
                     "join Color on Color.color_id = color\n" +

@@ -44,11 +44,19 @@ public class ColorController {
         return "redirect:/api/colors/main";
     }
 
-    @PutMapping("/colors")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void update(@RequestBody ColorDto request) {
+    @GetMapping("/colors/edit/{colorId}")
+    public String editPage(Model model, @PathVariable("colorId") Long colorId) {
+        ColorDto color = colorService.findOne(colorId);
+
+        model.addAttribute("color", color);
+        return "/colors/colors-edit";
+    }
+
+    @PostMapping("/colors/edit")
+    public String update(@ModelAttribute ColorDto request, Model model) {
         colorService.update(request);
         log.info("UPDATE one color");
+        return "redirect:/api/colors/main";
     }
 
     @DeleteMapping("/colors")

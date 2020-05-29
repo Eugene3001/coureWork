@@ -43,11 +43,12 @@ public class BrandController {
         return "redirect:/api/brands/main";
     }
 
-    @DeleteMapping("/brands")
-    @ResponseStatus(code = HttpStatus.OK)
-    public void delete(@RequestBody BrandDto request) {
-        brandService.delete(request);
+    @GetMapping("/brands/delete/{id}")
+    public String delete(@PathVariable("id")Long id, Model model) {
+        BrandDto brandDto = brandService.findOne(id);
+        brandService.delete(brandDto);
         log.info("DELETE one brand");
+        return "redirect:/api/brands/main";
     }
 
     @GetMapping("/brands/edit/{id}")

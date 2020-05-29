@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+<header th:insert="/blocks/header :: header"></header>
 <h1 align="center">Colors</h1>
 <div class="container mt-5">
     <a type="button" class="btn btn-warning" href="/api">Return</a>
@@ -15,12 +16,21 @@
             <tr>
                 <th>Color ID</th>
                 <th>Color name</th>
+                <th>Editing</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="el : ${list}">
-                <td th:text="${el.colorId}"/>
-                <td th:text="${el.colorName}"/>
+                <td th:text="${el.colorId}"></td>
+                <td th:text="${el.colorName}"></td>
+                <td align="center">
+                    <a type="button" class="btn btn-dark" th:href="@{/api/colors/edit/__${el.colorId}__}">
+                        <p>&#x270e; Edit</p>
+                    </a>
+                    <a type="button" class="btn btn-dark" th:href="@{/api/colors/delete/__${el.colorId}__}">
+                        <p>&#x232b; Delete</p>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

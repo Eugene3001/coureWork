@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Driver editing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+</head>
+<body>
+<header th:insert="/blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <H1 align="center"> Driver editing </H1>
+    <form method="post" action="/api/drivers/edit">
+        <fieldset>
+            <input name = "driverId" placeholder="id" hidden="hidden" th:value="${driver.driverId}" class="form-control"/><br>
+            <input name = "passport" placeholder="passport" th:value="${driver.passport}" class="form-control"/><br>
+            <input name = "licenseNumber" placeholder="license number" th:value="${driver.licenseNumber}" class="form-control"/><br>
+            <input name = "birthDate" placeholder="birth date" th:value="${driver.birthDate}" class="form-control"/><br>
+            <input name = "city" placeholder="city" th:value="${driver.city}" class="form-control"/><br>
+            <input name = "street" placeholder="street" th:value="${driver.street}" class="form-control"/><br>
+            <input name = "house" placeholder="house" th:value="${driver.house}" class="form-control"/><br>
+            <input name = "flat" placeholder="flat" th:value="${driver.flat}" class="form-control"/><br>
+            <input name = "name" placeholder="name" th:value="${driver.name}" class="form-control"/><br>
+            <input name = "surname" placeholder="surname" th:value="${driver.surname}" class="form-control"/><br>
+            <input name = "patronymic" placeholder="patronymic" th:value="${driver.patronymic}" class="form-control"/><br>
+            <button type="submit" class="btn btn-success">Update!</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

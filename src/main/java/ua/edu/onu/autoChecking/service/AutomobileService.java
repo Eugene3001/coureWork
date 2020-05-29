@@ -41,6 +41,7 @@ public class AutomobileService {
             .vehicleIdNumber(entity.getVehicleIdNumber())
             .registrationNumber(entity.getRegistrationNumber())
             .modelName(entity.getModel().getModelName())
+            .autoId(entity.getAutoId())
             .build();
 
     private final Function<AutomobileDto, Automobile> dtoToAutomobile = dto -> Automobile.builder()
@@ -57,6 +58,11 @@ public class AutomobileService {
         List<AutomobileDto> response = new LinkedList<>();
         automobileRepository.findAll().forEach(automobile -> response.add(automobileToDto.apply(automobile)));
         return response;
+    }
+
+    public AutomobileDto findOne(Long id) {
+        Automobile automobile = automobileRepository.findById(id).orElseThrow(NotFoundException::new);
+        return  automobileToDto.apply(automobile);
     }
 
     public AutomobileDto create(AutomobileDto automobileDto) {
@@ -124,12 +130,13 @@ public class AutomobileService {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 response.add(new AutomobileDto(
-                        elements[0],
-                        dateFormat.parse(elements[1]),
-                        elements[2],
+                        Long.valueOf(elements[0]),
+                        elements[1],
+                        dateFormat.parse(elements[2]),
                         elements[3],
                         elements[4],
-                        elements[5]
+                        elements[5],
+                        elements[6]
                 ));
             } catch (ParseException e) {
                 e.printStackTrace();

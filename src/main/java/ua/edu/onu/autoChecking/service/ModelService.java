@@ -27,6 +27,7 @@ public class ModelService {
     }
 
     private final Function<Model, ModelDto> modelToDto = entity -> ModelDto.builder()
+            .modelId(entity.getModelId())
             .bodyType(entity.getBodyType())
             .manufYear(entity.getManufYear())
             .modelName(entity.getModelName())
