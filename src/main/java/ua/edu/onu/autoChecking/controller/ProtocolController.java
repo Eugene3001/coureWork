@@ -2,7 +2,6 @@ package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,8 @@ public class ProtocolController {
     @Autowired
     public ProtocolController(ProtocolService protocolService, AutomobileService automobileService,
                               ViolationService violationService, DriverService driverService,
-                              PolicemanService policemanService) {
+                              PolicemanService policemanService
+    ) {
         this.protocolService = protocolService;
         this.automobileService = automobileService;
         this.violationService = violationService;
