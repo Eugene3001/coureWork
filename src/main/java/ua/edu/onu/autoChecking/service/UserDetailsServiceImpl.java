@@ -10,8 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.AppUser;
 import ua.edu.onu.autoChecking.dao.repositories.AppUserRepository;
-import ua.edu.onu.autoChecking.dao.repositories.spec.AppRoleRepository;
-import ua.edu.onu.autoChecking.exception.NotFoundException;
+import ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             }
         }
 
-        UserDetails userDetails = (UserDetails) new User(appUser.getUserName(), //
+        UserDetails userDetails = (UserDetails) new User(appUser.getUserName(),
                 appUser.getEncryptedPassword(), grantList);
 
         return userDetails;

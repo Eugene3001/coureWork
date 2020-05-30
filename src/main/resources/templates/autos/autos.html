@@ -35,10 +35,10 @@
                         <td th:text="${el.engineNumber}"></td>
                         <td th:text="${el.registrationNumber}"></td>
                         <td align="center">
-                            <a type="button" class="btn btn-dark" th:href="@{/api/autos/edit/__${el.autoId}__}">
+                            <a type="button" class="btn btn-dark" th:href="@{/autos/edit/__${el.autoId}__}">
                                 <p>&#x270e; Edit</p>
                             </a>
-                            <a type="button" class="btn btn-dark" th:href="@{/api/autos/delete/__${el.autoId}__}">
+                            <a type="button" class="btn btn-dark" th:href="@{/autos/delete/__${el.autoId}__}">
                                 <p>&#x232b; Delete</p>
                             </a>
                         </td>
@@ -46,8 +46,8 @@
                 </tbody>
             </table>
         </div>
-        <a type="button" class="btn btn-primary" href="/api/autos/create">Create car</a>
-        <a type="button" class="btn btn-warning" href="/api">Return</a>
+        <a type="button" class="btn btn-primary" href="/autos/create">Create car</a>
+        <a type="button" class="btn btn-warning" href="/">Return</a>
     </div>
     <script>
         function tableSearch() {

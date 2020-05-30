@@ -2,61 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
 </head>
 <body>
-<!-- Include _menu.html -->
-<div style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
-
-    <a th:href="@{/}">Home</a>
-
-    | &nbsp;
-
-    <a th:href="@{/userInfo}">User Info</a>
-
-    | &nbsp;
-
-    <a th:href="@{/admin}">Admin</a>
-
-    | &nbsp;
-
-    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
-
-</div>
-
-<h1>Login</h1>
-
-<!-- /login?error=true -->
-<div th:if="${#request.getParameter('error') == 'true'}"
-     style="color:red;margin:10px 0px;">
-    Login Failed!!!<br />
-    Reason :
-    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-                Static summary
-         </span>
-
-</div>
-
-<h3>Enter user name and password:</h3>
-<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
-        </tr>
-        <tr>
-            <td>Remember Me?</td>
-            <td><input type="checkbox" name="remember-me" /></td>
-        </tr>
-        <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-        </tr>
-    </table>
-</form>
+    <h1 align="center">Login</h1>
+    <div th:if="${#request.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">Login Failed!!!<br />
+        <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+              th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+        </span>
+    </div>
+    <form name='f' th:action="@{/j_spring_security_check}" method="post" class="form-signin">
+        <label for="inputUserName" class="sr-only align-content-xl-center">User name</label>
+        <input type="text" id="inputUserName" name="username" class="form-control" placeholder="User name">
+        <label for="inputPassword" class="sr-only align-content-xl-center">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
+        <input type="checkbox" name="remember-me"> Remember me
+        <button name="submit" value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
 
 <br>
 Username/pass:

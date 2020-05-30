@@ -1,4 +1,4 @@
-package ua.edu.onu.autoChecking.dao.repositories.spec;
+package ua.edu.onu.autoChecking.dao.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

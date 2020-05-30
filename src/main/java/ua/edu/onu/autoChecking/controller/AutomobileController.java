@@ -20,7 +20,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/api")
 public class AutomobileController {
     private AutomobileService automobileService;
     private ModelService modelService;

@@ -11,11 +11,9 @@ import java.security.Principal;
 
 @Controller
 public class MainController {
-    @GetMapping(value = {"/welcome", "/"})
+    @GetMapping("/")
     public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
-        return "securityLessonsPages/welcomePage";
+        return "main";
     }
 
     @GetMapping("/admin")

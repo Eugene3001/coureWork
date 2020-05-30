@@ -3,7 +3,7 @@ package ua.edu.onu.autoChecking.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.edu.onu.autoChecking.dao.repositories.spec.AppRoleRepository;
+import ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository;
 
 import java.util.List;
 
