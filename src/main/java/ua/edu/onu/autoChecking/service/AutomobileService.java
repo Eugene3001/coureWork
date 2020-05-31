@@ -104,17 +104,14 @@ public class AutomobileService {
         return response;
     }
 
-    public List<AutomobileDto> findByCriteria(String colorName, Date begin, Date end) {
-        List<AutomobileDto> response = new LinkedList<>();
-        Color color = colorRepository.findByColorName(colorName).orElse(null);
-
-        automobileRepository.findAll(AutomobileSpec.buildSearchSpec(color, begin, end))
-                .forEach(automobile ->
-                        response.add(automobileToDto.apply(automobile))
-                );
-
-        return response;
-    }
+//    public List<AutomobileDto> findByCriteria(String brandName) {
+//        List<AutomobileDto> response = new LinkedList<>();
+//
+//        automobileRepository.findByBrandName(brandName)
+//                .forEach(automobile -> response.add(automobileToDto.apply(automobile)));
+//
+//        return response;
+//    }
 
     public Long labQuery3_3(String brandName, String bodyType, Long yearBegin, Long yearEnd) {
         Long count = automobileRepository.countByBrandAndBodyTypeAndPeriod(brandName, bodyType, yearBegin, yearEnd);

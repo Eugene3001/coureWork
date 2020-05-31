@@ -17,11 +17,14 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, DataSource dataSource) {
+        this.userDetailsService = userDetailsService;
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -55,7 +58,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/autos/main",
                 "/autos/create",
                 "/autos/edit",
-                "/autos/delete"
+                "/autos/delete",
+                "/users/main",
+                "/users/create"
                 ).access("hasRole('ROLE_ADMIN')");
 
         // When the user has logged in as XX.

@@ -22,8 +22,7 @@ public class StoryDto {
 
     private String driverPassport;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date startDate;
+    private String startDate;
 
     private String userPassport;
 

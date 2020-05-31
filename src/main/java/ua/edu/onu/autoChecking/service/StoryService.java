@@ -13,6 +13,8 @@ import ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec;
 import ua.edu.onu.autoChecking.dto.StoryDto;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
+import java.text.*;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
@@ -89,17 +91,17 @@ public class StoryService {
         storyRepository.deleteById(story.getId());
     }
 
-    public List<StoryDto> startDateSortedList() {
-        List<StoryDto> response = new LinkedList<>();
-        storyRepository.getStartDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
-        return response;
-    }
+//    public List<StoryDto> startDateSortedList() {
+//        List<StoryDto> response = new LinkedList<>();
+//        storyRepository.getStartDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
+//        return response;
+//    }
 
-    public List<StoryDto> finishDateSortedList() {
-        List<StoryDto> response = new LinkedList<>();
-        storyRepository.getFinishDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
-        return response;
-    }
+//    public List<StoryDto> finishDateSortedList() {
+//        List<StoryDto> response = new LinkedList<>();
+//        storyRepository.getFinishDateSortedList().forEach(story -> response.add(storyToDto.apply(story)));
+//        return response;
+//    }
 
     public List<StoryDto> findByCriteria(String userPassport, String isOwner, String isNotOwner) {
         List<StoryDto> response = new LinkedList<>();
@@ -110,12 +112,12 @@ public class StoryService {
         return response;
     }
 
-    public List<StoryDto> labQuery3_2(String registrationNumber, Long beginYear, Long endYear) {
-        List<StoryDto> response = new LinkedList<>();
-        
-        storyRepository.selectByPeriodAndRegistrationNumber(registrationNumber, beginYear, endYear)
-                .forEach(story -> response.add(storyToDto.apply(story)));
-
-        return response;
-    }
+//    public List<StoryDto> labQuery3_2(String registrationNumber, Long beginYear, Long endYear) {
+//        List<StoryDto> response = new LinkedList<>();
+//
+//        storyRepository.selectByPeriodAndRegistrationNumber(registrationNumber, beginYear, endYear)
+//                .forEach(story -> response.add(storyToDto.apply(story)));
+//
+//        return response;
+//    }
 }

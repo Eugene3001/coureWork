@@ -10,7 +10,7 @@
 <header th:insert="/blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <H1 align="center"> Car editing </H1>
-    <form method="post" action="/api/autos/edit">
+    <form method="post" action="/autos/edit/">
         <fieldset>
             <input name = "autoId" hidden="hidden" th:value="${automobile.autoId}" placeholder="id"  class="form-control"/><br>
             <input name = "vehicleIdNumber" th:value="${automobile.vehicleIdNumber}" placeholder="vehicle number"  class="form-control"/><br>

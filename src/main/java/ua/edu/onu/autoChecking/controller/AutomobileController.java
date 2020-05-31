@@ -58,7 +58,7 @@ public class AutomobileController {
     public String create(@ModelAttribute AutomobileDto request, Model model) {
         AutomobileDto response = automobileService.create(request);
         log.info("CREATE one car: {}", response);
-        return "redirect:/api/autos/main";
+        return "redirect:/autos/main";
     }
 
     @GetMapping("/autos/edit/{autoId}")
@@ -77,7 +77,7 @@ public class AutomobileController {
     public String update(@ModelAttribute AutomobileDto request, Model model) {
         automobileService.update(request);
         log.info("UPDATE one car");
-        return "redirect:/api/autos/main";
+        return "redirect:/autos/main";
     }
 
     @GetMapping("/autos/delete/{autoId}")
@@ -85,7 +85,7 @@ public class AutomobileController {
         AutomobileDto automobileDto = automobileService.findOne(autoId);
         automobileService.delete(automobileDto);
         log.info("DELETE one car");
-        return "redirect:/api/autos/main";
+        return "redirect:/autos/main";
     }
 
     @GetMapping("/autos/sortByDate")
@@ -95,27 +95,27 @@ public class AutomobileController {
         return list;
     }
 
-    @GetMapping("/autos/find")
-    public String findByCriteria(@RequestParam String color,
-                                 @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date begin,
-                                 @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date end,
-                                 Model model) {
-        List<AutomobileDto> response = automobileService.findByCriteria(color, begin, end);
-        log.info("GET all cars by criteria: {}", response);
+//    @GetMapping("/autos/find/{brandName}")
+//    public String findByCriteria(@PathVariable String modelName,
+//                                 Model model) {
+//        List<AutomobileDto> response = automobileService.findByCriteria(modelName);
+//        log.info("GET all cars by criteria: {}", response);
+//
+//        model.addAttribute("list", response);
+//        return "autos/autos";
+//    }
 
-        model.addAttribute("list", response);
-        return "autos/autos";
-    }
-
-    @GetMapping("/autos/labQueries/1")
-    public Long countByBrandAndBodyTypeAndPeriod(@RequestParam String brandName,
-                                                 @RequestParam String bodyType,
-                                                 @RequestParam Long yearBegin,
-                                                 @RequestParam Long yearEnd) {
-        Long count = automobileService.labQuery3_3(brandName, bodyType, yearBegin, yearEnd);
-        log.info("COUNT is {}", count);
-        return count;
-    }
+//    @GetMapping("/autos/labQueries/1")
+//    public Long countByBrandAndBodyTypeAndPeriod(
+//            @RequestParam String brandName,
+//            @RequestParam String bodyType,
+//            @RequestParam Long yearBegin,
+//            @RequestParam Long yearEnd
+//    ) {
+//        Long count = automobileService.labQuery3_3(brandName, bodyType, yearBegin, yearEnd);
+//        log.info("COUNT is {}", count);
+//        return count;
+//    }
 
     @GetMapping("/autos/labQueries/2")
     public List<AutomobileDto> labQuery4_3() {

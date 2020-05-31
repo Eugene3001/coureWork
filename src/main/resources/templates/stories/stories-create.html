@@ -11,12 +11,22 @@
 
 <div class="container mt-5 mb-5">
     <H1 align="center"> Story creating </H1>
-    <form method="post" action="/api/stories/create">
+    <form method="post" th:object="${story}" action="/api/stories/create" id="create-form">
         <fieldset>
-            <input name = "vehicleIdNumber" placeholder="vehicle number" class="form-control"/><br>
-            <input name = "driverPassport" placeholder="driver passport" class="form-control"/><br>
-            <input type="date" name = "startDate" placeholder="start date" class="form-control"/><br>
-            <input name = "userPassport" placeholder="user passport" class="form-control"/><br>
+            <select class="form-control" th:field="*{vehicleIdNumber}">
+                <option th:each="automobile : ${automobileList}" th:value="${automobile.vehicleIdNumber}" th:text="${automobile.vehicleIdNumber}"></option>
+            </select><br>
+
+            <select class="form-control" th:field="*{driverPassport}">
+                <option th:each="driver : ${driverList}" th:value="${driver.passport}" th:text="${driver.passport}"></option>
+            </select><br>
+
+            <input name = "startDate" placeholder="start date (yyyy-MM-dd)" class="form-control"/><br>
+
+            <select class="form-control" th:field="*{userPassport}">
+                <option th:each="driver : ${driverList}" th:value="${driver.passport}" th:text="${driver.passport}"></option>
+            </select><br>
+
             <input type="date" name = "finishDate" placeholder="finish date" class="form-control"/><br>
             <button type="submit" class="btn btn-success">Create!</button>
         </fieldset>

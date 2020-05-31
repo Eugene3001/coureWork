@@ -8,7 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.onu.autoChecking.dao.ids.StoryId;
+import ua.edu.onu.autoChecking.dto.AutomobileDto;
+import ua.edu.onu.autoChecking.dto.DriverDto;
 import ua.edu.onu.autoChecking.dto.StoryDto;
+import ua.edu.onu.autoChecking.service.AutomobileService;
+import ua.edu.onu.autoChecking.service.DriverService;
 import ua.edu.onu.autoChecking.service.StoryService;
 
 import java.util.Date;
@@ -19,11 +23,15 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/api")
 public class StoryController {
-    private final StoryService storyService;
+    private StoryService storyService;
+    private AutomobileService automobileService;
+    private DriverService driverService;
 
     @Autowired
-    public StoryController(StoryService storyService) {
+    public StoryController(StoryService storyService, AutomobileService automobileService, DriverService driverService) {
         this.storyService = storyService;
+        this.automobileService = automobileService;
+        this.driverService = driverService;
     }
 
     @GetMapping("/stories/main")
@@ -37,6 +45,13 @@ public class StoryController {
 
     @GetMapping("/stories/create")
     public String createPage(Model model) {
+        StoryDto storyDto = new StoryDto();
+        List<AutomobileDto> automobileDtoList = automobileService.list();
+        List<DriverDto> driverDtoList = driverService.list();
+
+        model.addAttribute("automobileList", automobileDtoList);
+        model.addAttribute("driverList", driverDtoList);
+        model.addAttribute("story", storyDto);
         return "stories/stories-create";
     }
 
@@ -47,13 +62,15 @@ public class StoryController {
         return "redirect:/api/stories/main";
     }
 
-    @GetMapping("/stories/edit/{autoId}{driverId}{startDate}")
+    @GetMapping("/stories/edit/{autoId}/{driverId}/{startDate}")
     public String editPage(@PathVariable("autoId")Long autoId,
                            @PathVariable("driverId") Long driverId,
-                           @PathVariable("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") Date startDate,
+                           @PathVariable("startDate") String startDate,
                            Model model) {
         StoryDto story = storyService.findOne(new StoryId(autoId, driverId, startDate));
 
+        List<DriverDto> driverDtoList = driverService.list();
+        model.addAttribute("driverList", driverDtoList);
         model.addAttribute("story", story);
         return "/stories/stories-edit";
     }
@@ -65,10 +82,10 @@ public class StoryController {
         return "redirect:/api/stories/main";
     }
 
-    @GetMapping("/stories/delete/{autoId}{driverId}{startDate}")
+    @GetMapping("/stories/delete/{autoId}/{driverId}/{startDate}")
     public String delete(@PathVariable("autoId")Long autoId,
                        @PathVariable("driverId") Long driverId,
-                       @PathVariable("startDate") Date startDate,
+                       @PathVariable("startDate") String startDate,
                        Model model) {
         StoryDto storyDto = storyService.findOne(new StoryId(
                 autoId, driverId, startDate
@@ -78,18 +95,18 @@ public class StoryController {
         return "redirect:/api/stories/main";
     }
 
-    @GetMapping("/stories/byDate")
-    public List<StoryDto> datesSortedList(@RequestParam String dateType) {
-        List<StoryDto> response = new LinkedList<>();
-
-        switch (dateType) {
-            case "start": response = storyService.startDateSortedList(); break;
-            case "finish": response = storyService.finishDateSortedList(); break;
-        }
-
-        log.info("GET all stories by {}, {}", dateType, response);
-        return response;
-    }
+//    @GetMapping("/stories/byDate")
+//    public List<StoryDto> datesSortedList(@RequestParam String dateType) {
+//        List<StoryDto> response = new LinkedList<>();
+//
+//        switch (dateType) {
+//            case "start": response = storyService.startDateSortedList(); break;
+//            case "finish": response = storyService.finishDateSortedList(); break;
+//        }
+//
+//        log.info("GET all stories by {}, {}", dateType, response);
+//        return response;
+//    }
 
     @GetMapping("/stories/find")
     public List<StoryDto> findByCriteria(@RequestParam(required = false)
@@ -103,12 +120,12 @@ public class StoryController {
         return response;
     }
 
-    @GetMapping("/stories/labQueries/1")
-    public List<StoryDto> selectByPeriodAndRegistrationNumber(@RequestParam String registrationNumber,
-                                    @RequestParam Long beginYear,
-                                    @RequestParam Long endYear) {
-        List<StoryDto> response = storyService.labQuery3_2(registrationNumber, beginYear, endYear);
-        log.info("Lab query 1");
-        return response;
-    }
+//    @GetMapping("/stories/labQueries/1")
+//    public List<StoryDto> selectByPeriodAndRegistrationNumber(@RequestParam String registrationNumber,
+//                                    @RequestParam Long beginYear,
+//                                    @RequestParam Long endYear) {
+//        List<StoryDto> response = storyService.labQuery3_2(registrationNumber, beginYear, endYear);
+//        log.info("Lab query 1");
+//        return response;
+//    }
 }
