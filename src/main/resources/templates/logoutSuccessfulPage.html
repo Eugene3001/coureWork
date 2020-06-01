@@ -1,9 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Logout</title>
+    <style>
+        h1 {
+            font-size: 15vmin;
+            margin-bottom: 0;
+        }
+        h2 {
+            font-size: 5vmin;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+        .centerDiv {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -160px;
+            margin-left: -600px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Logout Successful!</h1>
+    <div align="center" class="centerDiv">
+        <h1>Logout Successful!</h1><br>
+        <a type="button" class="btn btn-primary" href="/">Return</a>
+    </div>
 </body>
 </html>

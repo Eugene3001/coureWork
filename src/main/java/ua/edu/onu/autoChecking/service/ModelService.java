@@ -2,7 +2,6 @@ package ua.edu.onu.autoChecking.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.edu.onu.autoChecking.dao.entities.Brand;
 import ua.edu.onu.autoChecking.dao.entities.Model;
 import ua.edu.onu.autoChecking.dao.repositories.BrandRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ModelRepository;

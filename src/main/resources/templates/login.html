@@ -13,7 +13,7 @@
           th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
         </span>
 </div>
-<form name='f' th:action="@{/j_spring_security_check}" method="post" class="form-signin">
+<form name='f' th:action="@{/j_spring_security_check}" method="post" class="form-group">
     <label for="inputUserName" class="sr-only align-content-xl-center">User name</label>
     <input type="text" id="inputUserName" name="username" class="form-control" placeholder="User name">
     <label for="inputPassword" class="sr-only align-content-xl-center">Password</label>

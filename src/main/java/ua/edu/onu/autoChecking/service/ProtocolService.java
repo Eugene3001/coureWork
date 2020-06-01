@@ -2,8 +2,6 @@ package ua.edu.onu.autoChecking.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.edu.onu.autoChecking.dao.entities.Automobile;
-import ua.edu.onu.autoChecking.dao.entities.Driver;
 import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dao.entities.Protocol;
 import ua.edu.onu.autoChecking.dao.entities.Violation;

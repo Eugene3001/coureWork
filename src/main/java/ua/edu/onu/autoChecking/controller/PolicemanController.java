@@ -1,14 +1,11 @@
 package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.edu.onu.autoChecking.dao.entities.Policeman;
 import ua.edu.onu.autoChecking.dto.PolicemanDto;
 import ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec;
 import ua.edu.onu.autoChecking.service.PolicemanService;

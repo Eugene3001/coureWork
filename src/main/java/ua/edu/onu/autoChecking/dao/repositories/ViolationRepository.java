@@ -1,6 +1,5 @@
 package ua.edu.onu.autoChecking.dao.repositories;
 
-import org.hibernate.annotations.LazyToOne;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import ua.edu.onu.autoChecking.dao.entities.Driver;
-import ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +24,8 @@ public interface DriverRepository extends CrudRepository<Driver, Long>, JpaSpeci
     Optional<Driver> findByPassport(String passport);
 
     @Query(
-            value = "select D from Driver D\n" +
+            value = "select driver_id, passport, license_number, birth_date,\n" +
+                    "city, street, house, flat, name, surname, patronymic from Driver\n" +
                 "join Protocol using(driver_id)\n" +
                 "where Protocol.status = true and\n" +
                 "extract (year from age(Protocol.prep_date)) * 12 + extract (month from age(Protocol.prep_date)) < Protocol.due_date",

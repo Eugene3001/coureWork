@@ -13,8 +13,6 @@ import ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec;
 import ua.edu.onu.autoChecking.dto.StoryDto;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
-import java.text.*;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;

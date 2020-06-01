@@ -4,18 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.edu.onu.autoChecking.dao.entities.Automobile;
-import ua.edu.onu.autoChecking.dao.entities.Color;
 import ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ColorRepository;
 import ua.edu.onu.autoChecking.dao.repositories.ModelRepository;
-import ua.edu.onu.autoChecking.dao.repositories.spec.AutomobileSpec;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
 import ua.edu.onu.autoChecking.exception.NotFoundException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;

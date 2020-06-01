@@ -113,7 +113,9 @@ public class DriverService {
 
     public List<DriverDto> labQuery3_5() {
         List<DriverDto> response = new LinkedList<>();
-        driverRepository.selectByPastDuePaymentDate().forEach(driver -> response.add(driverToDto.apply(driver)));
+        List<Driver> data = driverRepository.selectByPastDuePaymentDate();
+
+        data.forEach(driver -> response.add(driverToDto.apply(driver)));
         return response;
     }
 

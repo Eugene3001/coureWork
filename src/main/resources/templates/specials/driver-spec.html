@@ -27,7 +27,7 @@
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Patronymic</th>
-                <th>Editing</th>
+                <th>Count</th>
             </tr>
             </thead>
             <tbody>
@@ -42,14 +42,7 @@
                 <td th:text="${el.name}"></td>
                 <td th:text="${el.surname}"></td>
                 <td th:text="${el.patronymic}"></td>
-                <td>
-                    <a type="button" class="btn btn-dark" th:href="@{/drivers/edit/__${el.driverId}__}">
-                        <p>&#x270e; Edit</p>
-                    </a>
-                    <a type="button" class="btn btn-dark" th:href="@{/drivers/delete/__${el.driverId}__}">
-                        <p>&#x232b; Delete</p>
-                    </a>
-                </td>
+                <td th:text="${el.count}"></td>
             </tr>
             </tbody>
         </table>

@@ -35,6 +35,7 @@ public class AutomobileController {
         List<AutomobileDto> list = automobileService.list();
         log.info("GET all cars: {}", list);
 
+        model.addAttribute("title", "List of cars registered");
         model.addAttribute("list", list);
 
         return "autos/autos";
