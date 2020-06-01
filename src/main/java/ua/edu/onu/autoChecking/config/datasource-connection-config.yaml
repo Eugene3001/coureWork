@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autic
+    username: app_admin
+    password: 1827
+
+  datasource1:
+    url: jdbc:postgresql://localhost:5432/autic
+      username: app_user
+      password: 88005553535
+
+  datasource2:
+    url: jdbc:postgresql://localhost:5432/autic
+      username: app_policeman
+      password: policeman
+
+  datasource3:
+    url: jdbc:postgresql://localhost:5432/autic
+      username: app_guest
+      password: guest

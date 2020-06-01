@@ -27,7 +27,7 @@
                     <td th:text="${el.id}"></td>
                     <td th:text="${el.brandName}"></td>
                     <td align="center">
-                        <a type="button" class="btn btn-dark" th:href="@{/api/brands/delete/__${el.id}__}">
+                        <a type="button" class="btn btn-dark" th:href="@{/brands/delete/__${el.id}__}">
                             <p>&#x232b; Delete</p>
                         </a>
                     </td>
@@ -35,8 +35,8 @@
                 </tbody>
             </table>
         </div>
-        <a type="button" class="btn btn-primary" href="/api/brands/create">Create brand</a>
-        <a type="button" class="btn btn-warning" href="/api">Return</a>
+        <a type="button" class="btn btn-primary" href="/brands/create">Create brand</a>
+        <a type="button" class="btn btn-warning" href="/">Return</a>
     </div>
     <script>
         function tableSearch() {

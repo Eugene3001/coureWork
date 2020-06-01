@@ -10,7 +10,7 @@
 <header th:insert="/blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <H1 align="center"> Policeman editing </H1>
-    <form method="post" action="/api/policemen/edit">
+    <form method="post" action="/policemen/edit">
         <fieldset>
             <input name = "id" hidden="hidden" th:value="${policeman.id}" placeholder="id"  class="form-control"/><br>
             <input name = "rank" th:value="${policeman.rank}" placeholder="rank"  class="form-control"/><br>

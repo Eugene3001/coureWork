@@ -10,7 +10,7 @@
 <header th:insert="/blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <H1 align="center"> Color editing </H1>
-    <form method="post" action="/api/colors/edit">
+    <form method="post" action="/colors/edit">
         <fieldset>
             <input name = "colorId" placeholder="id" hidden="hidden" th:value="${color.colorId}" class="form-control"/><br>
             <input name = "colorName" placeholder="color name" th:value="${color.colorName}" class="form-control"/><br>

@@ -31,7 +31,7 @@
                 <td th:text="${el.bodyType}"></td>
                 <td th:text="${el.manufYear}"></td>
                 <th>
-                    <a type="button" class="btn btn-dark" th:href="@{/api/models/delete/__${el.modelId}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/models/delete/__${el.modelId}__}">
                         <p>&#x232b; Delete</p>
                     </a>
                 </th>
@@ -39,8 +39,8 @@
             </tbody>
         </table>
     </div>
-    <a type="button" class="btn btn-primary" href="/api/models/create">Create model</a>
-    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <a type="button" class="btn btn-primary" href="/models/create">Create model</a>
+    <a type="button" class="btn btn-warning" href="/">Return</a>
 </div>
 <script>
     function tableSearch() {

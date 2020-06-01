@@ -2,6 +2,7 @@ package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/api")
 public class ProtocolController {
     private ProtocolService protocolService;
     private AutomobileService automobileService;
@@ -33,6 +33,7 @@ public class ProtocolController {
     }
 
     @GetMapping("/protocols/main")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String list(Model model) {
         List<ProtocolDto> list = protocolService.list();
         log.info("GET all protocols: {}", list);
@@ -42,6 +43,7 @@ public class ProtocolController {
     }
 
     @GetMapping("/protocols/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String createPage(Model model) {
         ProtocolDto protocolDto = new ProtocolDto();
         getSelectionLists(model, protocolDto);
@@ -49,13 +51,15 @@ public class ProtocolController {
     }
 
     @PostMapping("/protocols/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String create(@ModelAttribute ProtocolDto request, Model model) {
         ProtocolDto response = protocolService.create(request);
         log.info("CREATE one protocol: {}", response);
-        return "redirect:/api/protocols/main";
+        return "redirect:/protocols/main";
     }
 
     @GetMapping("/protocols/edit/{id}")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String editPage(@PathVariable("id") Long id, Model model) {
         ProtocolDto protocol = protocolService.findOne(id);
         getSelectionLists(model, protocol);
@@ -76,42 +80,44 @@ public class ProtocolController {
     }
 
     @PostMapping("/protocols/edit")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String update(@ModelAttribute ProtocolDto request, Model model) {
         protocolService.update(request);
         log.info("UPDATE one protocol");
-        return "redirect:/api/protocols/main";
+        return "redirect:/protocols/main";
     }
 
     @GetMapping("/protocols/delete/{id}")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String delete(@PathVariable("id") Long id, Model model) {
         ProtocolDto protocolDto = protocolService.findOne(id);
         protocolService.delete(protocolDto);
         log.info("DELETE one protocol");
-        return "redirect:/api/protocols/main";
+        return "redirect:/protocols/main";
     }
 
-    @GetMapping("/protocols/byPrepDate")
-    public List<ProtocolDto> prepDateSortedList() {
-        List<ProtocolDto> list = protocolService.prepDateSortedList();
-        log.info("GET all protocols asc (preparation date): {}", list);
-        return list;
-    }
+//    @GetMapping("/protocols/byPrepDate")
+//    public List<ProtocolDto> prepDateSortedList() {
+//        List<ProtocolDto> list = protocolService.prepDateSortedList();
+//        log.info("GET all protocols asc (preparation date): {}", list);
+//        return list;
+//    }
 
-    @GetMapping("/protocols/find")
-    public List<ProtocolDto> findByCriteria(@RequestParam(required = false)
-                                                    String violationName,
-                                            @RequestParam(required = false)
-                                                    String isActive,
-                                            @RequestParam(required = false)
-                                                    String isNotActive,
-                                            @RequestParam(required = false)
-                                                    Long dueDate,
-                                            @RequestParam(required = false)
-                                                    String name) {
-        List<ProtocolDto> response = protocolService.findByCriteria(violationName, isActive, isNotActive, dueDate, name);
-        log.info("GET all protocols by criteria: {}", response);
-        return response;
-    }
+//    @GetMapping("/protocols/find")
+//    public List<ProtocolDto> findByCriteria(@RequestParam(required = false)
+//                                                    String violationName,
+//                                            @RequestParam(required = false)
+//                                                    String isActive,
+//                                            @RequestParam(required = false)
+//                                                    String isNotActive,
+//                                            @RequestParam(required = false)
+//                                                    Long dueDate,
+//                                            @RequestParam(required = false)
+//                                                    String name) {
+//        List<ProtocolDto> response = protocolService.findByCriteria(violationName, isActive, isNotActive, dueDate, name);
+//        log.info("GET all protocols by criteria: {}", response);
+//        return response;
+//    }
 
     @GetMapping("/protocols/labQueries/1")
     public List<ProtocolDto> selectByCurrentDayAndNamesakePoliceman(@RequestParam String surname) {

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/api")
 public class PolicemanController {
     private final PolicemanService policemanService;
 
@@ -26,6 +26,7 @@ public class PolicemanController {
     }
 
     @GetMapping("/policemen/main")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String list(Model model) {
         List<PolicemanDto> list = policemanService.list();
         log.info("GET all policemen: {}", list);
@@ -35,18 +36,21 @@ public class PolicemanController {
     }
 
     @GetMapping("/policemen/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String createPage(Model model) {
         return "policemen/policemen-create";
     }
 
     @PostMapping("/policemen/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String create(@ModelAttribute PolicemanDto request, Model model) {
         PolicemanDto response = policemanService.create(request);
         log.info("CREATE one policeman: {}", response);
-        return "redirect:/api/policemen/main";
+        return "redirect:/policemen/main";
     }
 
     @GetMapping("/policemen/edit/{id}")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String editPage(@PathVariable("id") Long id, Model model) {
         PolicemanDto policeman = policemanService.findOne(id);
 
@@ -55,33 +59,35 @@ public class PolicemanController {
     }
 
     @PostMapping("/policemen/edit")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String update(@ModelAttribute PolicemanDto request, Model model) {
         policemanService.update(request);
         log.info("UPDATE one policeman");
-        return "redirect:/api/policemen/main";
+        return "redirect:/policemen/main";
     }
 
     @GetMapping("/policemen/delete/{id}")
+    @PreAuthorize("hasAuthority('app_admin')")
     public String delete(@PathVariable("id") Long id, Model model) {
         PolicemanDto policemanDto = policemanService.findOne(id);
         policemanService.delete(policemanDto);
         log.info("DELETE one policeman");
-        return "redirect:/api/policemen/main";
+        return "redirect:/policemen/main";
     }
 
-    @GetMapping("/policemen/find")
-    public List<PolicemanDto> findByCriteria(@RequestParam(required = false)
-                                                     String rank,
-                                             @RequestParam(required = false)
-                                                     String name,
-                                             @RequestParam(required = false)
-                                                     String surname,
-                                             @RequestParam(required = false)
-                                                     String patronymic) {
-        List<PolicemanDto> response = policemanService.findByCriteria(rank, name, surname, patronymic);
-        log.info("GET all policemen by criteria: {}", response);
-        return response;
-    }
+//    @GetMapping("/policemen/find")
+//    public List<PolicemanDto> findByCriteria(@RequestParam(required = false)
+//                                                     String rank,
+//                                             @RequestParam(required = false)
+//                                                     String name,
+//                                             @RequestParam(required = false)
+//                                                     String surname,
+//                                             @RequestParam(required = false)
+//                                                     String patronymic) {
+//        List<PolicemanDto> response = policemanService.findByCriteria(rank, name, surname, patronymic);
+//        log.info("GET all policemen by criteria: {}", response);
+//        return response;
+//    }
 
     @GetMapping("/policemen/labQueries/1")
     public List<PolicemanDtoSpec> labQuery4_1(@RequestParam Long beginDriverYear,

@@ -10,7 +10,7 @@
 <header th:insert="/blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <H1 align="center"> Brand editing </H1>
-    <form method="post" action="/api/brands/edit">
+    <form method="post" action="/brands/edit">
         <fieldset>
             <input name = "id" placeholder="id" hidden="hidden" th:value="${brand.id}" class="form-control"/><br>
             <input name = "brandName" placeholder="brand name" th:value="${brand.brandName}" class="form-control"/><br>

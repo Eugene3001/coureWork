@@ -27,10 +27,10 @@
                 <td th:text="${el.colorId}"></td>
                 <td th:text="${el.colorName}"></td>
                 <td align="center">
-                    <a type="button" class="btn btn-dark" th:href="@{/api/colors/edit/__${el.colorId}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/colors/edit/__${el.colorId}__}">
                         <p>&#x270e; Edit</p>
                     </a>
-                    <a type="button" class="btn btn-dark" th:href="@{/api/colors/delete/__${el.colorId}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/colors/delete/__${el.colorId}__}">
                         <p>&#x232b; Delete</p>
                     </a>
                 </td>
@@ -38,8 +38,8 @@
             </tbody>
         </table>
     </div>
-    <a type="button" class="btn btn-primary" href="/api/colors/create">Create color</a>
-    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <a type="button" class="btn btn-primary" href="/colors/create">Create color</a>
+    <a type="button" class="btn btn-warning" href="/">Return</a>
 </div>
 <script>
     function tableSearch() {

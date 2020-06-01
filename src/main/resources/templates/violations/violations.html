@@ -30,10 +30,10 @@
                 <td th:text="${el.moneyPenalty}"></td>
                 <td th:text="${el.court}"></td>
                 <td>
-                    <a type="button" class="btn btn-dark" th:href="@{/api/violations/edit/__${el.violationNumber}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/violations/edit/__${el.violationNumber}__}">
                         <p>&#x270e; Edit</p>
                     </a>
-                    <a type="button" class="btn btn-dark" th:href="@{/api/violations/delete/__${el.violationNumber}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/violations/delete/__${el.violationNumber}__}">
                         <p>&#x232b; Delete</p>
                     </a>
                 </td>
@@ -41,8 +41,8 @@
             </tbody>
         </table>
     </div>
-    <a type="button" class="btn btn-primary" href="/api/violations/create">Create violation</a>
-    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <a type="button" class="btn btn-primary" href="/violations/create">Create violation</a>
+    <a type="button" class="btn btn-warning" href="/">Return</a>
 </div>
 <script>
     function tableSearch() {

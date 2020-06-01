@@ -11,7 +11,7 @@
 
 <div class="container mt-5 mb-5">
     <H1 align="center"> Story creating </H1>
-    <form method="post" th:object="${story}" action="/api/stories/create" id="create-form">
+    <form method="post" th:object="${story}" action="/stories/create" id="create-form">
         <fieldset>
             <select class="form-control" th:field="*{vehicleIdNumber}">
                 <option th:each="automobile : ${automobileList}" th:value="${automobile.vehicleIdNumber}" th:text="${automobile.vehicleIdNumber}"></option>

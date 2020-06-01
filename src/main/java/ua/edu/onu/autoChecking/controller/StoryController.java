@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/api")
 public class StoryController {
     private StoryService storyService;
     private AutomobileService automobileService;
@@ -35,6 +35,7 @@ public class StoryController {
     }
 
     @GetMapping("/stories/main")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String list(Model model) {
         List<StoryDto> list = storyService.list();
         log.info("GET all stories: {}", list);
@@ -44,6 +45,7 @@ public class StoryController {
     }
 
     @GetMapping("/stories/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String createPage(Model model) {
         StoryDto storyDto = new StoryDto();
         List<AutomobileDto> automobileDtoList = automobileService.list();
@@ -56,13 +58,15 @@ public class StoryController {
     }
 
     @PostMapping("/stories/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String create(@ModelAttribute StoryDto request, Model model) {
         StoryDto response = storyService.create(request);
         log.info("CREATE one story: {}", response);
-        return "redirect:/api/stories/main";
+        return "redirect:/stories/main";
     }
 
     @GetMapping("/stories/edit/{autoId}/{driverId}/{startDate}")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String editPage(@PathVariable("autoId")Long autoId,
                            @PathVariable("driverId") Long driverId,
                            @PathVariable("startDate") String startDate,
@@ -76,13 +80,15 @@ public class StoryController {
     }
 
     @PostMapping("/stories/edit")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String update(@ModelAttribute StoryDto storyDto, Model model) {
         storyService.update(storyDto);
         log.info("UPDATE one story");
-        return "redirect:/api/stories/main";
+        return "redirect:/stories/main";
     }
 
     @GetMapping("/stories/delete/{autoId}/{driverId}/{startDate}")
+    @PreAuthorize("hasAuthority('app_admin')")
     public String delete(@PathVariable("autoId")Long autoId,
                        @PathVariable("driverId") Long driverId,
                        @PathVariable("startDate") String startDate,
@@ -92,7 +98,7 @@ public class StoryController {
         ));
         storyService.delete(storyDto);
         log.info("DELETE one story");
-        return "redirect:/api/stories/main";
+        return "redirect:/stories/main";
     }
 
 //    @GetMapping("/stories/byDate")
@@ -108,17 +114,17 @@ public class StoryController {
 //        return response;
 //    }
 
-    @GetMapping("/stories/find")
-    public List<StoryDto> findByCriteria(@RequestParam(required = false)
-                                                 String passport,
-                                         @RequestParam(required = false)
-                                                 String isOwner,
-                                         @RequestParam(required = false)
-                                                 String isNotOwner) {
-        List<StoryDto> response = storyService.findByCriteria(passport, isOwner, isNotOwner);
-        log.info("GET all stories by criteria {}", response);
-        return response;
-    }
+//    @GetMapping("/stories/find")
+//    public List<StoryDto> findByCriteria(@RequestParam(required = false)
+//                                                 String passport,
+//                                         @RequestParam(required = false)
+//                                                 String isOwner,
+//                                         @RequestParam(required = false)
+//                                                 String isNotOwner) {
+//        List<StoryDto> response = storyService.findByCriteria(passport, isOwner, isNotOwner);
+//        log.info("GET all stories by criteria {}", response);
+//        return response;
+//    }
 
 //    @GetMapping("/stories/labQueries/1")
 //    public List<StoryDto> selectByPeriodAndRegistrationNumber(@RequestParam String registrationNumber,

@@ -2,12 +2,10 @@ package ua.edu.onu.autoChecking.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.edu.onu.autoChecking.dao.repositories.ModelRepository;
 import ua.edu.onu.autoChecking.dto.AutomobileDto;
 import ua.edu.onu.autoChecking.dto.ColorDto;
 import ua.edu.onu.autoChecking.dto.ModelDto;
@@ -15,7 +13,6 @@ import ua.edu.onu.autoChecking.service.AutomobileService;
 import ua.edu.onu.autoChecking.service.ColorService;
 import ua.edu.onu.autoChecking.service.ModelService;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -33,6 +30,7 @@ public class AutomobileController {
     }
 
     @GetMapping("/autos/main")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String list(Model model) {
         List<AutomobileDto> list = automobileService.list();
         log.info("GET all cars: {}", list);
@@ -43,6 +41,7 @@ public class AutomobileController {
     }
 
     @GetMapping("/autos/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String createPage(Model model) {
         AutomobileDto automobile = new AutomobileDto();
         List<ModelDto> modelDtoList = modelService.list();
@@ -55,6 +54,7 @@ public class AutomobileController {
     }
 
     @PostMapping("/autos/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String create(@ModelAttribute AutomobileDto request, Model model) {
         AutomobileDto response = automobileService.create(request);
         log.info("CREATE one car: {}", response);
@@ -62,6 +62,7 @@ public class AutomobileController {
     }
 
     @GetMapping("/autos/edit/{autoId}")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String editPage(@PathVariable("autoId") Long autoId, Model model) {
         AutomobileDto automobile = automobileService.findOne(autoId);
         List<ModelDto> modelDtoList = modelService.list();
@@ -74,6 +75,7 @@ public class AutomobileController {
     }
 
     @PostMapping("/autos/edit")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_policeman')")
     public String update(@ModelAttribute AutomobileDto request, Model model) {
         automobileService.update(request);
         log.info("UPDATE one car");
@@ -81,6 +83,7 @@ public class AutomobileController {
     }
 
     @GetMapping("/autos/delete/{autoId}")
+    @PreAuthorize("hasAuthority('app_admin')")
     public String delete(@PathVariable("autoId") Long autoId, Model model) {
         AutomobileDto automobileDto = automobileService.findOne(autoId);
         automobileService.delete(automobileDto);
@@ -88,12 +91,12 @@ public class AutomobileController {
         return "redirect:/autos/main";
     }
 
-    @GetMapping("/autos/sortByDate")
-    public List<AutomobileDto> registrationDateSortedList() {
-        List<AutomobileDto> list = automobileService.registrationDateSortedList();
-        log.info("GET all cars asc (registration date): {}", list);
-        return list;
-    }
+//    @GetMapping("/autos/sortByDate")
+//    public List<AutomobileDto> registrationDateSortedList() {
+//        List<AutomobileDto> list = automobileService.registrationDateSortedList();
+//        log.info("GET all cars asc (registration date): {}", list);
+//        return list;
+//    }
 
 //    @GetMapping("/autos/find/{brandName}")
 //    public String findByCriteria(@PathVariable String modelName,

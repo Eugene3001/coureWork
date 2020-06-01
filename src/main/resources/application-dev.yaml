@@ -1,8 +1,9 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/autic
-    username: postgres
-    password: 123
+    username: app_admin
+    password: 1827
+
   jpa:
     open-in-view: true
     generate-ddl: false

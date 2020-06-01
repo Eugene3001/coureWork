@@ -43,10 +43,10 @@
                 <td th:text="${el.surname}"></td>
                 <td th:text="${el.patronymic}"></td>
                 <td>
-                    <a type="button" class="btn btn-dark" th:href="@{/api/drivers/edit/__${el.driverId}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/drivers/edit/__${el.driverId}__}">
                         <p>&#x270e; Edit</p>
                     </a>
-                    <a type="button" class="btn btn-dark" th:href="@{/api/drivers/delete/__${el.driverId}__}">
+                    <a type="button" class="btn btn-dark" th:href="@{/drivers/delete/__${el.driverId}__}">
                         <p>&#x232b; Delete</p>
                     </a>
                 </td>
@@ -54,8 +54,8 @@
             </tbody>
         </table>
     </div>
-    <a type="button" class="btn btn-primary" href="/api/drivers/create">Create driver</a>
-    <a type="button" class="btn btn-warning" href="/api">Return</a>
+    <a type="button" class="btn btn-primary" href="/drivers/create">Create driver</a>
+    <a type="button" class="btn btn-warning" href="/">Return</a>
 </div>
 <script>
     function tableSearch() {

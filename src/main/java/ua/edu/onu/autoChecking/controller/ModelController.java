@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/api")
 public class ModelController {
     private ModelService modelService;
     private BrandService brandService;
@@ -29,6 +29,7 @@ public class ModelController {
     }
 
     @GetMapping("/models/main")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_user', 'app_policeman')")
     public String list(Model model) {
         List<ModelDto> list = modelService.list();
         log.info("GET all models: {}", list);
@@ -38,6 +39,7 @@ public class ModelController {
     }
 
     @GetMapping("/models/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_user', 'app_policeman')")
     public String createPage(Model model) {
         ModelDto modelDto = new ModelDto();
         List<BrandDto> brandDtoList = brandService.list();
@@ -48,38 +50,40 @@ public class ModelController {
     }
 
     @PostMapping("/models/create")
+    @PreAuthorize("hasAnyAuthority('app_admin', 'app_user', 'app_policeman')")
     public String create(@ModelAttribute ModelDto request, Model model) {
         ModelDto response = modelService.create(request);
         log.info("CREATE one model: {}", response);
-        return "redirect:/api/models/main";
+        return "redirect:/models/main";
     }
 
     @GetMapping("/models/delete/{modelId}")
+    @PreAuthorize("hasAuthority('app_admin')")
     public String delete(@PathVariable("modelId") Long modelId, Model model) {
         ModelDto modelDto = modelService.findOne(modelId);
         modelService.delete(modelDto);
         log.info("DELETE one model");
-        return "redirect:/api/models/main";
+        return "redirect:/models/main";
     }
 
-    @GetMapping("/models/byMYear")
-    public List<ModelDto> manufactureYearSortedList() {
-        List<ModelDto> response = modelService.manufactureYearSortedList();
-        log.info("GET all models asc (manufacture year): {}", response);
-        return response;
-    }
+//    @GetMapping("/models/byMYear")
+//    public List<ModelDto> manufactureYearSortedList() {
+//        List<ModelDto> response = modelService.manufactureYearSortedList();
+//        log.info("GET all models asc (manufacture year): {}", response);
+//        return response;
+//    }
 
-    @GetMapping("/models/find")
-    public List<ModelDto> findByCriteria(@RequestParam(required = false)
-                                                 String bodyType,
-                                         @RequestParam(required = false)
-                                         @DateTimeFormat(pattern = "dd-MM-yyyy")
-                                                 Date begin,
-                                         @RequestParam(required = false)
-                                         @DateTimeFormat(pattern = "dd-MM-yyyy")
-                                                 Date end) {
-        List<ModelDto> response = modelService.findByCriteria(bodyType, begin, end);
-        log.info("GET all models by criteria: {}", response);
-        return response;
-    }
+//    @GetMapping("/models/find")
+//    public List<ModelDto> findByCriteria(@RequestParam(required = false)
+//                                                 String bodyType,
+//                                         @RequestParam(required = false)
+//                                         @DateTimeFormat(pattern = "dd-MM-yyyy")
+//                                                 Date begin,
+//                                         @RequestParam(required = false)
+//                                         @DateTimeFormat(pattern = "dd-MM-yyyy")
+//                                                 Date end) {
+//        List<ModelDto> response = modelService.findByCriteria(bodyType, begin, end);
+//        log.info("GET all models by criteria: {}", response);
+//        return response;
+//    }
 }

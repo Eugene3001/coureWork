@@ -10,7 +10,7 @@
 <header th:insert="/blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <H1 align="center"> Protocol editing </H1>
-    <form method="post" action="/api/protocols/edit">
+    <form method="post" action="/protocols/edit">
         <fieldset>
             <input name = "id" hidden="hidden" th:value="${protocol.id}" placeholder="id"  class="form-control"/><br>
 

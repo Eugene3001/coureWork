@@ -16,43 +16,14 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/admin")
-    public String adminPage(Model model, Principal principal) {
-
-        User loginedUser = (User) ((Authentication) principal).getPrincipal();
-
-        String userInfo = WebUtils.toString(loginedUser);
-        model.addAttribute("userInfo", userInfo);
-
-        return "securityLessonsPages/adminPage";
-    }
-
     @GetMapping("/login")
     public String loginPage(Model model) {
-
-        return "securityLessonsPages/loginPage";
+        return "login";
     }
 
     @GetMapping("/logoutSuccessful")
     public String logoutSuccessfulPage(Model model) {
-        model.addAttribute("title", "Logout");
-        return "securityLessonsPages/logoutSuccessfulPage";
-    }
-
-    @GetMapping("/userInfo")
-    public String userInfo(Model model, Principal principal) {
-
-        // After user login successfully.
-        String userName = principal.getName();
-
-        System.out.println("User Name: " + userName);
-
-        User loginedUser = (User) ((Authentication) principal).getPrincipal();
-
-        String userInfo = WebUtils.toString(loginedUser);
-        model.addAttribute("userInfo", userInfo);
-
-        return "securityLessonsPages/userInfoPage";
+        return "logoutSuccessfulPage";
     }
 
     @GetMapping("/403")
@@ -71,6 +42,6 @@ public class MainController {
 
         }
 
-        return "securityLessonsPages/403Page";
+        return "403Page";
     }
 }
