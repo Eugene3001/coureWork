@@ -12,14 +12,14 @@
     <H1 align="center"> Color creating </H1>
     <form method="post" th:object="${model}" action="/models/create" id="create-form">
         <fieldset>
-            <input name = "modelName" placeholder="model name" class="form-control"/><br>
+            <input name = "modelName" required placeholder="model name" class="form-control"/><br>
 
             <select class="form-control" th:field="*{brandName}">
                 <option th:each="brand : ${brandList}" th:value="${brand.brandName}" th:text="${brand.brandName}"></option>
             </select><br>
 
-            <input name = "bodyType" placeholder="body type" class="form-control"/><br>
-            <input type="date" name = "manufYear" placeholder="manufacture year" class="form-control"/><br>
+            <input name = "bodyType" required pattern="wagon|hatchback|sedan|coupe|SUV|bus|van|sport" placeholder="body type" class="form-control"/><br>
+            <input type="date" name = "manufYear" required placeholder="manufacture year" class="form-control"/><br>
             <button type="submit" class="btn btn-success">Create!</button>
         </fieldset>
     </form>

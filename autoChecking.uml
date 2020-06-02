@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ua.edu.onu.autoChecking</OriginalElement>
+  <nodes>
+    <node x="4542.109327732369" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.ModelRepository</node>
+    <node x="2306.5048611111115" y="2858.0">ua.edu.onu.autoChecking.service.DriverService</node>
+    <node x="2031.0" y="3471.0">ua.edu.onu.autoChecking.dto.StoryDto.StoryDtoBuilder</node>
+    <node x="2837.0" y="3575.0">ua.edu.onu.autoChecking.controller.MainController</node>
+    <node x="1256.7222222222226" y="2810.0">ua.edu.onu.autoChecking.service.ProtocolService</node>
+    <node x="1000.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Protocol.ProtocolBuilder</node>
+    <node x="6556.432169446323" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.AppUserRepository</node>
+    <node x="731.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Automobile.AutomobileBuilder</node>
+    <node x="6907.098836112989" y="1826.0">ua.edu.onu.autoChecking.dao.entities.AppRole</node>
+    <node x="5516.0" y="3471.0">ua.edu.onu.autoChecking.dto.ColorDto.ColorDtoBuilder</node>
+    <node x="4632.189951198096" y="164.0">ua.edu.onu.autoChecking.dao.entities.Model</node>
+    <node x="5702.532808340954" y="0.0">ua.edu.onu.autoChecking.dao.entities.Brand</node>
+    <node x="3814.525994399035" y="858.0">ua.edu.onu.autoChecking.dao.entities.Story</node>
+    <node x="495.0" y="3471.0">ua.edu.onu.autoChecking.dto.DriverDto.DriverDtoBuilder</node>
+    <node x="4775.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Color.ColorBuilder</node>
+    <node x="0.0" y="3298.0">ua.edu.onu.autoChecking.controller.ViolationController</node>
+    <node x="2706.150994399035" y="3298.0">ua.edu.onu.autoChecking.controller.DriverController</node>
+    <node x="4534.0" y="3471.0">ua.edu.onu.autoChecking.dto.ViolationDto.ViolationDtoBuilder</node>
+    <node x="6616.382169446322" y="2870.0">ua.edu.onu.autoChecking.service.UserDetailsServiceImpl</node>
+    <node x="440.93341259780846" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.ViolationRepository</node>
+    <node x="6014.694336650523" y="3298.0">ua.edu.onu.autoChecking.controller.BrandController</node>
+    <node x="3568.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Story.StoryBuilder</node>
+    <node x="216.93341259780846" y="2098.0">ua.edu.onu.autoChecking.dto.ViolationDto</node>
+    <node x="4049.0" y="3471.0">ua.edu.onu.autoChecking.dto.ModelDto.ModelDtoBuilder</node>
+    <node x="5673.446827732369" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.BrandRepository</node>
+    <node x="648.9803747132783" y="1176.0">ua.edu.onu.autoChecking.dao.entities.Violation</node>
+    <node x="1770.0" y="3471.0">ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec.PolicemanDtoSpecBuilder</node>
+    <node x="0.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Driver.DriverBuilder</node>
+    <node x="5472.446827732369" y="2122.0">ua.edu.onu.autoChecking.dto.ColorDto</node>
+    <node x="4831.109327732369" y="3274.0">ua.edu.onu.autoChecking.controller.AutomobileController</node>
+    <node x="4994.430799960333" y="907.0">ua.edu.onu.autoChecking.dao.repositories.spec.AutomobileSpec</node>
+    <node x="3724.525994399035" y="1225.0">ua.edu.onu.autoChecking.dao.repositories.StoryRepository</node>
+    <node x="4974.782808340954" y="200.0">ua.edu.onu.autoChecking.dao.entities.Color</node>
+    <node x="3820.0" y="3471.0">ua.edu.onu.autoChecking.dto.PolicemanDto.PolicemanDtoBuilder</node>
+    <node x="1414.7739903301772" y="1494.0">ua.edu.onu.autoChecking.dao.entities.Protocol</node>
+    <node x="3486.1840277777774" y="522.0">ua.edu.onu.autoChecking.dao.ids.StoryId</node>
+    <node x="4730.109327732369" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.ColorRepository</node>
+    <node x="140.93341259780846" y="2858.0">ua.edu.onu.autoChecking.service.ViolationService</node>
+    <node x="2910.517180268833" y="2014.0">ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec</node>
+    <node x="766.3278570422526" y="2086.0">ua.edu.onu.autoChecking.dto.PolicemanDto</node>
+    <node x="4074.109327732369" y="2134.0">ua.edu.onu.autoChecking.exception.NotFoundException</node>
+    <node x="2861.0" y="3471.0">ua.edu.onu.autoChecking.utils.WebUtils</node>
+    <node x="3473.525994399035" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository</node>
+    <node x="4290.109327732369" y="2062.0">ua.edu.onu.autoChecking.dto.AutomobileDto</node>
+    <node x="1557.4611111111108" y="3298.0">ua.edu.onu.autoChecking.controller.PolicemanController</node>
+    <node x="4848.609327732369" y="547.0">ua.edu.onu.autoChecking.dao.repositories.spec.ModelSpec</node>
+    <node x="3913.525994399035" y="1225.0">ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec</node>
+    <node x="1768.7215277777777" y="2858.0">ua.edu.onu.autoChecking.service.PolicemanService</node>
+    <node x="6243.382169446322" y="2834.0">ua.edu.onu.autoChecking.service.AppUserService</node>
+    <node x="5276.946827732369" y="3286.0">ua.edu.onu.autoChecking.controller.ModelController</node>
+    <node x="2014.390577732369" y="3250.0">ua.edu.onu.autoChecking.controller.ProtocolController</node>
+    <node x="3336.4425509362377" y="3274.0">ua.edu.onu.autoChecking.controller.SpecialController</node>
+    <node x="1830.107504505788" y="1778.0">ua.edu.onu.autoChecking.dao.entities.Policeman</node>
+    <node x="958.3278570422526" y="2050.0">ua.edu.onu.autoChecking.dto.ProtocolDto</node>
+    <node x="5999.548836112989" y="2122.0">ua.edu.onu.autoChecking.dto.BrandDto</node>
+    <node x="6605.882169446322" y="3298.0">ua.edu.onu.autoChecking.config.WebSecurityConfig</node>
+    <node x="6206.548836112989" y="2086.0">ua.edu.onu.autoChecking.dto.AppUserDto</node>
+    <node x="5405.446827732369" y="2858.0">ua.edu.onu.autoChecking.service.ColorService</node>
+    <node x="130.43341259780846" y="1579.0">ua.edu.onu.autoChecking.dao.repositories.spec.ViolationSpec</node>
+    <node x="3006.4425509362377" y="3274.0">ua.edu.onu.autoChecking.controller.StoryController</node>
+    <node x="258.0" y="3471.0">ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec.DriverDtoSpecBuilder</node>
+    <node x="5195.234327732369" y="2086.0">ua.edu.onu.autoChecking.dto.ModelDto</node>
+    <node x="5929.0" y="3471.0">ua.edu.onu.autoChecking.utils.EncryptedPasswordUtils</node>
+    <node x="5569.196827732369" y="3298.0">ua.edu.onu.autoChecking.controller.ColorController</node>
+    <node x="3242.525994399035" y="2062.0">ua.edu.onu.autoChecking.dto.StoryDto</node>
+    <node x="2280.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Model.ModelBuilder</node>
+    <node x="5301.0" y="3471.0">ua.edu.onu.autoChecking.dto.BrandDto.BrandDtoBuilder</node>
+    <node x="2579.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Policeman.PolicemanBuilder</node>
+    <node x="1614.4880136021666" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository</node>
+    <node x="3310.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Violation.ViolationBuilder</node>
+    <node x="4902.609327732369" y="2846.0">ua.edu.onu.autoChecking.service.ModelService</node>
+    <node x="6952.382169446322" y="2870.0">ua.edu.onu.autoChecking.service.AppRoleService</node>
+    <node x="6784.598836112989" y="2110.0">ua.edu.onu.autoChecking.dao.entities.UserRole</node>
+    <node x="1190.3278570422526" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.spec.ProtocolSpec</node>
+    <node x="3718.6005843149796" y="450.0">ua.edu.onu.autoChecking.dao.entities.Automobile</node>
+    <node x="2397.3213469354996" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.DriverRepository</node>
+    <node x="2687.273990330177" y="2014.0">ua.edu.onu.autoChecking.dto.DriverDto</node>
+    <node x="1834.4880136021663" y="2062.0">ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec</node>
+    <node x="1355.3278570422526" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.ProtocolRepository</node>
+    <node x="5726.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.AppRole.AppRoleBuilder</node>
+    <node x="1501.0" y="3471.0">ua.edu.onu.autoChecking.dto.AutomobileDto.AutomobileDtoBuilder</node>
+    <node x="2248.3213469354996" y="1579.0">ua.edu.onu.autoChecking.dao.repositories.spec.DriverSpec</node>
+    <node x="5844.86100331719" y="2858.0">ua.edu.onu.autoChecking.service.BrandService</node>
+    <node x="2044.4880136021663" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.spec.PolicemanSpec</node>
+    <node x="3042.0" y="3471.0">ua.edu.onu.autoChecking.dto.AppUserDto.AppUserDtoBuilder</node>
+    <node x="4212.128046436192" y="2822.0">ua.edu.onu.autoChecking.service.AutomobileService</node>
+    <node x="4266.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.AppUser.AppUserBuilder</node>
+    <node x="6972.598836112989" y="2135.0">ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository</node>
+    <node x="5074.0" y="3471.0">ua.edu.onu.autoChecking.dao.entities.Brand.BrandBuilder</node>
+    <node x="2258.6784897926427" y="1080.0">ua.edu.onu.autoChecking.dao.entities.Driver</node>
+    <node x="6588.098836112989" y="1802.0">ua.edu.onu.autoChecking.dao.entities.AppUser</node>
+    <node x="1252.0" y="3471.0">ua.edu.onu.autoChecking.dto.ProtocolDto.ProtocolDtoBuilder</node>
+    <node x="3513.623240874894" y="2834.0">ua.edu.onu.autoChecking.service.StoryService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ua.edu.onu.autoChecking.service.AppUserService" target="ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository">
+      <point x="117.66666666666663" y="-76.0" />
+      <point x="6537.548836112989" y="2750.0" />
+      <point x="6987.932169446323" y="2750.0" />
+      <point x="-76.66666666666663" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.entities.Violation">
+      <point x="-95.5" y="-100.0" />
+      <point x="1352.2222222222226" y="2650.0" />
+      <point x="1179.8278570422526" y="2650.0" />
+      <point x="1179.8278570422526" y="1474.0" />
+      <point x="771.6053747132783" y="1474.0" />
+      <point x="13.625" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Protocol" target="ua.edu.onu.autoChecking.dao.entities.Driver">
+      <point x="53.0" y="-112.0" />
+      <point x="1573.7739903301772" y="1444.0" />
+      <point x="2274.249918364071" y="1444.0" />
+      <point x="-93.42857142857156" y="172.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.dto.ViolationDto">
+      <point x="-106.5625" y="-88.0" />
+      <point x="2062.828077732369" y="3200.0" />
+      <point x="595.1834125978085" y="3200.0" />
+      <point x="595.1834125978085" y="2700.0" />
+      <point x="395.43341259780846" y="2700.0" />
+      <point x="76.5" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository">
+      <point x="74.27777777777737" y="-100.0" />
+      <point x="1522.0" y="2580.0" />
+      <point x="1689.4880136021666" y="2580.0" />
+      <point x="-25.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ModelService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="-150.29999999999995" y="-64.0" />
+      <point x="4919.309327732369" y="2450.0" />
+      <point x="4193.709327732368" y="2450.0" />
+      <point x="27.59999999999991" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.repositories.DriverRepository">
+      <point x="95.5" y="-100.0" />
+      <point x="1543.2222222222226" y="2600.0" />
+      <point x="2411.9880136021666" y="2600.0" />
+      <point x="-73.33333333333303" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.AutomobileController" target="ua.edu.onu.autoChecking.dto.ColorDto">
+      <point x="77.5" y="-64.0" />
+      <point x="5063.609327732369" y="3170.0" />
+      <point x="5372.946827732369" y="3170.0" />
+      <point x="5372.946827732369" y="2770.0" />
+      <point x="5493.571827732369" y="2770.0" />
+      <point x="-63.375" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AutomobileService" target="ua.edu.onu.autoChecking.dto.AutomobileDto">
+      <point x="18.583333333333485" y="-88.0" />
+      <point x="4453.711379769526" y="2500.0" />
+      <point x="4391.609327732369" y="2500.0" />
+      <point x="-14.5" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ColorService" target="ua.edu.onu.autoChecking.dao.repositories.ColorRepository">
+      <point x="-44.85714285714312" y="-52.0" />
+      <point x="5517.589684875225" y="2380.0" />
+      <point x="4877.109327732369" y="2380.0" />
+      <point x="63.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ViolationService" target="ua.edu.onu.autoChecking.dao.repositories.spec.ViolationSpec">
+      <point x="-73.5" y="-52.0" />
+      <point x="263.43341259780846" y="2760.0" />
+      <point x="206.43341259780846" y="2760.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ColorService" target="ua.edu.onu.autoChecking.dao.entities.Color">
+      <point x="89.71428571428578" y="-52.0" />
+      <point x="5651.946827732369" y="370.0" />
+      <point x="5169.782808340954" y="370.0" />
+      <point x="65.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository">
+      <point x="-56.25" y="-76.0" />
+      <point x="3637.373240874894" y="2580.0" />
+      <point x="3594.859327732368" y="2580.0" />
+      <point x="17.33333333333303" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.ModelRepository" target="ua.edu.onu.autoChecking.dao.entities.Model">
+      <point x="0.0" y="-27.0" />
+      <point x="4626.109327732369" y="400.0" />
+      <point x="4740.52328453143" y="400.0" />
+      <point x="-21.666666666666515" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.PolicemanController" target="ua.edu.onu.autoChecking.dto.PolicemanDto">
+      <point x="-109.5" y="-40.0" />
+      <point x="1593.9611111111108" y="3230.0" />
+      <point x="703.916666666667" y="3230.0" />
+      <point x="703.916666666667" y="2710.0" />
+      <point x="787.8278570422526" y="2710.0" />
+      <point x="-64.5" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository" target="ua.edu.onu.autoChecking.dao.entities.Policeman">
+      <point x="0.0" y="-27.0" />
+      <point x="1714.4880136021666" y="1994.0" />
+      <point x="1920.940837839121" y="1994.0" />
+      <point x="-18.16666666666697" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.UserRole" target="ua.edu.onu.autoChecking.dao.entities.AppRole">
+      <point x="42.0" y="-52.0" />
+      <point x="6910.598836112989" y="1994.0" />
+      <point x="6947.348836112989" y="1994.0" />
+      <point x="-40.25" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Violation" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="95.375" y="76.0" />
+      <point x="853.3553747132783" y="1444.0" />
+      <point x="1467.7739903301772" y="1444.0" />
+      <point x="-53.0" y="-112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.dto.StoryDto">
+      <point x="-28.181818181818016" y="-64.0" />
+      <point x="3133.2607327544197" y="3100.0" />
+      <point x="3289.775994399035" y="3100.0" />
+      <point x="3289.775994399035" y="2650.0" />
+      <point x="3268.900994399035" y="2650.0" />
+      <point x="-79.125" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.PolicemanService" target="ua.edu.onu.autoChecking.dao.repositories.spec.PolicemanSpec">
+      <point x="62.69999999999982" y="-52.0" />
+      <point x="2040.4215277777776" y="2570.0" />
+      <point x="2120.4880136021666" y="2570.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.ProtocolRepository" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="0.0" y="-27.0" />
+      <point x="1451.3278570422526" y="1758.0" />
+      <point x="1503.1073236635102" y="1758.0" />
+      <point x="-17.66666666666697" y="112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.DriverController" target="ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec">
+      <point x="87.75" y="-40.0" />
+      <point x="2910.900994399035" y="3130.0" />
+      <point x="2931.954680268833" y="3130.0" />
+      <point x="2931.954680268833" y="2700.0" />
+      <point x="3033.642180268833" y="2700.0" />
+      <point x="24.625" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.dto.AutomobileDto">
+      <point x="106.5625" y="-88.0" />
+      <point x="2275.953077732369" y="3140.0" />
+      <point x="3940.0815742082277" y="3140.0" />
+      <point x="3940.0815742082277" y="2780.0" />
+      <point x="4304.609327732369" y="2780.0" />
+      <point x="-101.5" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ModelController" target="ua.edu.onu.autoChecking.dto.ModelDto">
+      <point x="-33.71428571428578" y="-52.0" />
+      <point x="5361.232542018082" y="3180.0" />
+      <point x="5383.946827732369" y="3180.0" />
+      <point x="5383.946827732369" y="2760.0" />
+      <point x="5319.134327732369" y="2760.0" />
+      <point x="35.40000000000009" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AutomobileService" target="ua.edu.onu.autoChecking.dao.repositories.ColorRepository">
+      <point x="167.25" y="-88.0" />
+      <point x="4602.378046436192" y="2780.0" />
+      <point x="4751.109327732369" y="2780.0" />
+      <point x="-63.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Story" target="ua.edu.onu.autoChecking.dao.entities.Driver">
+      <point x="-53.0" y="76.0" />
+      <point x="3867.525994399035" y="1040.0" />
+      <point x="2422.1784897926427" y="1040.0" />
+      <point x="54.5" y="-172.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.PolicemanService" target="ua.edu.onu.autoChecking.dao.entities.Policeman">
+      <point x="104.5" y="-52.0" />
+      <point x="2082.2215277777777" y="2580.0" />
+      <point x="2206.9880136021666" y="2580.0" />
+      <point x="2206.9880136021666" y="1984.0" />
+      <point x="1993.607504505788" y="1984.0" />
+      <point x="54.5" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.AutomobileSpec" target="ua.edu.onu.autoChecking.dao.entities.Color">
+      <point x="40.0" y="-27.0" />
+      <point x="5114.430799960333" y="430.0" />
+      <point x="5126.44947500762" y="430.0" />
+      <point x="21.666666666666515" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.service.AutomobileService">
+      <point x="145.3125" y="-88.0" />
+      <point x="2314.703077732369" y="3180.0" />
+      <point x="4295.753046436192" y="3180.0" />
+      <point x="-139.375" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.DriverRepository" target="ua.edu.onu.autoChecking.dao.entities.Driver">
+      <point x="0.0" y="-27.0" />
+      <point x="2485.3213469354996" y="1474.0" />
+      <point x="2429.9642040783574" y="1474.0" />
+      <point x="62.285714285714675" y="172.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Model" target="ua.edu.onu.autoChecking.dao.entities.Brand">
+      <point x="-65.0" y="-88.0" />
+      <point x="4697.189951198096" y="124.0" />
+      <point x="5721.1328083409535" y="124.0" />
+      <point x="-74.40000000000009" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.BrandRepository" target="ua.edu.onu.autoChecking.dao.entities.Brand">
+      <point x="0.0" y="-27.0" />
+      <point x="5757.446827732369" y="144.0" />
+      <point x="5795.532808340954" y="144.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.entities.Driver">
+      <point x="-33.75" y="-76.0" />
+      <point x="3659.873240874894" y="2700.0" />
+      <point x="3692.025994399035" y="2700.0" />
+      <point x="3692.025994399035" y="1464.0" />
+      <point x="2461.1070612212143" y="1464.0" />
+      <point x="93.42857142857156" y="172.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.dao.ids.StoryId">
+      <point x="-56.36363636363603" y="-64.0" />
+      <point x="3105.0789145726017" y="3130.0" />
+      <point x="3118.017180268833" y="3130.0" />
+      <point x="3118.017180268833" y="808.0" />
+      <point x="3502.1840277777774" y="808.0" />
+      <point x="-64.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.SpecialController" target="ua.edu.onu.autoChecking.dto.DriverDto">
+      <point x="0.0" y="-64.0" />
+      <point x="3491.4425509362377" y="3030.0" />
+      <point x="3271.338494399035" y="3030.0" />
+      <point x="3271.338494399035" y="2660.0" />
+      <point x="2867.85732366351" y="2660.0" />
+      <point x="82.08333333333348" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="146.25" y="-76.0" />
+      <point x="3839.873240874894" y="2720.0" />
+      <point x="4063.609327732369" y="2720.0" />
+      <point x="4063.609327732369" y="748.0" />
+      <point x="3860.378362092758" y="748.0" />
+      <point x="25.77777777777783" y="124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.BrandService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="-141.42857142857156" y="-52.0" />
+      <point x="5868.432431888618" y="2370.0" />
+      <point x="4230.509327732369" y="2370.0" />
+      <point x="64.40000000000009" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.AutomobileController" target="ua.edu.onu.autoChecking.dto.ModelDto">
+      <point x="46.5" y="-64.0" />
+      <point x="5032.609327732369" y="3160.0" />
+      <point x="5302.634327732369" y="3160.0" />
+      <point x="5302.634327732369" y="2770.0" />
+      <point x="5283.734327732369" y="2770.0" />
+      <point x="0.0" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.repositories.ProtocolRepository">
+      <point x="-10.611111111111313" y="-100.0" />
+      <point x="1437.1111111111113" y="2540.0" />
+      <point x="1499.3278570422526" y="2540.0" />
+      <point x="48.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.service.PolicemanService">
+      <point x="29.0625" y="-88.0" />
+      <point x="2198.453077732369" y="3130.0" />
+      <point x="2012.5548611111108" y="3130.0" />
+      <point x="34.83333333333303" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ColorController" target="ua.edu.onu.autoChecking.dto.ColorDto">
+      <point x="74.0" y="-40.0" />
+      <point x="5754.196827732369" y="3210.0" />
+      <point x="5757.321827732369" y="3210.0" />
+      <point x="5757.321827732369" y="2740.0" />
+      <point x="5620.321827732369" y="2740.0" />
+      <point x="63.375" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.dto.DriverDto">
+      <point x="48.4375" y="-88.0" />
+      <point x="2217.828077732369" y="3110.0" />
+      <point x="2296.0048611111115" y="3110.0" />
+      <point x="2296.0048611111115" y="2640.0" />
+      <point x="2703.6906569968432" y="2640.0" />
+      <point x="-82.08333333333348" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Automobile" target="ua.edu.onu.autoChecking.dao.entities.Story">
+      <point x="0.0" y="124.0" />
+      <point x="3834.6005843149796" y="758.0" />
+      <point x="3991.192661065702" y="758.0" />
+      <point x="70.66666666666697" y="-76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="168.75" y="-76.0" />
+      <point x="3862.373240874894" y="2770.0" />
+      <point x="4156.909327732369" y="2770.0" />
+      <point x="-9.199999999999818" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.PolicemanService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="188.10000000000036" y="-52.0" />
+      <point x="2165.821527777778" y="2750.0" />
+      <point x="4120.109327732369" y="2750.0" />
+      <point x="-46.0" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.AutomobileController" target="ua.edu.onu.autoChecking.service.AutomobileService">
+      <point x="-139.5" y="-64.0" />
+      <point x="4846.609327732369" y="3220.0" />
+      <point x="4574.503046436192" y="3220.0" />
+      <point x="139.375" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Brand" target="ua.edu.onu.autoChecking.dao.entities.Model">
+      <point x="-37.200000000000045" y="52.0" />
+      <point x="5758.332808340954" y="134.0" />
+      <point x="4827.189951198096" y="134.0" />
+      <point x="65.0" y="-88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="0.0" y="-27.0" />
+      <point x="3577.525994399035" y="838.0" />
+      <point x="3783.045028759424" y="838.0" />
+      <point x="-51.55555555555566" y="124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.AutomobileSpec" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="-40.0" y="-27.0" />
+      <point x="5034.430799960333" y="718.0" />
+      <point x="3937.711695426091" y="718.0" />
+      <point x="103.11111111111131" y="124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AutomobileService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="-130.08333333333303" y="-88.0" />
+      <point x="4305.044713102859" y="2540.0" />
+      <point x="4175.309327732369" y="2540.0" />
+      <point x="9.199999999999818" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.SpecialController" target="ua.edu.onu.autoChecking.dto.AutomobileDto">
+      <point x="137.77777777777783" y="-64.0" />
+      <point x="3629.2203287140155" y="3230.0" />
+      <point x="4694.334217602904" y="3230.0" />
+      <point x="4694.334217602904" y="2480.0" />
+      <point x="4449.609327732369" y="2480.0" />
+      <point x="43.5" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.PolicemanController" target="ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec">
+      <point x="-36.5" y="-40.0" />
+      <point x="1666.9611111111108" y="2590.0" />
+      <point x="1866.1546802688333" y="2590.0" />
+      <point x="-63.33333333333303" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.AppUserRepository" target="ua.edu.onu.autoChecking.dao.entities.AppUser">
+      <point x="0.0" y="-27.0" />
+      <point x="6648.432169446323" y="1994.0" />
+      <point x="6703.098836112989" y="1994.0" />
+      <point x="0.0" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Protocol" target="ua.edu.onu.autoChecking.dao.entities.Policeman">
+      <point x="88.33333333333303" y="112.0" />
+      <point x="1609.1073236635102" y="1748.0" />
+      <point x="1993.607504505788" y="1748.0" />
+      <point x="54.5" y="-88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.DriverController" target="ua.edu.onu.autoChecking.dto.DriverDto">
+      <point x="29.25" y="-40.0" />
+      <point x="2852.400994399035" y="3110.0" />
+      <point x="2700.6630136021663" y="3110.0" />
+      <point x="2700.6630136021663" y="2670.0" />
+      <point x="2802.1906569968432" y="2670.0" />
+      <point x="16.416666666666515" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.DriverService" target="ua.edu.onu.autoChecking.dto.DriverDto">
+      <point x="16.59999999999991" y="-52.0" />
+      <point x="2489.104861111111" y="2650.0" />
+      <point x="2736.523990330177" y="2650.0" />
+      <point x="-49.25" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.BrandController" target="ua.edu.onu.autoChecking.service.BrandService">
+      <point x="0.0" y="-40.0" />
+      <point x="6131.194336650523" y="3230.0" />
+      <point x="6133.61100331719" y="3230.0" />
+      <point x="123.75" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ModelController" target="ua.edu.onu.autoChecking.dto.BrandDto">
+      <point x="33.71428571428578" y="-52.0" />
+      <point x="5428.661113446655" y="3210.0" />
+      <point x="5746.321827732369" y="3210.0" />
+      <point x="5746.321827732369" y="2750.0" />
+      <point x="6021.423836112989" y="2750.0" />
+      <point x="-65.625" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.service.ProtocolService">
+      <point x="-29.0625" y="-88.0" />
+      <point x="2140.328077732369" y="3160.0" />
+      <point x="1352.2222222222226" y="3160.0" />
+      <point x="-95.5" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AutomobileService" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="-55.75" y="-88.0" />
+      <point x="4379.378046436192" y="2520.0" />
+      <point x="4279.609327732369" y="2520.0" />
+      <point x="4279.609327732369" y="728.0" />
+      <point x="3911.9339176483136" y="728.0" />
+      <point x="77.33333333333348" y="124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.UserDetailsServiceImpl" target="ua.edu.onu.autoChecking.dao.repositories.AppUserRepository">
+      <point x="-126.39999999999998" y="-40.0" />
+      <point x="6647.982169446323" y="2740.0" />
+      <point x="6671.432169446323" y="2740.0" />
+      <point x="23.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.dto.AutomobileDto">
+      <point x="84.54545454545496" y="-64.0" />
+      <point x="3245.9880054816927" y="3150.0" />
+      <point x="4135.903156565657" y="3150.0" />
+      <point x="4135.903156565657" y="2790.0" />
+      <point x="4333.609327732369" y="2790.0" />
+      <point x="-72.5" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Protocol" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="-17.66666666666697" y="-112.0" />
+      <point x="1503.1073236635102" y="1474.0" />
+      <point x="1506.7741711724548" y="1474.0" />
+      <point x="1506.7741711724548" y="818.0" />
+      <point x="3731.4894732038683" y="818.0" />
+      <point x="-103.11111111111131" y="124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.AutomobileController" target="ua.edu.onu.autoChecking.service.ModelService">
+      <point x="-15.5" y="-64.0" />
+      <point x="4970.609327732369" y="3180.0" />
+      <point x="4944.359327732369" y="3180.0" />
+      <point x="-125.25" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.dto.ProtocolDto">
+      <point x="-48.4375" y="-88.0" />
+      <point x="2120.953077732369" y="3170.0" />
+      <point x="921.541666666667" y="3170.0" />
+      <point x="921.541666666667" y="2720.0" />
+      <point x="1037.4528570422526" y="2720.0" />
+      <point x="-26.375" y="112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.entities.Story">
+      <point x="123.75" y="-76.0" />
+      <point x="3817.373240874894" y="2710.0" />
+      <point x="4044.025994399035" y="2710.0" />
+      <point x="4044.025994399035" y="1060.0" />
+      <point x="4008.859327732368" y="1060.0" />
+      <point x="88.33333333333303" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dto.ProtocolDto">
+      <point x="-116.72222222222263" y="-100.0" />
+      <point x="1331.0" y="2660.0" />
+      <point x="1142.9528570422526" y="2660.0" />
+      <point x="79.125" y="112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.ids.StoryId">
+      <point x="-11.25" y="-76.0" />
+      <point x="3682.373240874894" y="2710.0" />
+      <point x="3703.025994399035" y="2710.0" />
+      <point x="3703.025994399035" y="808.0" />
+      <point x="3534.1840277777774" y="808.0" />
+      <point x="-32.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.ModelSpec" target="ua.edu.onu.autoChecking.dao.entities.Model">
+      <point x="0.0" y="-27.0" />
+      <point x="4908.609327732369" y="400.0" />
+      <point x="4783.856617864763" y="400.0" />
+      <point x="21.666666666666515" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.repositories.StoryRepository">
+      <point x="56.25" y="-76.0" />
+      <point x="3749.873240874894" y="2680.0" />
+      <point x="3814.025994399035" y="2680.0" />
+      <point x="3814.025994399035" y="1474.0" />
+      <point x="3850.525994399035" y="1474.0" />
+      <point x="42.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ColorService" target="ua.edu.onu.autoChecking.dto.ColorDto">
+      <point x="0.0" y="-52.0" />
+      <point x="5562.446827732369" y="2770.0" />
+      <point x="5535.821827732369" y="2770.0" />
+      <point x="-21.125" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="10.611111111111313" y="-100.0" />
+      <point x="1458.333333333334" y="2550.0" />
+      <point x="1557.8278570422526" y="2550.0" />
+      <point x="1557.8278570422526" y="1758.0" />
+      <point x="1538.4406569968442" y="1758.0" />
+      <point x="17.66666666666697" y="112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ModelController" target="ua.edu.onu.autoChecking.service.ModelService">
+      <point x="-67.42857142857156" y="-52.0" />
+      <point x="5327.518256303797" y="3140.0" />
+      <point x="5194.859327732369" y="3140.0" />
+      <point x="125.25" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.SpecialController" target="ua.edu.onu.autoChecking.service.DriverService">
+      <point x="-34.44444444444434" y="-64.0" />
+      <point x="3456.9981064917934" y="3040.0" />
+      <point x="2617.7548611111115" y="3040.0" />
+      <point x="145.25" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="180.3888888888887" y="-100.0" />
+      <point x="1628.1111111111113" y="2740.0" />
+      <point x="4101.709327732368" y="2740.0" />
+      <point x="-64.40000000000009" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.service.StoryService">
+      <point x="28.181818181818016" y="-64.0" />
+      <point x="3189.6243691180557" y="3120.0" />
+      <point x="3603.623240874894" y="3120.0" />
+      <point x="-90.0" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AutomobileService" target="ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository">
+      <point x="-167.25" y="-88.0" />
+      <point x="4267.878046436192" y="2550.0" />
+      <point x="3664.192661065702" y="2550.0" />
+      <point x="86.66666666666697" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.DriverService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="149.4000000000001" y="-52.0" />
+      <point x="2621.904861111111" y="2760.0" />
+      <point x="4138.509327732369" y="2760.0" />
+      <point x="-27.59999999999991" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ModelController" target="ua.edu.onu.autoChecking.service.BrandService">
+      <point x="101.14285714285711" y="-52.0" />
+      <point x="5496.089684875225" y="3230.0" />
+      <point x="5968.61100331719" y="3230.0" />
+      <point x="-41.25" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.DriverService" target="ua.edu.onu.autoChecking.dao.entities.Driver">
+      <point x="-83.0" y="-52.0" />
+      <point x="2389.5048611111115" y="2590.0" />
+      <point x="2386.8213469354996" y="2590.0" />
+      <point x="2386.8213469354996" y="1474.0" />
+      <point x="2398.8213469354996" y="1474.0" />
+      <point x="31.142857142856883" y="172.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AppUserService" target="ua.edu.onu.autoChecking.dto.AppUserDto">
+      <point x="-78.44444444444446" y="-76.0" />
+      <point x="6341.437725001879" y="2700.0" />
+      <point x="6379.048836112989" y="2700.0" />
+      <point x="57.5" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AppUserService" target="ua.edu.onu.autoChecking.dao.entities.AppUser">
+      <point x="0.0" y="-76.0" />
+      <point x="6419.882169446322" y="2720.0" />
+      <point x="6458.048836112989" y="2720.0" />
+      <point x="6458.048836112989" y="1984.0" />
+      <point x="6657.098836112989" y="1984.0" />
+      <point x="-46.0" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.PolicemanService" target="ua.edu.onu.autoChecking.dao.repositories.PolicemanRepository">
+      <point x="-104.5" y="-52.0" />
+      <point x="1873.2215277777777" y="2510.0" />
+      <point x="1739.4880136021666" y="2510.0" />
+      <point x="25.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ModelService" target="ua.edu.onu.autoChecking.dao.entities.Model">
+      <point x="16.700000000000045" y="-64.0" />
+      <point x="5086.309327732369" y="2750.0" />
+      <point x="5164.930799960333" y="2750.0" />
+      <point x="5164.930799960333" y="380.0" />
+      <point x="4870.52328453143" y="380.0" />
+      <point x="108.33333333333348" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.BrandController" target="ua.edu.onu.autoChecking.dto.BrandDto">
+      <point x="77.66666666666697" y="-40.0" />
+      <point x="6208.86100331719" y="3230.0" />
+      <point x="6185.36100331719" y="3230.0" />
+      <point x="6185.36100331719" y="2770.0" />
+      <point x="6152.673836112989" y="2770.0" />
+      <point x="65.625" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.repositories.DriverRepository">
+      <point x="-146.25" y="-76.0" />
+      <point x="3547.373240874894" y="2620.0" />
+      <point x="2558.6546802688326" y="2620.0" />
+      <point x="73.33333333333303" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.config.WebSecurityConfig" target="ua.edu.onu.autoChecking.service.UserDetailsServiceImpl">
+      <point x="-84.25" y="-40.0" />
+      <point x="6690.132169446322" y="3230.0" />
+      <point x="6695.382169446322" y="3230.0" />
+      <point x="-79.0" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Driver" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="-62.285714285714675" y="172.0" />
+      <point x="2305.392775506928" y="1454.0" />
+      <point x="1609.1073236635102" y="1454.0" />
+      <point x="88.33333333333303" y="-112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Automobile" target="ua.edu.onu.autoChecking.dao.entities.Color">
+      <point x="29.0" y="-124.0" />
+      <point x="3863.6005843149796" y="410.0" />
+      <point x="4996.44947500762" y="410.0" />
+      <point x="-108.33333333333348" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.PolicemanService" target="ua.edu.onu.autoChecking.dto.dtoSpec.PolicemanDtoSpec">
+      <point x="-20.899999999999636" y="-52.0" />
+      <point x="1956.821527777778" y="2590.0" />
+      <point x="1929.4880136021663" y="2590.0" />
+      <point x="0.0" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ModelService" target="ua.edu.onu.autoChecking.dao.repositories.ModelRepository">
+      <point x="-116.89999999999986" y="-64.0" />
+      <point x="4952.709327732369" y="2440.0" />
+      <point x="4647.109327732369" y="2440.0" />
+      <point x="21.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.repositories.AutomobileRepository">
+      <point x="137.94444444444434" y="-100.0" />
+      <point x="1585.666666666667" y="2710.0" />
+      <point x="3490.859327732368" y="2710.0" />
+      <point x="-86.66666666666697" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.DriverService" target="ua.edu.onu.autoChecking.dao.repositories.spec.DriverSpec">
+      <point x="-116.19999999999982" y="-52.0" />
+      <point x="2356.3048611111117" y="2580.0" />
+      <point x="2312.3213469354996" y="2580.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Automobile" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="-77.33333333333348" y="124.0" />
+      <point x="3757.2672509816466" y="828.0" />
+      <point x="1517.7741711724548" y="828.0" />
+      <point x="1517.7741711724548" y="1474.0" />
+      <point x="1538.4406569968442" y="1474.0" />
+      <point x="17.66666666666697" y="-112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.AutomobileController" target="ua.edu.onu.autoChecking.service.ColorService">
+      <point x="139.5" y="-64.0" />
+      <point x="5125.609327732369" y="3200.0" />
+      <point x="5523.196827732369" y="3200.0" />
+      <point x="-39.25" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.DriverService" target="ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec">
+      <point x="83.0" y="-52.0" />
+      <point x="2555.5048611111115" y="2680.0" />
+      <point x="2935.142180268833" y="2680.0" />
+      <point x="-73.875" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Driver" target="ua.edu.onu.autoChecking.dao.entities.Story">
+      <point x="-54.5" y="-172.0" />
+      <point x="2313.1784897926427" y="1030.0" />
+      <point x="3832.192661065702" y="1030.0" />
+      <point x="-88.33333333333303" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.BrandService" target="ua.edu.onu.autoChecking.dto.BrandDto">
+      <point x="0.0" y="-52.0" />
+      <point x="6009.86100331719" y="2760.0" />
+      <point x="6065.173836112989" y="2760.0" />
+      <point x="-21.875" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dto.StoryDto">
+      <point x="-101.25" y="-76.0" />
+      <point x="3592.373240874894" y="2600.0" />
+      <point x="3427.150994399035" y="2600.0" />
+      <point x="79.125" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ViolationService" target="ua.edu.onu.autoChecking.dao.entities.Violation">
+      <point x="-171.5" y="-52.0" />
+      <point x="165.43341259780846" y="2780.0" />
+      <point x="108.93341259780846" y="2780.0" />
+      <point x="108.93341259780846" y="1444.0" />
+      <point x="662.6053747132783" y="1444.0" />
+      <point x="-95.375" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ViolationController" target="ua.edu.onu.autoChecking.dto.ViolationDto">
+      <point x="-91.33333333333303" y="-40.0" />
+      <point x="45.66666666666697" y="3230.0" />
+      <point x="74.16666666666697" y="3230.0" />
+      <point x="74.16666666666697" y="2790.0" />
+      <point x="242.43341259780846" y="2790.0" />
+      <point x="-76.5" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.PolicemanSpec" target="ua.edu.onu.autoChecking.dao.entities.Policeman">
+      <point x="0.0" y="-27.0" />
+      <point x="2120.4880136021666" y="1994.0" />
+      <point x="1957.274171172455" y="1994.0" />
+      <point x="18.16666666666697" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.UserRole" target="ua.edu.onu.autoChecking.dao.entities.AppUser">
+      <point x="-42.0" y="-52.0" />
+      <point x="6826.598836112989" y="1994.0" />
+      <point x="6795.098836112989" y="1994.0" />
+      <point x="92.0" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.entities.Policeman">
+      <point x="31.83333333333303" y="-100.0" />
+      <point x="1479.5555555555557" y="2560.0" />
+      <point x="1603.9880136021666" y="2560.0" />
+      <point x="1603.9880136021666" y="1984.0" />
+      <point x="1884.607504505788" y="1984.0" />
+      <point x="-54.5" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ColorController" target="ua.edu.onu.autoChecking.service.ColorService">
+      <point x="-74.0" y="-40.0" />
+      <point x="5606.196827732369" y="3200.0" />
+      <point x="5601.696827732369" y="3200.0" />
+      <point x="39.25" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.DriverController" target="ua.edu.onu.autoChecking.service.DriverService">
+      <point x="-29.25" y="-40.0" />
+      <point x="2793.900994399035" y="3120.0" />
+      <point x="2451.7548611111115" y="3120.0" />
+      <point x="-20.75" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ViolationService" target="ua.edu.onu.autoChecking.dto.ViolationDto">
+      <point x="24.5" y="-52.0" />
+      <point x="361.43341259780846" y="2790.0" />
+      <point x="344.43341259780846" y="2790.0" />
+      <point x="25.5" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.ProtocolSpec" target="ua.edu.onu.autoChecking.dao.entities.Violation">
+      <point x="-48.0" y="-27.0" />
+      <point x="1214.3278570422526" y="1994.0" />
+      <point x="1232.8278570422526" y="1994.0" />
+      <point x="1232.8278570422526" y="1464.0" />
+      <point x="798.8553747132783" y="1464.0" />
+      <point x="40.875" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ViolationService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="171.5" y="-52.0" />
+      <point x="508.43341259780846" y="2730.0" />
+      <point x="4083.3093277323687" y="2730.0" />
+      <point x="-82.80000000000018" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Policeman" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="-54.5" y="-88.0" />
+      <point x="1884.607504505788" y="1758.0" />
+      <point x="1573.7739903301772" y="1758.0" />
+      <point x="53.0" y="112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Protocol" target="ua.edu.onu.autoChecking.dao.entities.Violation">
+      <point x="-88.33333333333303" y="-112.0" />
+      <point x="1432.4406569968442" y="1454.0" />
+      <point x="826.1053747132783" y="1454.0" />
+      <point x="68.125" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.SpecialController" target="ua.edu.onu.autoChecking.service.AutomobileService">
+      <point x="103.33333333333348" y="-64.0" />
+      <point x="3594.775884269571" y="3220.0" />
+      <point x="4518.753046436192" y="3220.0" />
+      <point x="83.625" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.BrandService" target="ua.edu.onu.autoChecking.dao.entities.Brand">
+      <point x="141.42857142857156" y="-52.0" />
+      <point x="6151.2895747457615" y="2790.0" />
+      <point x="6196.048836112989" y="2790.0" />
+      <point x="6196.048836112989" y="134.0" />
+      <point x="5869.932808340955" y="134.0" />
+      <point x="74.40000000000009" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ModelService" target="ua.edu.onu.autoChecking.dao.repositories.BrandRepository">
+      <point x="116.90000000000009" y="-64.0" />
+      <point x="5186.509327732369" y="2780.0" />
+      <point x="5694.446827732369" y="2780.0" />
+      <point x="-63.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.ViolationSpec" target="ua.edu.onu.autoChecking.dao.entities.Violation">
+      <point x="0.0" y="-27.0" />
+      <point x="206.43341259780846" y="1464.0" />
+      <point x="717.1053747132783" y="1464.0" />
+      <point x="-40.875" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.SpecialController" target="ua.edu.onu.autoChecking.service.PolicemanService">
+      <point x="-103.33333333333348" y="-64.0" />
+      <point x="3388.109217602904" y="3060.0" />
+      <point x="2151.8881944444447" y="3060.0" />
+      <point x="174.16666666666697" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.service.DriverService">
+      <point x="-140.909090909091" y="-64.0" />
+      <point x="3020.5334600271467" y="3100.0" />
+      <point x="2493.2548611111115" y="3100.0" />
+      <point x="20.75" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.StoryRepository" target="ua.edu.onu.autoChecking.dao.ids.StoryId">
+      <point x="-42.0" y="-27.0" />
+      <point x="3766.525994399035" y="788.0" />
+      <point x="3598.1840277777774" y="788.0" />
+      <point x="32.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Story" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="0.0" y="-76.0" />
+      <point x="3920.525994399035" y="768.0" />
+      <point x="3808.8228065372023" y="768.0" />
+      <point x="-25.77777777777783" y="124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AppUserService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="-156.88888888888897" y="-76.0" />
+      <point x="6262.9932805574335" y="2340.0" />
+      <point x="4248.909327732369" y="2340.0" />
+      <point x="82.80000000000018" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ColorService" target="ua.edu.onu.autoChecking.exception.NotFoundException">
+      <point x="-134.57142857142844" y="-52.0" />
+      <point x="5427.87539916094" y="2400.0" />
+      <point x="4212.109327732369" y="2400.0" />
+      <point x="46.0" y="28.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.ColorRepository" target="ua.edu.onu.autoChecking.dao.entities.Color">
+      <point x="0.0" y="-27.0" />
+      <point x="4814.109327732369" y="430.0" />
+      <point x="5083.116141674287" y="430.0" />
+      <point x="-21.666666666666515" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.dto.DriverDto">
+      <point x="-84.54545454545496" y="-64.0" />
+      <point x="3076.8970963907827" y="3080.0" />
+      <point x="2942.954680268833" y="3080.0" />
+      <point x="2942.954680268833" y="2670.0" />
+      <point x="2835.023990330177" y="2670.0" />
+      <point x="49.25" y="148.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Automobile" target="ua.edu.onu.autoChecking.dao.entities.Model">
+      <point x="-87.0" y="-124.0" />
+      <point x="3747.6005843149796" y="380.0" />
+      <point x="4653.856617864763" y="380.0" />
+      <point x="-108.33333333333326" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ModelService" target="ua.edu.onu.autoChecking.dto.ModelDto">
+      <point x="83.5" y="-64.0" />
+      <point x="5153.109327732369" y="2770.0" />
+      <point x="5248.334327732368" y="2770.0" />
+      <point x="-35.40000000000009" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.UserDetailsServiceImpl" target="ua.edu.onu.autoChecking.dao.entities.AppUser">
+      <point x="0.0" y="-40.0" />
+      <point x="6774.382169446322" y="2740.0" />
+      <point x="6750.932169446323" y="2740.0" />
+      <point x="6750.932169446323" y="1994.0" />
+      <point x="6749.098836112989" y="1994.0" />
+      <point x="46.0" y="64.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.repositories.spec.ProtocolSpec">
+      <point x="-74.27777777777828" y="-100.0" />
+      <point x="1373.4444444444443" y="2640.0" />
+      <point x="1262.3278570422526" y="2640.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.ProtocolSpec" target="ua.edu.onu.autoChecking.dao.entities.Policeman">
+      <point x="48.0" y="-27.0" />
+      <point x="1310.3278570422526" y="1974.0" />
+      <point x="1848.274171172455" y="1974.0" />
+      <point x="-90.83333333333303" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.BrandService" target="ua.edu.onu.autoChecking.dao.repositories.BrandRepository">
+      <point x="-94.28571428571422" y="-52.0" />
+      <point x="5915.575289031476" y="2360.0" />
+      <point x="5778.446827732369" y="2360.0" />
+      <point x="21.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.UserDetailsServiceImpl" target="ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository">
+      <point x="63.20000000000002" y="-40.0" />
+      <point x="6837.582169446323" y="2770.0" />
+      <point x="7049.265502779655" y="2770.0" />
+      <point x="-15.333333333333371" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AutomobileService" target="ua.edu.onu.autoChecking.dao.repositories.ModelRepository">
+      <point x="130.08333333333348" y="-88.0" />
+      <point x="4565.211379769526" y="2770.0" />
+      <point x="4605.109327732369" y="2770.0" />
+      <point x="-21.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ViolationService" target="ua.edu.onu.autoChecking.dao.repositories.ViolationRepository">
+      <point x="122.5" y="-52.0" />
+      <point x="459.43341259780846" y="2720.0" />
+      <point x="515.9334125978085" y="2720.0" />
+      <point x="-25.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.ProtocolSpec" target="ua.edu.onu.autoChecking.dao.entities.Protocol">
+      <point x="0.0" y="-27.0" />
+      <point x="1262.3278570422526" y="1994.0" />
+      <point x="1243.8278570422526" y="1994.0" />
+      <point x="1243.8278570422526" y="1738.0" />
+      <point x="1432.4406569968442" y="1738.0" />
+      <point x="-88.33333333333303" y="112.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.MainController" target="ua.edu.onu.autoChecking.utils.WebUtils">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AppUserService" target="ua.edu.onu.autoChecking.dao.repositories.AppUserRepository">
+      <point x="39.22222222222217" y="-76.0" />
+      <point x="6459.104391668545" y="2730.0" />
+      <point x="6579.432169446323" y="2730.0" />
+      <point x="-69.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ProtocolService" target="ua.edu.onu.autoChecking.dao.repositories.ViolationRepository">
+      <point x="-180.3888888888887" y="-100.0" />
+      <point x="1267.333333333334" y="2690.0" />
+      <point x="565.9334125978085" y="2690.0" />
+      <point x="25.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.PolicemanService" target="ua.edu.onu.autoChecking.dto.PolicemanDto">
+      <point x="-188.10000000000036" y="-52.0" />
+      <point x="1789.6215277777774" y="2530.0" />
+      <point x="873.8278570422526" y="2530.0" />
+      <point x="21.5" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.PolicemanController" target="ua.edu.onu.autoChecking.service.PolicemanService">
+      <point x="109.5" y="-40.0" />
+      <point x="1812.9611111111108" y="3230.0" />
+      <point x="1873.2215277777777" y="3230.0" />
+      <point x="-104.5" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.StoryRepository" target="ua.edu.onu.autoChecking.dao.entities.Story">
+      <point x="42.0" y="-27.0" />
+      <point x="3850.525994399035" y="1050.0" />
+      <point x="3902.859327732368" y="1050.0" />
+      <point x="-17.66666666666697" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec" target="ua.edu.onu.autoChecking.dao.entities.Story">
+      <point x="0.0" y="-27.0" />
+      <point x="53.0" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.ViolationRepository" target="ua.edu.onu.autoChecking.dao.entities.Violation">
+      <point x="0.0" y="-27.0" />
+      <point x="540.9334125978085" y="1474.0" />
+      <point x="744.3553747132783" y="1474.0" />
+      <point x="-13.625" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.service.DriverService">
+      <point x="67.8125" y="-88.0" />
+      <point x="2237.203077732369" y="3120.0" />
+      <point x="2327.2548611111115" y="3120.0" />
+      <point x="-145.25" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Story" target="ua.edu.onu.autoChecking.dao.ids.StoryId">
+      <point x="-70.66666666666697" y="-76.0" />
+      <point x="3849.859327732368" y="778.0" />
+      <point x="3630.1840277777774" y="778.0" />
+      <point x="64.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Color" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="-65.0" y="52.0" />
+      <point x="5039.782808340954" y="420.0" />
+      <point x="3921.6005843149796" y="420.0" />
+      <point x="87.0" y="-124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.StoryController" target="ua.edu.onu.autoChecking.service.AutomobileService">
+      <point x="112.72727272727298" y="-64.0" />
+      <point x="3274.1698236635107" y="3190.0" />
+      <point x="4351.503046436192" y="3190.0" />
+      <point x="-83.625" y="88.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.entities.Model" target="ua.edu.onu.autoChecking.dao.entities.Automobile">
+      <point x="-65.0" y="88.0" />
+      <point x="4697.189951198096" y="390.0" />
+      <point x="3805.6005843149796" y="390.0" />
+      <point x="-29.0" y="-124.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.StoryService" target="ua.edu.onu.autoChecking.dao.repositories.spec.StorySpec">
+      <point x="101.25" y="-76.0" />
+      <point x="3794.873240874894" y="2700.0" />
+      <point x="3973.525994399035" y="2700.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.DriverService" target="ua.edu.onu.autoChecking.dao.repositories.DriverRepository">
+      <point x="-49.80000000000018" y="-52.0" />
+      <point x="2422.7048611111113" y="2620.0" />
+      <point x="2470.6546802688326" y="2620.0" />
+      <point x="-14.66666666666697" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.AutomobileController" target="ua.edu.onu.autoChecking.dto.AutomobileDto">
+      <point x="-77.5" y="-64.0" />
+      <point x="4908.609327732369" y="3200.0" />
+      <point x="4705.334217602904" y="3200.0" />
+      <point x="4705.334217602904" y="2470.0" />
+      <point x="4478.609327732369" y="2470.0" />
+      <point x="72.5" y="100.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository" target="ua.edu.onu.autoChecking.dao.entities.AppRole">
+      <point x="0.0" y="-27.0" />
+      <point x="7064.598836112989" y="1994.0" />
+      <point x="7027.848836112989" y="1994.0" />
+      <point x="40.25" y="40.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.AppRoleService" target="ua.edu.onu.autoChecking.dao.repositories.AppRoleRepository">
+      <point x="78.5" y="-40.0" />
+      <point x="7187.882169446322" y="2790.0" />
+      <point x="7141.265502779656" y="2790.0" />
+      <point x="76.66666666666674" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.service.ModelService" target="ua.edu.onu.autoChecking.dao.repositories.spec.ModelSpec">
+      <point x="-50.09999999999991" y="-64.0" />
+      <point x="5019.509327732369" y="2420.0" />
+      <point x="4908.609327732369" y="2420.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.service.ViolationService">
+      <point x="-145.3125" y="-88.0" />
+      <point x="2024.078077732369" y="3220.0" />
+      <point x="385.93341259780846" y="3220.0" />
+      <point x="49.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ViolationController" target="ua.edu.onu.autoChecking.service.ViolationService">
+      <point x="0.0" y="-40.0" />
+      <point x="137.0" y="3230.0" />
+      <point x="189.93341259780846" y="3230.0" />
+      <point x="-147.0" y="52.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.ProtocolController" target="ua.edu.onu.autoChecking.dto.PolicemanDto">
+      <point x="-87.1875" y="-88.0" />
+      <point x="2082.203077732369" y="3190.0" />
+      <point x="714.916666666667" y="3190.0" />
+      <point x="714.916666666667" y="2720.0" />
+      <point x="830.8278570422526" y="2720.0" />
+      <point x="-21.5" y="76.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.dao.repositories.spec.DriverSpec" target="ua.edu.onu.autoChecking.dao.entities.Driver">
+      <point x="0.0" y="-27.0" />
+      <point x="2312.3213469354996" y="1474.0" />
+      <point x="2367.6784897926427" y="1474.0" />
+      <point x="0.0" y="172.0" />
+    </edge>
+    <edge source="ua.edu.onu.autoChecking.controller.SpecialController" target="ua.edu.onu.autoChecking.dto.dtoSpec.DriverDtoSpec">
+      <point x="34.44444444444434" y="-64.0" />
+      <point x="3525.886995380682" y="3160.0" />
+      <point x="4146.903156565657" y="3160.0" />
+      <point x="4146.903156565657" y="2570.0" />
+      <point x="3082.892180268833" y="2570.0" />
+      <point x="73.875" y="148.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="2110.7142857142853" y="1364.7142857142858" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>Project Files</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -21,7 +21,7 @@
                 <option th:each="driver : ${driverList}" th:value="${driver.passport}" th:text="${driver.passport}"></option>
             </select><br>
 
-            <input name = "startDate" placeholder="start date (yyyy-MM-dd)" class="form-control"/><br>
+            <input name = "startDate" required placeholder="start date (yyyy-MM-dd)" class="form-control"/><br>
 
             <select class="form-control" th:field="*{userPassport}">
                 <option th:each="driver : ${driverList}" th:value="${driver.passport}" th:text="${driver.passport}"></option>

@@ -13,9 +13,9 @@
     <H1 align="center"> Violation creating </H1>
     <form method="post" action="/violations/create">
         <fieldset>
-            <input name = "violation" placeholder="violation" class="form-control"/><br>
-            <input name = "moneyPenalty" placeholder="money penalty" class="form-control"/><br>
-            <input name = "court" placeholder="court" class="form-control"/><br>
+            <input name = "violation" required placeholder="violation" class="form-control"/><br>
+            <input name = "moneyPenalty" required placeholder="money penalty (dollar)" class="form-control"/><br>
+            <input name = "court" required pattern="true|false" placeholder="enter 'true' or 'false' to specify the transfer of the case to court" class="form-control"/><br>
             <button type="submit" class="btn btn-success">Create!</button>
         </fieldset>
     </form>

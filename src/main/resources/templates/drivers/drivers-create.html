@@ -12,15 +12,15 @@
     <H1 align="center"> Driver creating </H1>
     <form method="post" action="/drivers/create">
         <fieldset>
-            <input name = "passport" placeholder="passport" class="form-control"/><br>
-            <input name = "licenseNumber" placeholder="license number" class="form-control"/><br>
-            <input type="date" name = "birthDate" placeholder="birth date" class="form-control"/><br>
-            <input name = "city" placeholder="city" class="form-control"/><br>
-            <input name = "street" placeholder="street" class="form-control"/><br>
+            <input name = "passport" placeholder="passport" required pattern="([0-9]{9})|([A-Z]{2}[0-9]{6})" class="form-control"/><br>
+            <input name = "licenseNumber" placeholder="license number" required pattern="[A-Z]{3} [0-9]{6}" class="form-control"/><br>
+            <input type="date" name = "birthDate" placeholder="birth date" required class="form-control"/><br>
+            <input name = "city" placeholder="city" required class="form-control"/><br>
+            <input name = "street" placeholder="street" required class="form-control"/><br>
             <input name = "house" placeholder="house" class="form-control"/><br>
             <input name = "flat" placeholder="flat" class="form-control"/><br>
-            <input name = "name" placeholder="name" class="form-control"/><br>
-            <input name = "surname" placeholder="surname" class="form-control"/><br>
+            <input name = "name" placeholder="name" required class="form-control"/><br>
+            <input name = "surname" placeholder="surname" required class="form-control"/><br>
             <input name = "patronymic" placeholder="patronymic" class="form-control"/><br>
             <button type="submit" class="btn btn-success">Create!</button>
         </fieldset>

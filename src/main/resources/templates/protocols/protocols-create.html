@@ -19,7 +19,7 @@
                 <option th:each="automobile : ${automobileList}" th:value="${automobile.vehicleIdNumber}" th:text="${automobile.vehicleIdNumber}"></option>
             </select><br>
 
-            <input type="date" name = "prepDate" placeholder="preparing date" class="form-control"/><br>
+            <input type="date" required name = "prepDate" placeholder="preparing date" class="form-control"/><br>
 
             <select class="form-control" th:field="*{status}">
                 <option th:value="true" th:text="true"></option>
@@ -30,7 +30,7 @@
                 <option th:each="violation : ${violationList}" th:value="${violation.violation}" th:text="${violation.violation}"></option>
             </select><br>
 
-            <input name = "dueDate" placeholder="dueDate" class="form-control"/><br>
+            <input name = "dueDate" required placeholder="dueDate" class="form-control"/><br>
 
             <select class="form-control" th:field="*{driverPassport}">
                 <option th:each="driver : ${driverList}" th:value="${driver.passport}" th:text="${driver.passport}"></option>

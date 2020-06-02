@@ -13,10 +13,10 @@
     <H1 align="center"> Policeman creating </H1>
     <form method="post" action="/policemen/create">
         <fieldset>
-            <input name = "id" placeholder="token number" class="form-control"/><br>
-            <input name = "rank" placeholder="rank" class="form-control"/><br>
-            <input name = "name" placeholder="name" class="form-control"/><br>
-            <input name = "surname" placeholder="surname" class="form-control"/><br>
+            <input name = "id" required placeholder="token number" class="form-control"/><br>
+            <input name = "rank" required pattern="general|colonel|lieutenant|soldier|warrant|officer|captain" placeholder="rank" class="form-control"/><br>
+            <input name = "name" required placeholder="name" class="form-control"/><br>
+            <input name = "surname" required placeholder="surname" class="form-control"/><br>
             <input name = "patronymic" placeholder="patronymic" class="form-control"/><br>
             <button type="submit" class="btn btn-success">Create!</button>
         </fieldset>

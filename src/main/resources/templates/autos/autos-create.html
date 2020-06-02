@@ -10,10 +10,10 @@
 <header th:insert="/blocks/header :: header"></header>
     <div class="container mt-5 mb-5">
         <H1 align="center"> Car creating </H1>
-        <form method="post" th:object="${automobile}" action="/autos/create" id="create-form">
+        <form method="post" th:object="${automobile}" action="/autos/create" id="createForm">
             <fieldset>
-                <input name = "vehicleIdNumber" placeholder="vehicle number" class="form-control"/><br>
-                <input type="date" name = "registrationDate" placeholder="registration date" class="form-control"/><br>
+                <input name = "vehicleIdNumber" required placeholder="vehicle number" class="form-control"/><br>
+                <input type="date" name = "registrationDate" required placeholder="registration date" class="form-control"/><br>
 
                 <select class="form-control" th:field="*{modelName}">
                     <option th:each="model : ${modelList}" th:value="${model.modelName}" th:text="${model.modelName}"></option>
@@ -23,8 +23,8 @@
                     <option th:each="color : ${colorList}" th:value="${color.colorName}" th:text="${color.colorName}"></option>
                 </select><br>
 
-                <input name = "engineNumber" placeholder="engine number" class="form-control"/><br>
-                <input name = "registrationNumber" placeholder="registration number" class="form-control"/><br>
+                <input name = "engineNumber" required placeholder="engine number" class="form-control"/><br>
+                <input id="1" name = "registrationNumber" placeholder="registration number" required pattern="[A-Z]{2}[0-9]{4}[A-Z]{2}|([0-9]{4}|[0-9]{4}" class="form-control"/><br>
                 <button type="submit" class="btn btn-success">Create!</button>
             </fieldset>
         </form>
